@@ -1,5 +1,10 @@
 ﻿{
-  "NoCapitalist": "No Capitalist",
+  "ChallengePage.Title" : "Challenge",
+
+  "NoChallenge": "(no challenge)",
+  "NoChallenge.DisplayText": "No restrictions of any kind.",
+  
+  "NoCapitalistChallenge": "No Capitalist",
   
   "CannotBuyFromShop.DisplayText": "Cannot buy from {{shopKeeper}}",
   "CannotBuyFromShop.Message": "Cannot buy from {{shopKeeper}} because of challenge."

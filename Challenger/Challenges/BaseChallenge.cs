@@ -4,13 +4,19 @@ using StardewModdingAPI;
 namespace Slothsoft.Challenger.Challenges {
     public abstract class BaseChallenge : IChallenge {
         
+        public string Id { get; }
+        
         private IRestriction[] _restrictions;
+
+        protected BaseChallenge(string id) {
+            Id = id;
+        }
 
         public string GetDisplayName(IModHelper modHelper) {
             return modHelper.Translation.Get(GetType().Name);
         }
 
-        public string GetDisplayText(IModHelper modHelper) {
+        public virtual string GetDisplayText(IModHelper modHelper) {
             var result = "";
             foreach (var restriction in GetOrCreateRestrictions()) {
                 result += restriction.GetDisplayText(modHelper);

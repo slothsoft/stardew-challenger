@@ -1,38 +1,51 @@
 ﻿using Slothsoft.Challenger.Challenges;
+using Slothsoft.Challenger.Menu;
+using Slothsoft.Challenger.Model;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 
 namespace Slothsoft.Challenger
 {
-    public class ModEntry : Mod
-    {
-        private const string ModSparkle = "assets/sparkle.png";
+    public class ModEntry : Mod {
 
-        private IModHelper _helper;
+        // TODO: this should probably be private (and non-static) at best
+        internal static IModHelper ModHelper;
+        internal static readonly IChallenge[] AllChallenges = {
+            new NoChallenge(),
+            new NoCapitalistChallenge(),
+        };
+
+        internal static ChallengeOptions LoadChallengeOptions() {
+            return ModHelper.Data.ReadSaveData<ChallengeOptions>(ChallengeOptions.Key);
+        }
+        
+        internal static void SaveChallengeOptions(ChallengeOptions options) {
+            ModHelper.Data.WriteSaveData(ChallengeOptions.Key, options);
+        }
+        
         private IChallenge _challenge;
         private bool _challengeEnabled;
 
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="newHelper">Provides simplified APIs for writing mods.</param>
 
-        public override void Entry(IModHelper newHelper)
-        {
-            _helper = newHelper;
-
-            _challenge = new NoCapitalist();
+        public override void Entry(IModHelper newHelper) {
+            ModHelper = newHelper;
+            
+            _challenge = AllChallenges[0];
             ToggleEnablement();
-            _helper.Events.Input.ButtonPressed += OnButtonPressed;
+            Helper.Events.Input.ButtonPressed += OnButtonPressed;
         }
 
         private void ToggleEnablement() {
-            Monitor.Log($"{_challenge.GetDisplayName(_helper)} was enabled {_challengeEnabled}.", LogLevel.Debug);
-            Monitor.Log($"{_challenge.GetDisplayText(_helper)}", LogLevel.Debug);
+            Monitor.Log($"{_challenge.GetDisplayName(Helper)} was enabled {_challengeEnabled}.", LogLevel.Debug);
+            Monitor.Log($"{_challenge.GetDisplayText(Helper)}", LogLevel.Debug);
             if (_challengeEnabled) {  ;
-                _challenge.RemoveRestrictions(_helper);
+                _challenge.RemoveRestrictions(Helper);
                 _challengeEnabled = false;
             } else {
-                _challenge.ApplyRestrictions(_helper);    
+                _challenge.ApplyRestrictions(Helper);    
                 _challengeEnabled = true;
             }
         }
@@ -48,6 +61,9 @@ namespace Slothsoft.Challenger
 
             if (e.Button == SButton.J) {
                 ToggleEnablement();
+            }
+            if (e.Button == SButton.K) {
+                Game1.activeClickableMenu = new ChallengeMenu();
             }
         }
     }

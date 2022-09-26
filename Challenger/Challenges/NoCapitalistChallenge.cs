@@ -2,7 +2,10 @@
 using Slothsoft.Challenger.Restrictions;
 
 namespace Slothsoft.Challenger.Challenges {
-    public class NoCapitalist : BaseChallenge {
+    public class NoCapitalistChallenge : BaseChallenge {
+
+        public NoCapitalistChallenge() : base("no-capitalist") {
+        }
         
         protected override IRestriction[] CreateRestrictions() {
             return new IRestriction[]

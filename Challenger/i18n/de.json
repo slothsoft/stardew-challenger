@@ -1,5 +1,10 @@
 ﻿{
-  "NoCapitalist": "Anti-Kapitalist",
+  "ChallengePage.Title" : "Herausforderung",
+  
+  "NoChallenge": "(keine Herausforderung)",
+  "NoChallenge.DisplayText": "Keine Einschränkungen irgendeiner Art.",
+
+  "NoCapitalistChallenge": "Anti-Kapitalist",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
   "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden."

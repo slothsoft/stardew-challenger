@@ -1,5 +1,5 @@
 ﻿namespace Slothsoft.Challenger.Model {
-    public static class Shops {
+    internal static class Shops {
         public const string Pierre = "Pierre";
     }
 }

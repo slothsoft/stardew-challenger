@@ -3,6 +3,10 @@
 namespace Slothsoft.Challenger.Challenges {
     public interface IChallenge {
         /// <summary>
+        /// An ID that never ever changes, so we can be sure to identify challenges.
+        /// </summary>
+        string Id { get; }
+        /// <summary>
         /// Returns the display name of this challenge.
         /// </summary>
         /// <param name="modHelper"></param>
