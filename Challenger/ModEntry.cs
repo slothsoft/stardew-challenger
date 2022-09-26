@@ -16,15 +16,6 @@ namespace Slothsoft.Challenger
             new NoCapitalistChallenge(),
         };
 
-        internal static ChallengeOptions LoadChallengeOptions() {
-            return ModHelper.Data.ReadSaveData<ChallengeOptions>(ChallengeOptions.Key);
-        }
-        
-        internal static void SaveChallengeOptions(ChallengeOptions options) {
-            ModHelper.Data.WriteSaveData(ChallengeOptions.Key, options);
-        }
-        
-        private IChallenge _challenge;
         private bool _challengeEnabled;
 
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
@@ -32,22 +23,9 @@ namespace Slothsoft.Challenger
 
         public override void Entry(IModHelper newHelper) {
             ModHelper = newHelper;
-            
-            _challenge = AllChallenges[0];
-            ToggleEnablement();
-            Helper.Events.Input.ButtonPressed += OnButtonPressed;
-        }
 
-        private void ToggleEnablement() {
-            Monitor.Log($"{_challenge.GetDisplayName(Helper)} was enabled {_challengeEnabled}.", LogLevel.Debug);
-            Monitor.Log($"{_challenge.GetDisplayText(Helper)}", LogLevel.Debug);
-            if (_challengeEnabled) {  ;
-                _challenge.RemoveRestrictions(Helper);
-                _challengeEnabled = false;
-            } else {
-                _challenge.ApplyRestrictions(Helper);    
-                _challengeEnabled = true;
-            }
+            Helper.Events.GameLoop.SaveLoaded += (_, _) => Monitor.Log($"{ChallengeOptions.GetActiveChallenge().GetDisplayName(ModHelper)} was activated.", LogLevel.Debug);
+            Helper.Events.Input.ButtonPressed += OnButtonPressed;
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -59,9 +37,6 @@ namespace Slothsoft.Challenger
             if (!Context.IsWorldReady)
                 return;
 
-            if (e.Button == SButton.J) {
-                ToggleEnablement();
-            }
             if (e.Button == SButton.K) {
                 Game1.activeClickableMenu = new ChallengeMenu();
             }

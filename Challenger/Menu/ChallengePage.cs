@@ -28,17 +28,16 @@ namespace Slothsoft.Challenger.Menu {
                 (int)descriptionSize.Y);
             options.Add(_description);
             
-            var challengeOptions = ModEntry.LoadChallengeOptions();
+            var activeChallenge = ChallengeOptions.GetActiveChallenge();
             var selectedOption = 0;
-            var index = 0;
-            
-            foreach (var challenge in ModEntry.AllChallenges) {
-                if (challengeOptions?.ChallengeId == challenge.Id) {
-                    selectedOption = index;
+
+            for (var i = 0; i < ModEntry.AllChallenges.Length; i++) {
+                var challenge = ModEntry.AllChallenges[i];
+                if (activeChallenge.Id == challenge.Id) {
+                    selectedOption = i;
                 }
                 _challengeSelection.dropDownOptions.Add(challenge.Id);
                 _challengeSelection.dropDownDisplayOptions.Add(challenge.GetDisplayName(ModEntry.ModHelper));
-                index++;
             }
             _challengeSelection.selectedOption = selectedOption;
             _challengeSelection.RecalculateBounds();
@@ -58,7 +57,7 @@ namespace Slothsoft.Challenger.Menu {
                 _description.label = newLabel;
                 
                 if (saveAllowed) {
-                    ModEntry.SaveChallengeOptions(new ChallengeOptions(newChallenge.Id));
+                    ChallengeOptions.SetActiveChallenge(newChallenge);
                 }
             }
         }

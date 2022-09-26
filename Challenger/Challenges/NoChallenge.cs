@@ -5,7 +5,9 @@ using StardewModdingAPI;
 namespace Slothsoft.Challenger.Challenges {
     public class NoChallenge : BaseChallenge {
         
-        public NoChallenge() : base("none") {
+        public const string ChallengeId = "none";
+        
+        public NoChallenge() : base(ChallengeId) {
         }
         
         public override string GetDisplayText(IModHelper modHelper) {
