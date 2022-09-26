@@ -7,7 +7,7 @@ using StardewValley.Menus;
 namespace Slothsoft.Challenger.Restrictions {
     public class CannotBuyFromShop : IRestriction {
 
-        private string[] _bannedShopKeepers;
+        private readonly string[] _bannedShopKeepers;
 
         public CannotBuyFromShop(params string[] bannedShopKeepers) {
             _bannedShopKeepers = bannedShopKeepers;
@@ -27,5 +27,8 @@ namespace Slothsoft.Challenger.Restrictions {
             }
         }
 
+        public void Remove(IModHelper modHelper) {
+            modHelper.Events.Display.MenuChanged -= OnMenuPressed;
+        }
     }
 }
