@@ -3,6 +3,18 @@
 namespace Slothsoft.Challenger.Challenges {
     public interface IChallenge {
         /// <summary>
+        /// Returns the display name of this challenge.
+        /// </summary>
+        /// <param name="modHelper"></param>
+        /// <returns></returns>
+        string GetDisplayName(IModHelper modHelper);
+        /// <summary>
+        /// Returns a string explaining what you can or cannot do in this challenge.
+        /// </summary>
+        /// <param name="modHelper"></param>
+        /// <returns></returns>
+        string GetDisplayText(IModHelper modHelper);
+        /// <summary>
         /// This applies all restriction this challenge has to the game.
         /// </summary>
         /// <param name="modHelper"></param>

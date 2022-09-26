@@ -1,0 +1,6 @@
+﻿{
+  "NoCapitalist": "Anti-Kapitalist",
+  
+  "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
+  "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden."
+}

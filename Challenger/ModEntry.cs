@@ -11,6 +11,7 @@ namespace Slothsoft.Challenger
 
         private IModHelper _helper;
         private IChallenge _challenge;
+        private bool _challengeEnabled;
 
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="newHelper">Provides simplified APIs for writing mods.</param>
@@ -20,8 +21,20 @@ namespace Slothsoft.Challenger
             _helper = newHelper;
 
             _challenge = new NoCapitalist();
-            _challenge.ApplyRestrictions(newHelper);      
+            ToggleEnablement();
             _helper.Events.Input.ButtonPressed += OnButtonPressed;
+        }
+
+        private void ToggleEnablement() {
+            Monitor.Log($"{_challenge.GetDisplayName(_helper)} was enabled {_challengeEnabled}.", LogLevel.Debug);
+            Monitor.Log($"{_challenge.GetDisplayText(_helper)}", LogLevel.Debug);
+            if (_challengeEnabled) {  ;
+                _challenge.RemoveRestrictions(_helper);
+                _challengeEnabled = false;
+            } else {
+                _challenge.ApplyRestrictions(_helper);    
+                _challengeEnabled = true;
+            }
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -34,10 +47,7 @@ namespace Slothsoft.Challenger
                 return;
 
             if (e.Button == SButton.J) {
-                // print button presses to the console window
-                Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
-                _challenge.RemoveRestrictions(_helper);      
-                // Game1.addHUDMessage(new HUDMessage("YOU CANNOT DO THIS FOR THIS CHALLENGE", HUDMessage.error_type));
+                ToggleEnablement();
             }
         }
     }

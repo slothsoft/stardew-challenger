@@ -1,4 +1,5 @@
-﻿using Slothsoft.Challenger.Restrictions;
+﻿using Slothsoft.Challenger.Model;
+using Slothsoft.Challenger.Restrictions;
 
 namespace Slothsoft.Challenger.Challenges {
     public class NoCapitalist : BaseChallenge {
@@ -6,7 +7,7 @@ namespace Slothsoft.Challenger.Challenges {
         protected override IRestriction[] CreateRestrictions() {
             return new IRestriction[]
             {
-                new CannotBuyFromShop("Pierre"),
+                new CannotBuyFromShop(Shops.Pierre),
             };
         }
     }
