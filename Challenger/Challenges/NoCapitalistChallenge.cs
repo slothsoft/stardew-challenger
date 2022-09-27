@@ -12,7 +12,7 @@ namespace Slothsoft.Challenger.Challenges {
         protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
             return new IRestriction[]
             {
-                new CannotBuyFromShop(modHelper, Shops.Pierre),
+                new CannotBuyFromShop(modHelper, Shops.Pierre, Shops.Clint, Shops.JoJo),
             };
         }
     }
