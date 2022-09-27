@@ -63,10 +63,9 @@ To start developing this mod, you need to
 
 ### Used Tutorials
 
-- How to create first mod: [Modding:Modder Guide/Get Started](https://stardewvalleywiki.com/Modding:Modder_Guide/Get_Started)
-- How to do some common tasks: [Modding:Common tasks](https://stardewvalleywiki.com/Modding:Common_tasks)
-- SMAPI API: [Modding:Modder Guide/APIs](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs)
-- Stardew Valley API: [StawdewValley on GitHub](https://github.com/AdamMcIntosh/StawdewValley)
+- **General Information:**
+  - SMAPI API: [Modding:Modder Guide/APIs](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs)
+  - Stardew Valley API: [StawdewValley on GitHub](https://github.com/veywrn/StardewValley)
 
 
 ## License

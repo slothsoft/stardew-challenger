@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using StardewValley;
 using StardewValley.Menus;
 
-namespace Slothsoft.Challenger.Menu {
+namespace Slothsoft.Challenger.Menus {
     internal class ChallengeMenu : IClickableMenu {
         
         private readonly IClickableMenu _page;

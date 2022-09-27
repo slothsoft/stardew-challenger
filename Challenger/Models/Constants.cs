@@ -1,4 +1,4 @@
-﻿namespace Slothsoft.Challenger.Model {
+﻿namespace Slothsoft.Challenger.Models {
     
     /// <summary>
     /// These constants can be compared with <code>ShopMenu.storeContext</code>.

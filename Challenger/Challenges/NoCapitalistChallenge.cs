@@ -1,5 +1,5 @@
 ﻿using Slothsoft.Challenger.Api;
-using Slothsoft.Challenger.Model;
+using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 using StardewModdingAPI;
 

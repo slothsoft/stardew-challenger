@@ -1,5 +1,6 @@
 ﻿using Slothsoft.Challenger.Api;
-using Slothsoft.Challenger.Menu;
+using Slothsoft.Challenger.Menus;
+using Slothsoft.Challenger.Objects;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Menus;
 
-namespace Slothsoft.Challenger.Menu {
+namespace Slothsoft.Challenger.Menus {
     public class ChallengePage : OptionsPage{
         private readonly OptionsDropDown _challengeSelection;
         private readonly OptionsElement _description;
