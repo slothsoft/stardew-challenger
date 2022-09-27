@@ -1,24 +1,21 @@
 ﻿using StardewModdingAPI;
 
-namespace Slothsoft.Challenger.Restrictions {
+namespace Slothsoft.Challenger.Api {
     public interface IRestriction {
         /// <summary>
         /// Returns a string explaining what you can or cannot do in this restriction.
         /// </summary>
-        /// <param name="modHelper"></param>
         /// <returns></returns>
-        string GetDisplayText(IModHelper modHelper);
+        string GetDisplayText();
         
         /// <summary>
         /// Adds this restriction to the game.
         /// </summary>
-        /// <param name="modHelper"></param>
-        void Apply(IModHelper modHelper);
+        void Apply();
 
         /// <summary>
         /// Removes this restriction from the game.
         /// </summary>
-        /// <param name="modHelper"></param>
-        void Remove(IModHelper modHelper);
+        void Remove();
     }
 }

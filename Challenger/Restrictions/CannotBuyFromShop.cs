@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Slothsoft.Challenger.Api;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -8,23 +9,23 @@ namespace Slothsoft.Challenger.Restrictions {
     public class CannotBuyFromShop : IRestriction {
 
         private readonly string[] _bannedShopKeepers;
-        private IModHelper _modHelper;
+        private readonly IModHelper _modHelper;
 
-        public CannotBuyFromShop(params string[] bannedShopKeepers) {
+        public CannotBuyFromShop(IModHelper modHelper, params string[] bannedShopKeepers) {
+            _modHelper = modHelper;
             _bannedShopKeepers = bannedShopKeepers;
         }
 
-        public string GetDisplayText(IModHelper modHelper) {
+        public string GetDisplayText() {
             var result = "";
             foreach (var bannedShopKeeper in _bannedShopKeepers) {
-                result += "-  " + modHelper.Translation.Get("CannotBuyFromShop.DisplayText",
+                result += "-  " + _modHelper.Translation.Get("CannotBuyFromShop.DisplayText",
                     new { shopKeeper = bannedShopKeeper }) + "\n";
             }
             return result;
         }
 
-        public void Apply(IModHelper modHelper) {
-            _modHelper = modHelper;
+        public void Apply() {
             _modHelper.Events.Display.MenuChanged += OnMenuPressed;
         }
         
@@ -38,8 +39,8 @@ namespace Slothsoft.Challenger.Restrictions {
             }
         }
 
-        public void Remove(IModHelper modHelper) {
-            modHelper.Events.Display.MenuChanged -= OnMenuPressed;
+        public void Remove() {
+            _modHelper.Events.Display.MenuChanged -= OnMenuPressed;
         }
     }
 }

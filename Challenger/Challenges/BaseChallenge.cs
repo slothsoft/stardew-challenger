@@ -1,45 +1,47 @@
-﻿using Slothsoft.Challenger.Restrictions;
+﻿using Slothsoft.Challenger.Api;
 using StardewModdingAPI;
 
 namespace Slothsoft.Challenger.Challenges {
     public abstract class BaseChallenge : IChallenge {
         
         public string Id { get; }
+        protected IModHelper ModHelper { get; }
         
         private IRestriction[] _restrictions;
 
-        protected BaseChallenge(string id) {
+        protected BaseChallenge(IModHelper modHelper, string id) {
+            ModHelper = modHelper;
             Id = id;
         }
 
-        public string GetDisplayName(IModHelper modHelper) {
-            return modHelper.Translation.Get(GetType().Name);
+        public string GetDisplayName() {
+            return ModHelper.Translation.Get(GetType().Name);
         }
 
-        public virtual string GetDisplayText(IModHelper modHelper) {
+        public virtual string GetDisplayText() {
             var result = "";
             foreach (var restriction in GetOrCreateRestrictions()) {
-                result += restriction.GetDisplayText(modHelper);
+                result += restriction.GetDisplayText();
             }
             return result;
         }
 
-        public void ApplyRestrictions(IModHelper modHelper) {
+        public void ApplyRestrictions() {
             foreach (var restriction in GetOrCreateRestrictions()) {
-                restriction.Apply(modHelper);
+                restriction.Apply();
             }
         }
 
         private IRestriction[] GetOrCreateRestrictions() {
-            _restrictions ??= CreateRestrictions();
+            _restrictions ??= CreateRestrictions(ModHelper);
             return _restrictions;
         }
 
-        protected abstract IRestriction[] CreateRestrictions();
+        protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper);
 
-        public void RemoveRestrictions(IModHelper modHelper) {
+        public void RemoveRestrictions() {
             foreach (var restriction in GetOrCreateRestrictions()) {
-                restriction.Remove(modHelper);
+                restriction.Remove();
             }
         }
     }

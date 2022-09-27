@@ -1,5 +1,5 @@
 ﻿using System;
-using Slothsoft.Challenger.Restrictions;
+using Slothsoft.Challenger.Api;
 using StardewModdingAPI;
 
 namespace Slothsoft.Challenger.Challenges {
@@ -7,14 +7,14 @@ namespace Slothsoft.Challenger.Challenges {
         
         public const string ChallengeId = "none";
         
-        public NoChallenge() : base(ChallengeId) {
+        public NoChallenge(IModHelper modHelper) : base(modHelper, ChallengeId) {
         }
         
-        public override string GetDisplayText(IModHelper modHelper) {
-            return modHelper.Translation.Get("NoChallenge.DisplayText");
+        public override string GetDisplayText() {
+            return ModHelper.Translation.Get("NoChallenge.DisplayText");
         }
 
-        protected override IRestriction[] CreateRestrictions() {
+        protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
             return Array.Empty<IRestriction>();
         }
     }

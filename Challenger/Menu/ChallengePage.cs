@@ -1,5 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Slothsoft.Challenger.Model;
+﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Menus;
 
@@ -10,7 +10,7 @@ namespace Slothsoft.Challenger.Menu {
 
         public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
             options.Clear();
-            options.Add(new OptionsElement(ModEntry.ModHelper.Translation.Get("ChallengePage.Title") + ":"));
+            options.Add(new OptionsElement(ModEntry.Instance.Helper.Translation.Get("ChallengePage.Title") + ":"));
 
             _challengeSelection = new OptionsDropDown("", -1);
             _challengeSelection.bounds = new Rectangle(
@@ -27,17 +27,20 @@ namespace Slothsoft.Challenger.Menu {
             _description.bounds = new Rectangle(_description.bounds.X, _description.bounds.Y, (int)descriptionSize.X,
                 (int)descriptionSize.Y);
             options.Add(_description);
-            
-            var activeChallenge = ChallengeOptions.GetActiveChallenge();
-            var selectedOption = 0;
 
-            for (var i = 0; i < ModEntry.AllChallenges.Length; i++) {
-                var challenge = ModEntry.AllChallenges[i];
+            var api = ModEntry.Instance.GetChallengerApi();
+            var activeChallenge = api.GetActiveChallenge();
+            var allChallenges = api.GetAllChallenges().ToArray();
+            
+            var selectedOption = 0;
+            
+            for (var i = 0; i < allChallenges.Length; i++) {
+                var challenge = allChallenges[i];
                 if (activeChallenge.Id == challenge.Id) {
                     selectedOption = i;
                 }
                 _challengeSelection.dropDownOptions.Add(challenge.Id);
-                _challengeSelection.dropDownDisplayOptions.Add(challenge.GetDisplayName(ModEntry.ModHelper));
+                _challengeSelection.dropDownDisplayOptions.Add(challenge.GetDisplayName());
             }
             _challengeSelection.selectedOption = selectedOption;
             _challengeSelection.RecalculateBounds();
@@ -50,14 +53,16 @@ namespace Slothsoft.Challenger.Menu {
         }
 
         private void RefreshDescriptionLabel(bool saveAllowed) {
-            var newChallenge = ModEntry.AllChallenges[_challengeSelection.selectedOption];
-            var newLabel = newChallenge.GetDisplayText(ModEntry.ModHelper);
+            var api = ModEntry.Instance.GetChallengerApi();
+            var allChallenges = api.GetAllChallenges().ToArray();
+            var newChallenge = allChallenges[_challengeSelection.selectedOption];
+            var newLabel = newChallenge.GetDisplayText();
             
             if (_description.label != newLabel) {
                 _description.label = newLabel;
                 
                 if (saveAllowed) {
-                    ChallengeOptions.SetActiveChallenge(newChallenge);
+                    api.SetActiveChallenge(newChallenge);
                 }
             }
         }

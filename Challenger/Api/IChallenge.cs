@@ -1,6 +1,4 @@
-﻿using StardewModdingAPI;
-
-namespace Slothsoft.Challenger.Challenges {
+﻿namespace Slothsoft.Challenger.Api {
     public interface IChallenge {
         /// <summary>
         /// An ID that never ever changes, so we can be sure to identify challenges.
@@ -9,24 +7,20 @@ namespace Slothsoft.Challenger.Challenges {
         /// <summary>
         /// Returns the display name of this challenge.
         /// </summary>
-        /// <param name="modHelper"></param>
         /// <returns></returns>
-        string GetDisplayName(IModHelper modHelper);
+        string GetDisplayName();
         /// <summary>
         /// Returns a string explaining what you can or cannot do in this challenge.
         /// </summary>
-        /// <param name="modHelper"></param>
         /// <returns></returns>
-        string GetDisplayText(IModHelper modHelper);
+        string GetDisplayText();
         /// <summary>
         /// This applies all restriction this challenge has to the game.
         /// </summary>
-        /// <param name="modHelper"></param>
-        void ApplyRestrictions(IModHelper modHelper);
+        void ApplyRestrictions();
         /// <summary>
         /// This removes all restriction this challenge has from the game.
         /// </summary>
-        /// <param name="modHelper"></param>
-        void RemoveRestrictions(IModHelper modHelper);
+        void RemoveRestrictions();
     }
 }

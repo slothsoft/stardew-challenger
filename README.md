@@ -51,7 +51,6 @@ To start developing this mod, you need to
 
 ### Open To Dos
 
-- create mod API
 - create magical challenge item that will change according to the selected challenge
 - create restriction for buying some kind of object
 - create restriction that renames objects
