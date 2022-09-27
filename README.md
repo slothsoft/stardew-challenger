@@ -49,6 +49,19 @@ To start developing this mod, you need to
 
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
+### Open To Dos
+
+- create mod API
+- create magical challenge item that will change according to the selected challenge
+- create restriction for buying some kind of object
+- create restriction that renames objects
+- create restriction that allows for planting seeds out of season
+- create restriction that allows all plants for mixed seeds
+- create restriction to not be able to buy some objects from Robin
+- create restriction on selling items
+- create restriction to add items to a shops inventory
+
+
 ### Used Tutorials
 
 - How to create first mod: [Modding:Modder Guide/Get Started](https://stardewvalleywiki.com/Modding:Modder_Guide/Get_Started)
