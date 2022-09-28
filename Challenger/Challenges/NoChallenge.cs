@@ -1,21 +1,19 @@
 ﻿using System;
 using Slothsoft.Challenger.Api;
-using StardewModdingAPI;
 
-namespace Slothsoft.Challenger.Challenges {
-    public class NoChallenge : BaseChallenge {
-        
-        public const string ChallengeId = "none";
-        
-        public NoChallenge(IModHelper modHelper) : base(modHelper, ChallengeId) {
-        }
-        
-        public override string GetDisplayText() {
-            return ModHelper.Translation.Get("NoChallenge.DisplayText");
-        }
+namespace Slothsoft.Challenger.Challenges;
 
-        protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
-            return Array.Empty<IRestriction>();
-        }
+public class NoChallenge : BaseChallenge {
+    public const string ChallengeId = "none";
+
+    public NoChallenge(IModHelper modHelper) : base(modHelper, ChallengeId) {
+    }
+
+    public override string GetDisplayText() {
+        return ModHelper.Translation.Get("NoChallenge.DisplayText");
+    }
+
+    protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
+        return Array.Empty<IRestriction>();
     }
 }

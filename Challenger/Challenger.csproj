@@ -2,13 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <Authors>Slothsoft</Authors>
-    <PackageProjectUrl>https://github.com/slothsoft/stardew-new-recipes-marker</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/slothsoft/stardew-new-recipes-marker/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/slothsoft/stardew-challenger</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/slothsoft/stardew-challenger/blob/master/LICENSE</PackageLicenseUrl>
     <RootNamespace>Slothsoft.Challenger</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.0.1" />
+    <Reference Include="0Harmony" HintPath="$(GamePath)\smapi-internal\0Harmony.dll" />
+    <Reference Include="Newtonsoft.Json" HintPath="$(GamePath)\smapi-internal\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Using Include="StardewValley" />
+    <Using Include="StardewModdingAPI" />
+    <Using Alias="Object" Include="System.Object" />
+    <Using Alias="SObject" Include="StardewValley.Object" />
   </ItemGroup>
 </Project>

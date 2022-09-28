@@ -1,48 +1,47 @@
 ﻿using Slothsoft.Challenger.Api;
-using StardewModdingAPI;
 
-namespace Slothsoft.Challenger.Challenges {
-    public abstract class BaseChallenge : IChallenge {
-        
-        public string Id { get; }
-        protected IModHelper ModHelper { get; }
-        
-        private IRestriction[] _restrictions;
+namespace Slothsoft.Challenger.Challenges;
 
-        protected BaseChallenge(IModHelper modHelper, string id) {
-            ModHelper = modHelper;
-            Id = id;
+public abstract class BaseChallenge : IChallenge {
+    public string Id { get; }
+    protected IModHelper ModHelper { get; }
+
+    private IRestriction[] _restrictions;
+
+    protected BaseChallenge(IModHelper modHelper, string id) {
+        ModHelper = modHelper;
+        Id = id;
+    }
+
+    public string GetDisplayName() {
+        return ModHelper.Translation.Get(GetType().Name);
+    }
+
+    public virtual string GetDisplayText() {
+        var result = "";
+        foreach (var restriction in GetOrCreateRestrictions()) {
+            result += restriction.GetDisplayText();
         }
 
-        public string GetDisplayName() {
-            return ModHelper.Translation.Get(GetType().Name);
+        return result;
+    }
+
+    public void ApplyRestrictions() {
+        foreach (var restriction in GetOrCreateRestrictions()) {
+            restriction.Apply();
         }
+    }
 
-        public virtual string GetDisplayText() {
-            var result = "";
-            foreach (var restriction in GetOrCreateRestrictions()) {
-                result += restriction.GetDisplayText();
-            }
-            return result;
-        }
+    private IRestriction[] GetOrCreateRestrictions() {
+        _restrictions ??= CreateRestrictions(ModHelper);
+        return _restrictions;
+    }
 
-        public void ApplyRestrictions() {
-            foreach (var restriction in GetOrCreateRestrictions()) {
-                restriction.Apply();
-            }
-        }
+    protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper);
 
-        private IRestriction[] GetOrCreateRestrictions() {
-            _restrictions ??= CreateRestrictions(ModHelper);
-            return _restrictions;
-        }
-
-        protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper);
-
-        public void RemoveRestrictions() {
-            foreach (var restriction in GetOrCreateRestrictions()) {
-                restriction.Remove();
-            }
+    public void RemoveRestrictions() {
+        foreach (var restriction in GetOrCreateRestrictions()) {
+            restriction.Remove();
         }
     }
 }
