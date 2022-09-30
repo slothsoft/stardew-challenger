@@ -42,14 +42,14 @@ internal class ChallengerApi : IChallengerApi {
     public void SetActiveChallenge(IChallenge activeChallenge) {
         if (activeChallenge != _activeChallenge) {
             _activeChallenge.RemoveRestrictions();
-            ModEntry.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was ended.",
+            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was ended.",
                 LogLevel.Debug);
 
             _activeChallenge = activeChallenge;
             _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id));
 
             _activeChallenge.ApplyRestrictions();
-            ModEntry.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was activated.",
+            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was activated.",
                 LogLevel.Debug);
         }
     }

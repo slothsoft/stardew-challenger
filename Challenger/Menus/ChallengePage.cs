@@ -10,7 +10,7 @@ public class ChallengePage : OptionsPage {
 
     public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
         options.Clear();
-        options.Add(new OptionsElement(ModEntry.Instance.Helper.Translation.Get("ChallengePage.Title") + ":"));
+        options.Add(new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":"));
 
         _challengeSelection = new OptionsDropDown("", -1);
         _challengeSelection.bounds = new Rectangle(
@@ -28,7 +28,7 @@ public class ChallengePage : OptionsPage {
             (int)descriptionSize.Y);
         options.Add(_description);
 
-        var api = ModEntry.Instance.GetChallengerApi();
+        var api = ChallengerMod.Instance.GetChallengerApi();
         var activeChallenge = api.GetActiveChallenge();
         var allChallenges = api.GetAllChallenges().ToArray();
 
@@ -55,7 +55,7 @@ public class ChallengePage : OptionsPage {
     }
 
     private void RefreshDescriptionLabel(bool saveAllowed) {
-        var api = ModEntry.Instance.GetChallengerApi();
+        var api = ChallengerMod.Instance.GetChallengerApi();
         var allChallenges = api.GetAllChallenges().ToArray();
         var newChallenge = allChallenges[_challengeSelection.selectedOption];
         var newLabel = newChallenge.GetDisplayText();
