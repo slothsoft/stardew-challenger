@@ -27,4 +27,10 @@ public interface IChallenge {
     /// This removes all restriction this challenge has from the game.
     /// </summary>
     void RemoveRestrictions();
+
+    /// <summary>
+    /// Returns the object you wish to replace the magical object with.
+    /// </summary>
+    /// <returns>replacement object.</returns>
+    MagicalReplacement GetMagicalReplacement();
 }

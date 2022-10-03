@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Models;
 using StardewModdingAPI.Events;
 using StardewValley.Menus;
 
@@ -18,13 +19,8 @@ public class CannotBuyFromShop : IRestriction {
     }
 
     public string GetDisplayText() {
-        var result = "";
-        foreach (var bannedShopKeeper in _bannedShopKeepers) {
-            result += "-  " + _modHelper.Translation.Get("CannotBuyFromShop.DisplayText",
-                new { shopKeeper = bannedShopKeeper }) + "\n";
-        }
-
-        return result;
+        return CommonHelpers.ToListString(_bannedShopKeepers.Select(k => _modHelper.Translation.Get("CannotBuyFromShop.DisplayText",
+            new { shopKeeper = k }).ToString()));
     }
 
     public void Apply() {

@@ -13,4 +13,8 @@ public class NoCapitalistChallenge : BaseChallenge {
             new CannotBuyFromShop(modHelper, Shops.Pierre, Shops.Clint, Shops.JoJo),
         };
     }
+
+    public override MagicalReplacement GetMagicalReplacement() {
+        return MagicalReplacement.SeedMaker;
+    }
 }

@@ -73,6 +73,7 @@ To start developing this mod, you need to
   - [Digus's Mods](https://github.com/Digus/StardewValleyMods)
   - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)
   - [ImJustMatt's Mods](https://github.com/ImJustMatt/StardewMods) (Ordinary Capsule)
+  - [ImJustMatt's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
 
 ## License
 

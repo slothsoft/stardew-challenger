@@ -1,4 +1,5 @@
 ﻿using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Models;
 
 namespace Slothsoft.Challenger.Challenges;
 
@@ -22,7 +23,11 @@ public abstract class BaseChallenge : IChallenge {
         foreach (var restriction in GetOrCreateRestrictions()) {
             result += restriction.GetDisplayText();
         }
-
+        var magicalReplacement = GetMagicalReplacement();
+        if (magicalReplacement != MagicalReplacement.Default) {
+            result += CommonHelpers.ToListString(ModHelper.Translation.Get("BaseChallenge.MagicalObject",
+                new { item = magicalReplacement.Name }).ToString());
+        }
         return result;
     }
 
@@ -43,5 +48,9 @@ public abstract class BaseChallenge : IChallenge {
         foreach (var restriction in GetOrCreateRestrictions()) {
             restriction.Remove();
         }
+    }
+
+    public virtual MagicalReplacement GetMagicalReplacement() {
+        return MagicalReplacement.Default;
     }
 }

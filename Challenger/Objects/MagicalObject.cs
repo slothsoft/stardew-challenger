@@ -1,24 +1,36 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Challenger.Models;
 using StardewModdingAPI.Events;
-using StardewValley.Objects;
+
 // ReSharper disable InconsistentNaming
 
 namespace Slothsoft.Challenger.Objects;
+
+/// <summary>
+/// This class patches <code>StardewValley.Object</code>.
+/// </summary>
 
 public static class MagicalObject {
     
     internal const int ObjectId = 570745037;
     internal const string ObjectName = "Magical Object";
-    private static readonly SObject DefaultAppearance = new Furniture(ObjectIndexes.LeahsSculpture, Vector2.Zero);
-
+    private const bool ObjectBigCraftable = true;
+    
+    private static readonly HashSet<SObject> MagicalObjects = new();
+    
     public static void PatchObject(string uniqueId) {
         var helper = ChallengerMod.Instance.Helper;
         helper.Events.Content.AssetRequested += OnAssetRequested;
-        
+        helper.Events.Input.ButtonPressed += OnButtonPressed;
+
         var harmony = new Harmony(uniqueId);
+
+        MagicalDebris.PatchObject(harmony);
+        MagicalGame1.PatchObject(harmony);
+        
         harmony.Patch(
             original: AccessTools.Method(
                 typeof(SObject),
@@ -29,7 +41,8 @@ public static class MagicalObject {
                     typeof(int),
                     typeof(float),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(Draw))
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -42,7 +55,8 @@ public static class MagicalObject {
                     typeof(float),
                     typeof(float),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(DrawWithAlpha))
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -51,7 +65,8 @@ public static class MagicalObject {
                 new[] {
                     typeof(SpriteBatch),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(DrawAsProp))
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -67,7 +82,8 @@ public static class MagicalObject {
                     typeof(Color),
                     typeof(bool),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(DrawInMenu))
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -78,10 +94,22 @@ public static class MagicalObject {
                     typeof(Vector2),
                     typeof(Farmer),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(DrawWhenHeld))
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+        );
+        
+        harmony.Patch(
+            original: AccessTools.Method(
+                typeof(SObject),
+                nameof(SObject.isActionable),
+                new[] {
+                    typeof(Farmer),
+                }),
+            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
     }
-    
+
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e) {
         if (e.Name.IsEquivalentTo("Data/BigCraftablesInformation")) {
             // See documentation: https://stardewvalleywiki.com/Modding:Items#Big_craftables
@@ -96,61 +124,54 @@ public static class MagicalObject {
         }
     }
     
-    private static bool Draw(
-        SObject __instance,
-        SpriteBatch spriteBatch, int x, int y, float alpha = 1f) {
-        if (IsNotMagicalObject(__instance)) {
-            return true;
+    private static void OnButtonPressed(object? sender, ButtonPressedEventArgs e) {
+        if (!Context.IsPlayerFree
+            || Game1.player.CurrentItem is not SObject { bigCraftable.Value: false }
+            || !e.Button.IsUseToolButton()) {
+            return;
         }
-        GetDelegateObject(__instance).draw(spriteBatch, x, y, alpha);
-        return false;
-    }
 
+        // Filter out all objects that are not magical, or are still in use
+        var pos = CommonHelpers.GetCursorTile(1);
+        if (!Game1.currentLocation.Objects.TryGetValue(pos, out var obj)
+            || IsNotMagicalObject(obj)
+            || obj.heldObject.Value is not null
+            || obj.MinutesUntilReady > 0) {
+            return;
+        }
+
+        try {
+            MakeVanillaObject(obj);
+            var heldItem = (SObject) Game1.player.CurrentItem.getOne();
+            if (obj.performObjectDropInAction(heldItem, false, Game1.player)) {
+                Game1.player.reduceActiveItemByOne();
+            }
+        } finally {
+            MakeMagicalObject(obj);
+        }
+        ChallengerMod.Instance.Helper.Input.Suppress(e.Button);
+    }
+    
+    private static void MakeVanillaObject(SObject __instance) {
+        if (IsNotMagicalObject(__instance))
+            return;
+        
+        MagicalObjects.Add(__instance);
+
+        var magicalReplacement = ChallengerMod.Instance.GetChallengerApi().GetActiveChallenge().GetMagicalReplacement();
+        __instance.ParentSheetIndex = magicalReplacement.ParentSheetIndex;
+        __instance.Name = magicalReplacement.Name;
+    }
+    
     private static bool IsNotMagicalObject(SObject instance) {
-        return instance is not { bigCraftable.Value: true, ParentSheetIndex: ObjectId };
+        return instance is not { bigCraftable.Value: ObjectBigCraftable, ParentSheetIndex: ObjectId };
     }
 
-    private static SObject GetDelegateObject(SObject instance) {
-        return instance.heldObject.Value ?? DefaultAppearance;
-    }
-    
-    private static bool DrawAsProp(
-        SObject __instance,
-        SpriteBatch b) {
-        if (IsNotMagicalObject(__instance)) {
-            return true;
-        }
-        GetDelegateObject(__instance).drawAsProp(b);
-        return false;
-    }
-    
-    private static bool DrawWithAlpha(
-        SObject __instance,
-        SpriteBatch spriteBatch, int xNonTile, int yNonTile, float layerDepth, float alpha = 1f) {
-        if (IsNotMagicalObject(__instance)) {
-            return true;
-        }
-        GetDelegateObject(__instance).draw(spriteBatch, xNonTile, yNonTile, layerDepth, alpha);
-        return false;
-    }
-    
-    private static bool DrawInMenu(
-        SObject __instance,
-        SpriteBatch spriteBatch, Vector2 location, float scaleSize, float transparency, float layerDepth, StackDrawType drawStackNumber, Color color, bool drawShadow) {
-        if (IsNotMagicalObject(__instance)) {
-            return true;
-        }
-        GetDelegateObject(__instance).drawInMenu(spriteBatch, location, scaleSize, transparency, layerDepth, drawStackNumber, color, drawShadow);
-        return false;
-    }
-    
-    private static bool DrawWhenHeld(
-        SObject __instance,
-        SpriteBatch spriteBatch, Vector2 objectPosition, Farmer f) {
-        if (IsNotMagicalObject(__instance)) {
-            return true;
-        }
-        GetDelegateObject(__instance).drawWhenHeld(spriteBatch, objectPosition, f);
-        return false;
+    private static void MakeMagicalObject(SObject __instance) {
+        if (!MagicalObjects.Contains(__instance))
+            return;
+        
+        __instance.ParentSheetIndex = ObjectId;
+        __instance.Name = ObjectName;
     }
 }
