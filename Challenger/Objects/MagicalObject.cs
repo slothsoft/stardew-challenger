@@ -112,15 +112,20 @@ public static class MagicalObject {
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e) {
-        if (e.Name.IsEquivalentTo("Data/BigCraftablesInformation")) {
+        if (e.Name.StartsWith("Data/BigCraftablesInformation")) {
             // See documentation: https://stardewvalleywiki.com/Modding:Items#Big_craftables
             // name / price / edibility / type and category / description / outdoors / indoors / fragility / is lamp / display name
             e.Edit(
                 asset => {
+                    var helper = ChallengerMod.Instance.Helper;
+                    var description = helper.Translation.Get("MagicalObject.Description");
+                    var name = helper.Translation.Get("MagicalObject.Name");
+                    
                     var data = asset.AsDictionary<int, string>().Data;
                     data.Add(
                         ObjectId,
-                        $"{ObjectName}/0/-300/Crafting -9/Item_Challenger_Description/true/true/0//Item_Challenger_Name");
+                        $"{ObjectName}/0/-300/Crafting -9/{description}/true/true/0//{name}"
+                    );
                 });
         }
     }

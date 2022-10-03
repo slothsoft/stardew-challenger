@@ -1,6 +1,9 @@
 ﻿{
   "ChallengePage.Title" : "Challenge",
 
+  "MagicalObject.Name": "Magical Challenge Object",
+  "MagicalObject.Description": "A magical object that changes according to the challenge you currently selected.",
+  
   "BaseChallenge.MagicalObject": "You get the object \"{{item}}\"",
   
   "NoChallenge": "(no challenge)",

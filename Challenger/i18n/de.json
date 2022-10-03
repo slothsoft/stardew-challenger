@@ -1,6 +1,9 @@
 ﻿{
   "ChallengePage.Title" : "Herausforderung",
 
+  "MagicalObject.Name": "Magischer Gegenstand",
+  "MagicalObject.Description": "Ein magischer Gegenstand, der sich mit der gewählten Herausforderung ändert.",
+
   "BaseChallenge.MagicalObject": "Du erhältst den Gegenstand \"{{item}}\"",
   
   "NoChallenge": "(keine Herausforderung)",
