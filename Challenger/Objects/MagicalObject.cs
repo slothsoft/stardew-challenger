@@ -2,6 +2,8 @@
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Menus;
 using Slothsoft.Challenger.Models;
 using StardewModdingAPI.Events;
 
@@ -12,15 +14,14 @@ namespace Slothsoft.Challenger.Objects;
 /// <summary>
 /// This class patches <code>StardewValley.Object</code>.
 /// </summary>
-
 public static class MagicalObject {
-    
+
     internal const int ObjectId = 570745037;
     internal const string ObjectName = "Magical Object";
     private const bool ObjectBigCraftable = true;
-    
+
     private static readonly HashSet<SObject> MagicalObjects = new();
-    
+
     public static void PatchObject(string uniqueId) {
         var helper = ChallengerMod.Instance.Helper;
         helper.Events.Content.AssetRequested += OnAssetRequested;
@@ -30,7 +31,7 @@ public static class MagicalObject {
 
         MagicalDebris.PatchObject(harmony);
         MagicalGame1.PatchObject(harmony);
-        
+
         harmony.Patch(
             original: AccessTools.Method(
                 typeof(SObject),
@@ -97,7 +98,7 @@ public static class MagicalObject {
             prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
             postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
-        
+
         harmony.Patch(
             original: AccessTools.Method(
                 typeof(SObject),
@@ -123,15 +124,14 @@ public static class MagicalObject {
                 });
         }
     }
-    
+
     private static void OnButtonPressed(object? sender, ButtonPressedEventArgs e) {
-        if (!Context.IsPlayerFree
-            || Game1.player.CurrentItem is not SObject { bigCraftable.Value: false }
-            || !e.Button.IsUseToolButton()) {
+        // we don't interact with anything here
+        if (!Context.IsPlayerFree) {
             return;
         }
 
-        // Filter out all objects that are not magical, or are still in use
+        // Filter out all objects that are not magical or still in use
         var pos = CommonHelpers.GetCursorTile(1);
         if (!Game1.currentLocation.Objects.TryGetValue(pos, out var obj)
             || IsNotMagicalObject(obj)
@@ -140,29 +140,35 @@ public static class MagicalObject {
             return;
         }
 
+        // we have a magical object on our hands
         try {
             MakeVanillaObject(obj);
-            var heldItem = (SObject) Game1.player.CurrentItem.getOne();
-            if (obj.performObjectDropInAction(heldItem, false, Game1.player)) {
-                Game1.player.reduceActiveItemByOne();
+            if (obj.ParentSheetIndex == MagicalReplacement.Default.ParentSheetIndex) {
+                // we have no special item for this challenge -> open challenge Menu
+                if (Game1.activeClickableMenu == null && (e.Button.IsActionButton() || e.Button.IsUseToolButton())) 
+                    Game1.activeClickableMenu = new ChallengeMenu();
+            } else if (e.Button.IsUseToolButton() && Game1.player.CurrentItem != null) {
+                var heldItem = (SObject)Game1.player.CurrentItem.getOne();
+                if (obj.performObjectDropInAction(heldItem, false, Game1.player)) {
+                    Game1.player.reduceActiveItemByOne();
+                }
             }
         } finally {
             MakeMagicalObject(obj);
         }
-        ChallengerMod.Instance.Helper.Input.Suppress(e.Button);
     }
-    
+
     private static void MakeVanillaObject(SObject __instance) {
         if (IsNotMagicalObject(__instance))
             return;
-        
+
         MagicalObjects.Add(__instance);
 
         var magicalReplacement = ChallengerMod.Instance.GetChallengerApi().GetActiveChallenge().GetMagicalReplacement();
         __instance.ParentSheetIndex = magicalReplacement.ParentSheetIndex;
         __instance.Name = magicalReplacement.Name;
     }
-    
+
     private static bool IsNotMagicalObject(SObject instance) {
         return instance is not { bigCraftable.Value: ObjectBigCraftable, ParentSheetIndex: ObjectId };
     }
@@ -170,7 +176,7 @@ public static class MagicalObject {
     private static void MakeMagicalObject(SObject __instance) {
         if (!MagicalObjects.Contains(__instance))
             return;
-        
+
         __instance.ParentSheetIndex = ObjectId;
         __instance.Name = ObjectName;
     }
