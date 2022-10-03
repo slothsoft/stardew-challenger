@@ -2,7 +2,7 @@
   "Name": "Challenger",
   "Author": "Slothsoft",
   "Version": "0.1.0",
-  "Description": "This mod marks new crafting recipes so you know which ones you haven't crafted yet.",
+  "Description": "A mod that makes playing a challenge again.",
   "UniqueID": "Slothsoft.Challenger",
   "EntryDll": "Challenger.dll",
   "MinimumApiVersion": "3.16.1",

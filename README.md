@@ -8,7 +8,7 @@ _A Mod for Stardew Valley_
 - **Repository:** <https://github.com/slothsoft/stardew-challenger>
 - **Open Issues:** <https://github.com/slothsoft/stardew-challenger/issues>
 
-A mod for [Stardew Valley](https://www.stardewvalley.net/).
+A mod for [Stardew Valley](https://www.stardewvalley.net/) that makes playing a challenge again.
 
 <img alt="Screenshot" src="readme/screenshot.png" width="300"/>
 
@@ -50,6 +50,18 @@ This will display all the restrictions you have to face - but you might get a li
 make the challenge possible. The **Magical Challenge Object**™ will turn into this "something extra" once you
 start the challenge and can be used as any other object of the kind it turns into.
 
+This mod brings the following challenges:
+
+#### No Challenge
+
+- default value without any restrictions - for when you are sick and tired of following rules
+
+#### No Capitalist
+
+- You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
+- You get a seed maker to tide you over your imminent lack of seeds
+
+
 
 ## Developer Notes
 
@@ -85,6 +97,8 @@ To start developing this mod, you need to
   - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)
   - [ImJustMatt's Mods](https://github.com/ImJustMatt/StardewMods) (Ordinary Capsule)
   - [ImJustMatt's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
+
+
 
 ## License
 
