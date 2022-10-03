@@ -28,7 +28,7 @@ public class ChallengePage : OptionsPage {
             (int)descriptionSize.Y);
         options.Add(_description);
 
-        var api = ChallengerMod.Instance.GetChallengerApi();
+        var api = ChallengerMod.Instance.GetApi()!;
         var activeChallenge = api.GetActiveChallenge();
         var allChallenges = api.GetAllChallenges().ToArray();
 
@@ -55,7 +55,7 @@ public class ChallengePage : OptionsPage {
     }
 
     private void RefreshDescriptionLabel(bool saveAllowed) {
-        var api = ChallengerMod.Instance.GetChallengerApi();
+        var api = ChallengerMod.Instance.GetApi()!;
         var allChallenges = api.GetAllChallenges().ToArray();
         var newChallenge = allChallenges[_challengeSelection.selectedOption];
         var newLabel = newChallenge.GetDisplayText();

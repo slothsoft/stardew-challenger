@@ -8,7 +8,7 @@ _A Mod for Stardew Valley_
 - **Repository:** <https://github.com/slothsoft/stardew-challenger>
 - **Open Issues:** <https://github.com/slothsoft/stardew-challenger/issues>
 
-A mod for [Stardew Valley](https://www.stardewvalley.net/).
+A mod for [Stardew Valley](https://www.stardewvalley.net/) that makes playing a challenge again.
 
 <img alt="Screenshot" src="readme/screenshot.png" width="300"/>
 
@@ -24,7 +24,8 @@ A mod for [Stardew Valley](https://www.stardewvalley.net/).
 
 ### Prerequisites
 
-You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course you need **[Stardew Valley](https://www.stardewvalley.net/)**.
+You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course you need 
+**[Stardew Valley](https://www.stardewvalley.net/)**.
 
 
 ### Installing
@@ -35,7 +36,30 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 
 ### Using the Mod
 
-The mod automatically hooks into the game.
+The mod automatically hooks into the game. You will get an mail with the **Magical Challenge Object**™ 
+the next time you wake up:
+
+<img alt="Screenshot Mail" src="readme/screenshot_mail.png" width="300"/>
+
+Using this object in its unmodified form will open the challenge menu. You can also open the menu using the
+key [K] (you can customize the key in either the mod's config file or the [GenericModConfigMenu](https://github.com/spacechase0/StardewValleyMods/tree/develop/GenericModConfigMenu)).
+
+<img alt="Screenshot Mail" src="readme/screenshot_menu.png" width="300"/>
+
+This will display all the restrictions you have to face - but you might get a little something extra to 
+make the challenge possible. The **Magical Challenge Object**™ will turn into this "something extra" once you
+start the challenge and can be used as any other object of the kind it turns into.
+
+This mod brings the following challenges:
+
+#### No Challenge
+
+- default value without any restrictions - for when you are sick and tired of following rules
+
+#### No Capitalist
+
+- You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
+- You get a seed maker to tide you over your imminent lack of seeds
 
 
 
@@ -49,17 +73,16 @@ To start developing this mod, you need to
 
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
-### Open To Dos
+### Release
 
-- create magical challenge item that will change according to the selected challenge
-- create restriction for buying some kind of object
-- create restriction that renames objects
-- create restriction that allows for planting seeds out of season
-- create restriction that allows all plants for mixed seeds
-- create restriction to not be able to buy some objects from Robin
-- create restriction on selling items
-- create restriction to add items to a shops inventory
-
+1. Check that all the versions are correct (see point 5)
+2. Run _build.bat_, which only really works on my PC, but so what: 
+```bat
+.\build x.x.x
+```
+3. Put the contents of _bin/Challenger.zip_ in a fresh Stardew Valley and test if everything works
+4. Create a new tag and release on GitHub, append the ZIP
+5. Increment the version in _manifest.json_ and _Challenger.csproj_
 
 ### Used Tutorials
 
@@ -74,6 +97,8 @@ To start developing this mod, you need to
   - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)
   - [ImJustMatt's Mods](https://github.com/ImJustMatt/StardewMods) (Ordinary Capsule)
   - [ImJustMatt's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
+
+
 
 ## License
 

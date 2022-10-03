@@ -1,6 +1,9 @@
 ﻿{
   "ChallengePage.Title" : "Herausforderung",
 
+  "MagicalObject.Name": "Magischer Gegenstand",
+  "MagicalObject.Description": "Ein magischer Gegenstand, der sich mit der gewählten Herausforderung ändert.",
+
   "BaseChallenge.MagicalObject": "Du erhältst den Gegenstand \"{{item}}\"",
   
   "NoChallenge": "(keine Herausforderung)",
@@ -9,5 +12,12 @@
   "NoCapitalistChallenge": "Anti-Kapitalist",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
-  "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden."
+  "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden.",
+  
+  "ChallengerMail.Hello": "Grüße {{name}},",
+  "ChallengerMail.Goodbye": "Wir sehen uns, Kämpfer Kevin",
+  "ChallengerMail.MagicalObjectMail": "Ich weiß aus unzweifelhafter Quelle, dass du neue Herausforderungen suchst?^^Ich, Kämpfer Kevin, heiße dich zu diesem neuen Pfad willkommen.^^Ich habe einen Gegenstand angehangen, der dir helfen wird eine neue Herausforderung zu finden, wenn du ihn benutzt.",
+
+  "ChallengerConfig.ButtonOpenMenu.Name": "Menü-Taste",
+  "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet"
 }

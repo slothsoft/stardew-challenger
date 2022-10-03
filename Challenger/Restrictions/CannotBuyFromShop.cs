@@ -11,7 +11,7 @@ public class CannotBuyFromShop : IRestriction {
     private readonly string[] _bannedShopKeepers;
     private readonly IModHelper _modHelper;
 
-    private EventHandler<MenuChangedEventArgs> _menuChangedHandler;
+    private EventHandler<MenuChangedEventArgs>? _menuChangedHandler;
 
     public CannotBuyFromShop(IModHelper modHelper, params string[] bannedShopKeepers) {
         _modHelper = modHelper;
@@ -28,7 +28,7 @@ public class CannotBuyFromShop : IRestriction {
         _modHelper.Events.Display.MenuChanged += _menuChangedHandler;
     }
 
-    private void MenuChanged(object sender, MenuChangedEventArgs e) {
+    private void MenuChanged(object? sender, MenuChangedEventArgs e) {
         if (e.NewMenu is ShopMenu newMenu) {
             // if the shop has a tool for sale, it's not a shop, but Clint's upgrade function
             if (_bannedShopKeepers.Contains(newMenu.storeContext) && newMenu.forSale.Any(s => s is not Tool)) {
