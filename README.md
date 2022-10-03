@@ -24,7 +24,8 @@ A mod for [Stardew Valley](https://www.stardewvalley.net/).
 
 ### Prerequisites
 
-You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course you need **[Stardew Valley](https://www.stardewvalley.net/)**.
+You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course you need 
+**[Stardew Valley](https://www.stardewvalley.net/)**.
 
 
 ### Installing
@@ -35,8 +36,18 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 
 ### Using the Mod
 
-The mod automatically hooks into the game.
+The mod automatically hooks into the game. You will get an mail with the **Magical Challenge Object**™ 
+the next time you wake up:
 
+<img alt="Screenshot Mail" src="readme/screenshot_mail.png" width="300"/>
+
+Using this object in its unmodified form will open the challenge menu.
+
+<img alt="Screenshot Mail" src="readme/screenshot_menu.png" width="300"/>
+
+This will display all the restrictions you have to face - but you might get a little something extra to 
+make the challenge possible. The **Magical Challenge Object**™ will turn into this "something extra" once you
+start the challenge and can be used as any other object of the kind it turns into.
 
 
 ## Developer Notes
@@ -48,17 +59,6 @@ _(This section contains notes to myself.)_
 To start developing this mod, you need to
 
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
-
-### Open To Dos
-
-- create magical challenge item that will change according to the selected challenge
-- create restriction for buying some kind of object
-- create restriction that renames objects
-- create restriction that allows for planting seeds out of season
-- create restriction that allows all plants for mixed seeds
-- create restriction to not be able to buy some objects from Robin
-- create restriction on selling items
-- create restriction to add items to a shops inventory
 
 
 ### Used Tutorials

@@ -159,12 +159,12 @@ public static class MagicalObject {
     }
 
     private static void MakeVanillaObject(SObject __instance) {
-        if (IsNotMagicalObject(__instance))
+        if (IsNotMagicalObject(__instance) || !ChallengerMod.Instance.IsInitialized())
             return;
 
         MagicalObjects.Add(__instance);
 
-        var magicalReplacement = ChallengerMod.Instance.GetChallengerApi().GetActiveChallenge().GetMagicalReplacement();
+        var magicalReplacement = ChallengerMod.Instance.GetApi()!.GetActiveChallenge().GetMagicalReplacement();
         __instance.ParentSheetIndex = magicalReplacement.ParentSheetIndex;
         __instance.Name = magicalReplacement.Name;
     }

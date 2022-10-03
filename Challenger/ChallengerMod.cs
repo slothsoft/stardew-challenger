@@ -9,7 +9,7 @@ namespace Slothsoft.Challenger;
 public class ChallengerMod : Mod {
     internal static ChallengerMod Instance;
 
-    private IChallengerApi _api;
+    private IChallengerApi? _api;
 
     /// <summary>The mod entry point, called after the mod is first loaded.</summary>
     /// <param name="modHelper">Provides simplified APIs for writing mods.</param>
@@ -24,6 +24,7 @@ public class ChallengerMod : Mod {
 
         // Patches
         MagicalObject.PatchObject(ModManifest.UniqueID);
+        ChallengerMail.InitAndSend();
     }
 
     /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -44,7 +45,9 @@ public class ChallengerMod : Mod {
         }
     }
 
-    public override IChallengerApi GetApi() => _api;
+    public override IChallengerApi? GetApi() => _api;
 
-    public IChallengerApi GetChallengerApi() => _api;
+    public bool IsInitialized() {
+        return _api != null;
+    }
 }
