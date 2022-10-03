@@ -18,7 +18,7 @@ public static class ChallengerMail {
     }
 
     private static void OnAssetRequested(object? sender, AssetRequestedEventArgs e) {
-        if (e.Name.IsEquivalentTo("Data/mail")) {
+        if (e.Name.StartsWith("Data/mail")) {
             // See documentation: https://stardewcommunitywiki.com/Modding:Common_tasks#Mail_content
             e.Edit(
                 asset => {

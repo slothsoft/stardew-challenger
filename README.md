@@ -41,7 +41,8 @@ the next time you wake up:
 
 <img alt="Screenshot Mail" src="readme/screenshot_mail.png" width="300"/>
 
-Using this object in its unmodified form will open the challenge menu.
+Using this object in its unmodified form will open the challenge menu. You can also open the menu using the
+key [K] (you can customize the key in either the mod's config file or the [GenericModConfigMenu](https://github.com/spacechase0/StardewValleyMods/tree/develop/GenericModConfigMenu)).
 
 <img alt="Screenshot Mail" src="readme/screenshot_menu.png" width="300"/>
 
