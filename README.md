@@ -66,7 +66,14 @@ To start developing this mod, you need to
 - **General Information:**
   - SMAPI API: [Modding:Modder Guide/APIs](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs)
   - Stardew Valley API: [StawdewValley on GitHub](https://github.com/veywrn/StardewValley)
-
+- **Other Mods:**
+  - [Sonozuki's Mods](https://github.com/Sonozuki/StardewMods)
+  - [Pathoschild's Mods](https://github.com/Pathoschild/StardewMods/tree/stable)
+  - [spacechase0's Mods](https://github.com/spacechase0/StardewValleyMods) (JsonAssets)
+  - [Digus's Mods](https://github.com/Digus/StardewValleyMods)
+  - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)
+  - [ImJustMatt's Mods](https://github.com/ImJustMatt/StardewMods) (Ordinary Capsule)
+  - [ImJustMatt's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
 
 ## License
 

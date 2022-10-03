@@ -1,5 +1,7 @@
 ﻿{
   "ChallengePage.Title" : "Herausforderung",
+
+  "BaseChallenge.MagicalObject": "Du erhältst den Gegenstand \"{{item}}\"",
   
   "NoChallenge": "(keine Herausforderung)",
   "NoChallenge.DisplayText": "Keine Einschränkungen irgendeiner Art.",
