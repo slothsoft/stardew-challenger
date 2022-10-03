@@ -8,6 +8,7 @@
     <PackageLicenseUrl>https://github.com/slothsoft/stardew-challenger/blob/master/LICENSE</PackageLicenseUrl>
     <RootNamespace>Slothsoft.Challenger</RootNamespace>
     <Nullable>enable</Nullable>
+    <PackageVersion>0.1.0</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

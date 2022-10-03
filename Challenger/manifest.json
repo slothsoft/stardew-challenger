@@ -1,7 +1,7 @@
 {
   "Name": "Challenger",
   "Author": "Slothsoft",
-  "Version": "1.0.0-Debug",
+  "Version": "0.1.0",
   "Description": "This mod marks new crafting recipes so you know which ones you haven't crafted yet.",
   "UniqueID": "Slothsoft.Challenger",
   "EntryDll": "Challenger.dll",
