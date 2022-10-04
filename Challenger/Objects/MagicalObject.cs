@@ -153,8 +153,7 @@ public static class MagicalObject {
                 if (Game1.activeClickableMenu == null && (e.Button.IsActionButton() || e.Button.IsUseToolButton())) 
                     Game1.activeClickableMenu = new ChallengeMenu();
             } else if (e.Button.IsUseToolButton() && Game1.player.CurrentItem != null) {
-                var heldItem = (SObject)Game1.player.CurrentItem.getOne();
-                if (obj.performObjectDropInAction(heldItem, false, Game1.player)) {
+                if (Game1.player.CurrentItem.getOne() is SObject heldItem && obj.performObjectDropInAction(heldItem, false, Game1.player)) {
                     Game1.player.reduceActiveItemByOne();
                 }
             }
