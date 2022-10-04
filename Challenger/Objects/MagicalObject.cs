@@ -149,9 +149,11 @@ public static class MagicalObject {
         try {
             MakeVanillaObject(obj);
             if (obj.ParentSheetIndex == MagicalReplacement.Default.ParentSheetIndex) {
-                // we have no special item for this challenge -> open challenge Menu
-                if (Game1.activeClickableMenu == null && (e.Button.IsActionButton() || e.Button.IsUseToolButton())) 
-                    Game1.activeClickableMenu = new ChallengeMenu();
+                if (!e.Button.IsUseToolButton()) {
+                    // we have no special item for this challenge -> open challenge Menu
+                    if (Game1.activeClickableMenu == null && (e.Button.IsActionButton() || e.Button.IsUseToolButton())) 
+                        Game1.activeClickableMenu = new ChallengeMenu();
+                }
             } else if (e.Button.IsUseToolButton() && Game1.player.CurrentItem != null) {
                 if (Game1.player.CurrentItem.getOne() is SObject heldItem && obj.performObjectDropInAction(heldItem, false, Game1.player)) {
                     Game1.player.reduceActiveItemByOne();
