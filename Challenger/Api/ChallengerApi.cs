@@ -16,6 +16,7 @@ internal class ChallengerApi : IChallengerApi {
 
         _challenges = new List<IChallenge> {
             new NoCapitalistChallenge(modHelper),
+            new VinyardChallenge(modHelper),
         };
         _challenges.Sort((a, b) =>
             String.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));

@@ -10,9 +10,14 @@
   "NoChallenge.DisplayText": "Keine Einschränkungen irgendeiner Art.",
 
   "NoCapitalistChallenge": "Anti-Kapitalist",
+
+  "VinyardChallenge": "Weinberg",
+  "VinyardChallenge.RenameRiceJuice": "Wein (Reis)",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
   "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden.",
+
+  "RenameVanillaObject.DisplayText": "Existierendes Objekt umbenannt: {{NewObject}}",
   
   "ChallengerMail.Hello": "Grüße {{name}},",
   "ChallengerMail.Goodbye": "Wir sehen uns, Kämpfer Kevin",

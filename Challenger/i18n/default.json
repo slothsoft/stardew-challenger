@@ -10,9 +10,14 @@
   "NoChallenge.DisplayText": "No restrictions of any kind.",
   
   "NoCapitalistChallenge": "No Capitalist",
+
+  "VinyardChallenge": "Vinyard",
+  "VinyardChallenge.RenameRiceJuice": "Rice Wine",
   
   "CannotBuyFromShop.DisplayText": "Cannot buy from {{shopKeeper}}",
   "CannotBuyFromShop.Message": "Cannot buy from {{shopKeeper}} because of challenge.",
+  
+  "RenameVanillaObject.DisplayText": "Renamed existing object: {{NewObject}}",
   
   "ChallengerMail.Hello": "Greetings {{name}},",
   "ChallengerMail.Goodbye": "See you around, Challenger Charlie",
