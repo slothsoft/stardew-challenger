@@ -13,6 +13,7 @@
 
   "VinyardChallenge": "Weinberg",
   "VinyardChallenge.RenameRiceJuice": "Wein (Reis)",
+  "VinyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst kann gekauft werden",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
   "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden.",

@@ -23,7 +23,7 @@ static class MagicalDebris {
         );
     }
 
-    private static bool Collect(Debris __instance, ref bool __result, Farmer farmer, Chunk chunk = null) {
+    private static bool Collect(Debris __instance, ref bool __result, Farmer farmer, Chunk? chunk = null) {
         if (__instance.chunkType.Value == -MagicalObject.ObjectId) {
             __result = farmer.addItemToInventoryBool(new SObject(Vector2.Zero, MagicalObject.ObjectId));
             return false;
