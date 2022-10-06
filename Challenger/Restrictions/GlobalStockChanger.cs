@@ -6,7 +6,7 @@ using StardewValley.Locations;
 
 namespace Slothsoft.Challenger.Restrictions;
 
-public static class GlobalStockChanger {
+internal static class GlobalStockChanger {
     
     private static Harmony? _harmony;
     private static readonly IList<Action<IDictionary<ISalable, int[]>>> ChangerList =

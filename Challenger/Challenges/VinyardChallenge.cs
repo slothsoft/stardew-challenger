@@ -14,6 +14,7 @@ public class VinyardChallenge : BaseChallenge {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
+            CreateAllowOnlySellingWine(modHelper),
         };
     }
     
@@ -42,4 +43,7 @@ public class VinyardChallenge : BaseChallenge {
         });
     }
 
+    private static IRestriction CreateAllowOnlySellingWine(IModHelper modHelper) {
+        return new ExcludeGlobalSell(modHelper.Translation.Get("VinyardChallenge.AllowOnlySellingWine"),  CategoryIds.ArtisanGoods);
+    }
 }

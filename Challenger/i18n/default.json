@@ -14,6 +14,7 @@
   "VinyardChallenge": "Vinyard",
   "VinyardChallenge.RenameRiceJuice": "Rice Wine",
   "VinyardChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make wine",
+  "VinyardChallenge.AllowOnlySellingWine": "Can only sell wine and mead",
   
   "CannotBuyFromShop.DisplayText": "Cannot buy from {{shopKeeper}}",
   "CannotBuyFromShop.Message": "Cannot buy from {{shopKeeper}} because of challenge.",

@@ -1,7 +1,7 @@
 ﻿namespace Slothsoft.Challenger.Models;
 
 /// <summary>
-/// These constants can be compared with <code>ShopMenu.storeContext</code>.
+/// These constants can be used to compare to <code>ShopMenu.storeContext</code>.
 /// </summary>
 internal static class ShopIds {
     public const string Pierre = "SeedShop";
@@ -10,7 +10,7 @@ internal static class ShopIds {
 }
 
 /// <summary>
-/// These constants can be compared with <code>ShopMenu.storeContext</code>.
+/// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// See https://stardewcommunitywiki.com/Modding:Object_data
 /// </summary>
 internal static class ObjectIds {
@@ -19,11 +19,20 @@ internal static class ObjectIds {
 }
 
 /// <summary>
-/// These constants can be compared with <code>ShopMenu.storeContext</code>.
+/// These constants can be used to compare to <code>Object.Category</code>.
+/// See https://stardewvalleywiki.com/Modding:Items#Categories
+/// </summary>
+internal static class CategoryIds {
+
+    public const int ArtisanGoods = -26;
+}
+
+/// <summary>
+/// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// See https://stardewcommunitywiki.com/Modding:Object_data
 /// </summary>
 internal static class SeedIds {
-
+    
     // Seeds - Spring
     public const int BlueJazz = 429;
     public const int Cauliflower = 474;
