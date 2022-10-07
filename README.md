@@ -52,6 +52,10 @@ start the challenge and can be used as any other object of the kind it turns int
 
 This mod brings the following challenges:
 
+- [No Challenge](#no-challenge)
+- [No Capitalist](#no-capitalist)
+- [Vinyard](#vinyard)
+
 #### No Challenge
 
 - default value without any restrictions - for when you are sick and tired of following rules
@@ -60,6 +64,13 @@ This mod brings the following challenges:
 
 - You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
 - You get a seed maker to tide you over your imminent lack of seeds
+
+#### Vinyard
+
+- rice juice is renamed to rice wine
+- you can only sell wine and mead (which includes the new rice wine)
+- you can only buy seeds for plants that make wine (which includes rice)
+- you cannot build animal buildings, i.e. coop, barn and silo
 
 ### Versions
 
@@ -103,7 +114,7 @@ To start developing this mod, you need to
   - [Digus's Mods](https://github.com/Digus/StardewValleyMods)
   - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)
   - [ImJustMatt's Mods](https://github.com/ImJustMatt/StardewMods) (Ordinary Capsule)
-  - [ImJustMatt's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
+  - [Platonymous's Mods](https://github.com/Platonymous/Stardew-Valley-Mods) (Arcade Machines)
 
 
 
