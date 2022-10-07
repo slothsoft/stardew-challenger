@@ -10,7 +10,7 @@ public class NoCapitalistChallenge : BaseChallenge {
 
     protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
         return new IRestriction[] {
-            new CannotBuyFromShop(modHelper, Shops.Pierre, Shops.Clint, Shops.JoJo),
+            new CannotBuyFromShop(modHelper, ShopIds.Pierre, ShopIds.Clint, ShopIds.JoJo),
         };
     }
 

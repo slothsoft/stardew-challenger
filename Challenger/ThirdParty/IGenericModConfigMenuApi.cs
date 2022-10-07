@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI.Utilities;
+#pragma warning disable CS8625
 
 namespace Slothsoft.Challenger.ThirdParty; 
 

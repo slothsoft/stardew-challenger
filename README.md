@@ -61,6 +61,13 @@ This mod brings the following challenges:
 - You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
 - You get a seed maker to tide you over your imminent lack of seeds
 
+### Versions
+
+| Version | Issues | Changes          |
+|---------| ------ |------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4) |                  |
+| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1) | Alpha test |
+| 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1) | Proof of concept |
 
 
 ## Developer Notes
