@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
-using StardewValley.Locations;
 using StardewValley.Menus;
 
 // ReSharper disable InconsistentNaming

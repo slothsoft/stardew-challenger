@@ -93,3 +93,13 @@ internal static class SeedIds {
         CactusFruit, Pineapple, QiFruit, SweetGemBerry, TaroRoot, TeaLeaves,
     };
 }
+
+/// <summary>
+/// These constants can be used to compare to <code>BluePrint.Name</code>.
+/// See CarpenterMenu()
+/// </summary>
+internal static class BluePrintNames {
+    public const string Coop = "Coop";
+    public const string Barn = "Barn";
+    public const string Silo = "Silo";
+}

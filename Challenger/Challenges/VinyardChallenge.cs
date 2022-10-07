@@ -15,6 +15,7 @@ public class VinyardChallenge : BaseChallenge {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
             CreateAllowOnlySellingWine(modHelper),
+            CreateExcludeAnimalBuildings(modHelper),
         };
     }
     
@@ -45,5 +46,9 @@ public class VinyardChallenge : BaseChallenge {
 
     private static IRestriction CreateAllowOnlySellingWine(IModHelper modHelper) {
         return new ExcludeGlobalSell(modHelper.Translation.Get("VinyardChallenge.AllowOnlySellingWine"),  CategoryIds.ArtisanGoods);
+    }
+
+    private static IRestriction CreateExcludeAnimalBuildings(IModHelper modHelper) {
+        return new ExcludeGlobalCarpenter(modHelper.Translation.Get("VinyardChallenge.ExcludeAnimalBuildings"),  BluePrintNames.Barn, BluePrintNames.Silo, BluePrintNames.Coop);
     }
 }
