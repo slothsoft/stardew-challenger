@@ -16,7 +16,7 @@ namespace Slothsoft.Challenger.Objects;
 /// </summary>
 public static class MagicalObject {
 
-    internal const int ObjectId = 570745037;
+    public const int ObjectId = 570745037;
     internal const string ObjectName = "Magical Object";
     private const bool ObjectBigCraftable = true;
 

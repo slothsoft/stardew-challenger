@@ -7,10 +7,10 @@ using StardewModdingAPI.Events;
 namespace Slothsoft.Challenger;
 
 public class ChallengerMod : Mod {
-    internal static ChallengerMod Instance;
+    public static ChallengerMod Instance = null!;
 
     private IChallengerApi? _api;
-    internal ChallengerConfig Config;
+    internal ChallengerConfig Config = null!;
 
     /// <summary>The mod entry point, called after the mod is first loaded.</summary>
     /// <param name="modHelper">Provides simplified APIs for writing mods.</param>
@@ -45,30 +45,9 @@ public class ChallengerMod : Mod {
 
     public override IChallengerApi? GetApi() => _api;
 
-    public bool IsInitialized() {
-        return _api != null;
-    }
+    public bool IsInitialized() => _api != null;
 
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e) {
-        // get Generic Mod Config Menu's API (if it's installed)
-        var configMenu = Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu");
-        if (configMenu is null)
-            return;
-
-        // register mod
-        configMenu.Register(
-            mod: ModManifest,
-            reset: () => Config = new ChallengerConfig(),
-            save: () => Helper.WriteConfig(Config)
-        );
-
-        // add some config options
-        configMenu.AddKeybind(
-            mod: ModManifest,
-            name: () => Helper.Translation.Get("ChallengerConfig.ButtonOpenMenu.Name"),
-            tooltip: () => Helper.Translation.Get("ChallengerConfig.ButtonOpenMenu.Description"),
-            getValue: () => Config.ButtonOpenMenu,
-            setValue: value => Config.ButtonOpenMenu = value
-        );
+        HookToGenericModConfigMenu.Apply(this);
     }
 }

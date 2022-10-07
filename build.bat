@@ -1,6 +1,6 @@
 ﻿
-Rem Release the entire project
-Rem dotnet publish -c Release
+Rem Release the entire solution
+dotnet publish -c Release
 
 Rem Create a folder that contains everything that should be in the ZIP
 set projectFolder=%cd%\Challenger
@@ -24,3 +24,22 @@ powershell -Command "((gc %outputFolder%\Readme.html -encoding utf8) -replace 'r
 
 Rem Now zip the entire folder
 "C:\Program Files\7-Zip\7z.exe" a %zipFolder%\Challenger-%1.zip %zipFolder%/*
+
+
+
+Rem And now do the same for ChallengerAutomate: Create a folder that contains everything that should be in the ZIP
+set projectFolderAutomate=%cd%\ChallengerAutomate
+set zipFolderAutomate=%projectFolderAutomate%\bin\ReleaseZip
+set outputFolderAutomate=%zipFolderAutomate%\ChallengerAutomate
+if exist "%zipFolderAutomate%" rmdir /s /q "%zipFolderAutomate%"
+if not exist "%outputFolderAutomate%" mkdir "%outputFolderAutomate%"
+
+xcopy /y %projectFolderAutomate%\bin\Release\net5.0\publish\ChallengerAutomate.dll %outputFolderAutomate%
+xcopy /y %projectFolderAutomate%\bin\Release\net5.0\publish\ChallengerAutomate.pdb %outputFolderAutomate%
+xcopy /y %projectFolderAutomate%\manifest.json %outputFolderAutomate%
+
+Rem Now zip the entire folder
+"C:\Program Files\7-Zip\7z.exe" a %zipFolderAutomate%\ChallengerAutomate-%1.zip %zipFolderAutomate%/*
+
+Rem Move the ZIP file next to the first one
+move %zipFolderAutomate%\ChallengerAutomate-%1.zip %zipFolder%\ChallengerAutomate-%1.zip
