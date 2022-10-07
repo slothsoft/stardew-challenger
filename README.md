@@ -8,19 +8,29 @@ _A Mod for Stardew Valley_
 - **Repository:** <https://github.com/slothsoft/stardew-challenger>
 - **Open Issues:** <https://github.com/slothsoft/stardew-challenger/issues>
 
-A mod for [Stardew Valley](https://www.stardewvalley.net/) that makes playing a challenge again.
+A mod for [Stardew Valley](https://www.stardewvalley.net/) that makes playing a challenge again. 
+It allows you to select a challenge from a list, which restricts some parts of the game and let's you
+focus on another part.
 
 <img alt="Screenshot" src="readme/screenshot.png" width="300"/>
 
 **Content of this ReadMe:**
 
-- [Getting Started](#getting-started)
-- [Developer Notes](#developer-notes)
-- [License](#license)
+- **[User Manual](#user-manual)**
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+  - [Using the Mod](#using-the-mod)
+    - [No Challenge](#no-challenge)
+    - [No Capitalist](#no-capitalist)
+    - [Vinyard](#vinyard)
+  - [Versions](#versions)
+- **[Translator Guide](#translator-guide)**
+- **[Developer Notes](#developer-notes)**
+- **[License](#license)**
 
 
 
-## Getting Started
+## User Manual
 
 ### Prerequisites
 
@@ -28,10 +38,11 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 **[Stardew Valley](https://www.stardewvalley.net/)**.
 
 
+
 ### Installing
 
 1. Install [SMAPI](https://smapi.io/)
-1. Unzip this mod to the _mods/_ folder
+1. Unzip this mod to the _Mods/_ folder
 
 
 ### Using the Mod
@@ -79,6 +90,31 @@ This mod brings the following challenges:
 | Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4) |                  |
 | 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1) | Alpha test |
 | 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1) | Proof of concept |
+
+_(All issues can be found [here](https://github.com/slothsoft/stardew-challenger/issues).)_
+
+
+
+## Translator Guide
+
+Right now, not all translations are provided. If you want to help, translate either file in the _[i18n/](Challenger/i18n/)_
+and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
+to me via [pull request](https://github.com/slothsoft/stardew-challenger/fork) or [email](mailto:s.schulz@slothsoft.de).
+
+| Key       | Language  | Translated? |
+|-----------|-----------|-------------|
+| `default` | English   |  ✅  |
+| `de`      | German    |  ✅  |
+| `es`      | Spanish   |             |
+| `fr`      | French    |             |
+| `hu`      | Hungarian |             |
+| `it`      | Italian   |             |
+| `ko`      | Korean    |             |
+| `pt`      | Portugese |             |
+| `ru`      | Russian   |             |
+| `tr`      | Turkish   |             |
+| `zh`      | Chinese   |             |
+
 
 
 ## Developer Notes
