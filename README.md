@@ -38,16 +38,18 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 **[Stardew Valley](https://www.stardewvalley.net/)**.
 
 
-
 ### Installing
 
 1. Install [SMAPI](https://smapi.io/)
-1. Unzip this mod to the _Mods/_ folder
+1. Unzip the latest _[Challenger.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_ to the _Mods/_ folder
+1. If you want to use spacechase0's [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098), this mod automatically hooks into its menu
+1. If you want to use Pathoschild's [Automate](https://www.nexusmods.com/stardewvalley/mods/1063), unzip the _[ChallengerAutomate.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_, too
+
 
 
 ### Using the Mod
 
-The mod automatically hooks into the game. You will get an mail with the **Magical Challenge Object**™ 
+The mod is automatically present in the game. You will get an mail with the **Magical Challenge Object**™ 
 the next time you wake up:
 
 <img alt="Screenshot Mail" src="readme/screenshot_mail.png" width="300"/>
@@ -134,8 +136,8 @@ To start developing this mod, you need to
 ```bat
 .\build x.x.x
 ```
-3. Put the contents of _bin/Challenger.zip_ in a fresh Stardew Valley and test if everything works
-4. Create a new tag and release on GitHub, append the ZIP
+3. Put the contents of _bin/Challenger*.zip_ in a fresh Stardew Valley and test if everything works
+4. Create a new tag and release on GitHub, append the ZIPs
 5. Increment the version in _manifest.json_ and _Challenger.csproj_
 
 ### Used Tutorials

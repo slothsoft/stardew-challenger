@@ -1,26 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project>
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <Authors>Slothsoft</Authors>
-    <PackageProjectUrl>https://github.com/slothsoft/stardew-challenger</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/slothsoft/stardew-challenger/blob/master/LICENSE</PackageLicenseUrl>
     <RootNamespace>Slothsoft.Challenger</RootNamespace>
-    <Nullable>enable</Nullable>
-    <PackageVersion>0.2.0</PackageVersion>
   </PropertyGroup>
 
+  <Import Project="..\build\common.targets" />
+
   <ItemGroup>
-    <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.0.1" />
     <Reference Include="0Harmony" HintPath="$(GamePath)\smapi-internal\0Harmony.dll" />
     <Reference Include="Newtonsoft.Json" HintPath="$(GamePath)\smapi-internal\Newtonsoft.Json.dll" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Using Include="StardewValley" />
-    <Using Include="StardewModdingAPI" />
-    <Using Alias="Object" Include="System.Object" />
-    <Using Alias="SObject" Include="StardewValley.Object" />
   </ItemGroup>
 </Project>

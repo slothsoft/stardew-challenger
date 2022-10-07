@@ -1,4 +1,5 @@
-﻿using Slothsoft.Challenger.Objects;
+﻿using Slothsoft.Challenger.Models;
+using Slothsoft.Challenger.Objects;
 
 namespace Slothsoft.Challenger.Api;
 
@@ -12,6 +13,6 @@ public record MagicalReplacement(
 ) {
     public static readonly MagicalReplacement Default = new(107, MagicalObject.ObjectName); // Pink bunny 
     
-    public static readonly MagicalReplacement Keg = new(12, "Keg"); 
-    public static readonly MagicalReplacement SeedMaker = new(25, "Seed Maker"); 
+    public static readonly MagicalReplacement Keg = new(ObjectIds.Keg, "Keg"); 
+    public static readonly MagicalReplacement SeedMaker = new(ObjectIds.SeedMaker, "Seed Maker"); 
 }
