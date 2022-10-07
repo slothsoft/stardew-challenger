@@ -51,4 +51,8 @@ public class VinyardChallenge : BaseChallenge {
     private static IRestriction CreateExcludeAnimalBuildings(IModHelper modHelper) {
         return new ExcludeGlobalCarpenter(modHelper.Translation.Get("VinyardChallenge.ExcludeAnimalBuildings"),  BluePrintNames.Barn, BluePrintNames.Silo, BluePrintNames.Coop);
     }
+    
+    public override MagicalReplacement GetMagicalReplacement() {
+        return MagicalReplacement.Keg;
+    }
 }
