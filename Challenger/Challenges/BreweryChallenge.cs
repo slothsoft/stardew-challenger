@@ -20,10 +20,11 @@ public class BreweryChallenge : BaseChallenge {
     }
     
     private static IRestriction CreateRenameRiceJuice(IModHelper modHelper) {
-        return new RenameVanillaObject(modHelper, new Dictionary<RenameVanillaObject.VanillaObject, string>{
-            { new(ObjectIds.Juice, SObject.PreserveType.Juice, ObjectIds.UnmilledRice), 
-                modHelper.Translation.Get("BreweryChallenge.RenameRiceJuice") },
-        });
+        return new RenameVanillaObject(
+            modHelper,
+            new RenameVanillaObject.VanillaObject(ObjectIds.Juice, SObject.PreserveType.Juice, ObjectIds.UnmilledRice),
+            modHelper.Translation.Get("BreweryChallenge.RenameRiceJuice")
+        );
     }
 
     private static IRestriction CreateIncludeFruitOnly(IModHelper modHelper) {

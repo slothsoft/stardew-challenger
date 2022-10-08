@@ -18,12 +18,13 @@ public class VinyardChallenge : BaseChallenge {
             CreateExcludeAnimalBuildings(modHelper),
         };
     }
-    
+
     private static IRestriction CreateRenameRiceJuice(IModHelper modHelper) {
-        return new RenameVanillaObject(modHelper, new Dictionary<RenameVanillaObject.VanillaObject, string>{
-            { new(ObjectIds.Juice, SObject.PreserveType.Juice, ObjectIds.UnmilledRice), 
-                modHelper.Translation.Get("VinyardChallenge.RenameRiceJuice") },
-        });
+        return new RenameVanillaObject(
+            modHelper,
+            new RenameVanillaObject.VanillaObject(ObjectIds.Juice, SObject.PreserveType.Juice, ObjectIds.UnmilledRice),
+            modHelper.Translation.Get("VinyardChallenge.RenameRiceJuice")
+        );
     }
 
     private static IRestriction CreateIncludeFruitOnly(IModHelper modHelper) {
