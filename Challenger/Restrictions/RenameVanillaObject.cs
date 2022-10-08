@@ -16,7 +16,7 @@ public class RenameVanillaObject : IRestriction {
     );
     
     private static Harmony? _harmony;
-    private static IDictionary<VanillaObject, string> _appliedVanillaObjectToDisplayName = new Dictionary<VanillaObject, string>();
+    private static readonly IDictionary<VanillaObject, string> _appliedVanillaObjectToDisplayName = new Dictionary<VanillaObject, string>();
     
     public static bool LoadDisplayName(SObject __instance, ref string __result) {
         var vanillaObject = new VanillaObject(
@@ -70,7 +70,7 @@ public class RenameVanillaObject : IRestriction {
 
         if (_appliedVanillaObjectToDisplayName.Count == 0 && _harmony != null) {
             // if there is nothing to replace, we don't need harmony any longer
-            _harmony.UnpatchAll();
+            _harmony.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + ".RenameVanillaObject");
             _harmony = null;
         }
     }

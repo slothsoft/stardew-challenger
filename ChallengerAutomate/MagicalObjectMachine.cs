@@ -66,6 +66,8 @@ public class MagicalObjectMachine : IMachine {
                 return CreateDelegate("Pathoschild.Stardew.Automate.Framework.Machines.Objects.KegMachine");
             case ObjectIds.SeedMaker:
                 return CreateDelegate("Pathoschild.Stardew.Automate.Framework.Machines.Objects.SeedMakerMachine");
+            case ObjectIds.PinkyBunny:
+                return null;
             default:
                 ChallengerAutomateMod.Instance.Monitor.Log("Could not find automation machine for parent sheet index " + parentSheetIndex, LogLevel.Error);
                 return null;

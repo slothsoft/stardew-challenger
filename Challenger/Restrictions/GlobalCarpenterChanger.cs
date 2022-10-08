@@ -43,7 +43,7 @@ internal static class GlobalCarpenterChanger {
         }
 
         if (ExcludedBluePrintNames.Count == 0) {
-            _harmony?.UnpatchAll();
+            _harmony?.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + ".GlobalCarpenterChanger");
             _harmony = null;
         }
     }

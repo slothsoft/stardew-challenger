@@ -43,7 +43,7 @@ internal static class GlobalStockChanger {
         ChangerList.Remove(changer);
 
         if (ChangerList.Count == 0) {
-            _harmony?.UnpatchAll();
+            _harmony?.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + ".GlobalStockChanger");
             _harmony = null;
         }
     }
