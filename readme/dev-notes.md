@@ -23,7 +23,7 @@ To start developing this mod, you need to
 ```
 3. Put the contents of _bin/Challenger*.zip_ in a fresh Stardew Valley and test if everything works (see [Test Plan](#test-plan))
 4. Create a new tag and release on GitHub, append the ZIPs
-5. Increment the version in _manifest.json_ and _Challenger.csproj_
+5. Increment the version in _manifest.json_ and _build/common.targets_
 
 
 ## Test Plan

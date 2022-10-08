@@ -87,10 +87,11 @@ This mod brings the following challenges:
 
 ### Versions
 
-| Version | Issues | Changes          |
-|---------| ------ |------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4) |                  |
-| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1) | Alpha test |
+| Version | Issues                                                                         | Changes          |
+|---------|--------------------------------------------------------------------------------|------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)          |                  |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1) | More challenges  |
+| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1) | Alpha test       |
 | 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1) | Proof of concept |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-challenger/issues).)_
