@@ -15,6 +15,8 @@ internal class ChallengerApi : IChallengerApi {
         _modHelper = modHelper;
 
         _challenges = new List<IChallenge> {
+            new BreweryChallenge(modHelper),
+            new HermitChallenge(modHelper),
             new NoCapitalistChallenge(modHelper),
             new VinyardChallenge(modHelper),
         };

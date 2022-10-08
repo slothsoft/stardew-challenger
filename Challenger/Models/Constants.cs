@@ -107,3 +107,14 @@ internal static class BluePrintNames {
     public const string Barn = "Barn";
     public const string Silo = "Silo";
 }
+
+/// <summary>
+/// These constants can be used to compare to <code>LocationRequest.Name</code>.
+/// See https://stardewvalleywiki.com/Modding:Location_data
+/// </summary>
+internal static class LocationName {
+    public const string Farm = "Farm";
+    public const string Backwoods = "Backwoods";
+    public const string BusStop = "BusStop";
+    public const string Forest = "Forest";
+}

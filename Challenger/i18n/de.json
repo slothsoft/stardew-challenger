@@ -9,11 +9,19 @@
   "NoChallenge": "(keine Herausforderung)",
   "NoChallenge.DisplayText": "Keine Einschränkungen irgendeiner Art.",
 
+  "BreweryChallenge": "Brauerei",
+  "BreweryChallenge.RenameRiceJuice": "Reisbier",
+  "BreweryChallenge.IncludeFruitOnly": "Nur Samen für Bier können gekauft werden",
+  "BreweryChallenge.AllowOnlySellingBeer": "Nur Biere können verkauft werden",
+  
+  "HermitChallenge": "Einsiedler",
+  "HermitChallenge.CanOnlyLeaveOnSunday": "Du kannst die Farm nur Sonntag verlassen",
+  
   "NoCapitalistChallenge": "Anti-Kapitalist",
 
   "VinyardChallenge": "Weinberg",
   "VinyardChallenge.RenameRiceJuice": "Wein (Reis)",
-  "VinyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst kann gekauft werden",
+  "VinyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst können gekauft werden",
   "VinyardChallenge.AllowOnlySellingWine": "Nur Wein und Met können verkauft werden",
   "VinyardChallenge.ExcludeAnimalBuildings": "Tiergebäude können nicht gebaut werden",
   

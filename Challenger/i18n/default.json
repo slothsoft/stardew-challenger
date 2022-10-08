@@ -8,6 +8,14 @@
   
   "NoChallenge": "(no challenge)",
   "NoChallenge.DisplayText": "No restrictions of any kind.",
+
+  "BreweryChallenge": "Brewery",
+  "BreweryChallenge.RenameRiceJuice": "Rice Beer",
+  "BreweryChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make beer",
+  "BreweryChallenge.AllowOnlySellingBeer": "Can only sell beer",
+
+  "HermitChallenge": "Hermit",
+  "HermitChallenge.CanOnlyLeaveOnSunday": "You can only leave the farm on Sunday",
   
   "NoCapitalistChallenge": "No Capitalist",
 

@@ -34,6 +34,12 @@ public class RenameVanillaObject : IRestriction {
     private readonly IModHelper _modHelper;
     private readonly IDictionary<VanillaObject, string> _vanillaObjectToDisplayName;
 
+    public RenameVanillaObject(IModHelper modHelper, VanillaObject vanillaObject, string displayName)
+        : this(modHelper, new Dictionary<VanillaObject, string> {
+            { vanillaObject, displayName },
+        }) {
+    }
+    
     public RenameVanillaObject(IModHelper modHelper, IDictionary<VanillaObject, string> vanillaObjectToDisplayName) {
         _modHelper = modHelper;
         _vanillaObjectToDisplayName = vanillaObjectToDisplayName;

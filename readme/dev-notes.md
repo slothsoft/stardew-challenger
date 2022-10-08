@@ -43,7 +43,8 @@ To start developing this mod, you need to
   - Stardew Valley API: [StawdewValley on GitHub](https://github.com/veywrn/StardewValley)
 - **Other Mods:**
   - [Sonozuki's Mods](https://github.com/Sonozuki/StardewMods)
-  - [Pathoschild's Mods](https://github.com/Pathoschild/StardewMods/tree/stable)
+  - [Pathoschild's Mods](https://github.com/Pathoschild/StardewMods) 
+  - [CJBok's SDV-Mods](https://github.com/CJBok/SDV-Mods) (CJBCheatsMenu)
   - [spacechase0's Mods](https://github.com/spacechase0/StardewValleyMods) (JsonAssets)
   - [Digus's Mods](https://github.com/Digus/StardewValleyMods)
   - [Dan Volchek's Mods](https://github.com/danvolchek/StardewMods)

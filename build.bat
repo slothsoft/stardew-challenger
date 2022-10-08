@@ -44,3 +44,5 @@ xcopy /y %projectFolderAutomate%\manifest.json %outputFolderAutomate%
 
 Rem Now zip the entire folder
 "C:\Program Files\7-Zip\7z.exe" a %cd%\bin\ChallengerAutomate-%1.zip %zipFolderAutomate%/*
+
+%SystemRoot%\explorer.exe "%cd%\bin"
