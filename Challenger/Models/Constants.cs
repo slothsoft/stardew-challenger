@@ -19,6 +19,7 @@ public static class ObjectIds {
     
     public const int Keg = 12;
     public const int SeedMaker = 25;
+    public const int PinkyBunny = 107;
 }
 
 /// <summary>
