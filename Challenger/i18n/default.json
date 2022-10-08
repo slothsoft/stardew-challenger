@@ -8,6 +8,11 @@
   
   "NoChallenge": "(no challenge)",
   "NoChallenge.DisplayText": "No restrictions of any kind.",
+
+  "BreweryChallenge": "Brewery",
+  "BreweryChallenge.RenameRiceJuice": "Rice Beer",
+  "BreweryChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make beer",
+  "BreweryChallenge.AllowOnlySellingBeer": "Can only sell beer",
   
   "NoCapitalistChallenge": "No Capitalist",
 
