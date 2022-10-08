@@ -2,11 +2,17 @@
 
 _(This page contains notes to myself.)_
 
+- [Starting Development](#starting-development
+- [Release](#release)
+- [Test Plan](#test-plan)
+- [Used Tutorials](#used-tutorials)
+
 ## Starting Development
 
 To start developing this mod, you need to
 
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
+
 
 ## Release
 
@@ -15,9 +21,20 @@ To start developing this mod, you need to
 ```bat
 .\build x.x.x
 ```
-3. Put the contents of _bin/Challenger*.zip_ in a fresh Stardew Valley and test if everything works
+3. Put the contents of _bin/Challenger*.zip_ in a fresh Stardew Valley and test if everything works (see [Test Plan](#test-plan))
 4. Create a new tag and release on GitHub, append the ZIPs
 5. Increment the version in _manifest.json_ and _Challenger.csproj_
+
+
+## Test Plan
+
+- [ ] Extract the _Challenger*.zip_ files into one folder - they should each create their own folder with at least _*.dll_, _*.pdb_ and _manifest.json_ 
+- [ ] Check that _Challenger/Readme.html_ is present and looks okay
+- [ ] Start Stardew Valley with the mods
+- [ ] Test that you get a mail with the **Magical Challenge Object**™
+- [ ] Check that the  **Magical Challenge Object**™ changes once you change challenges
+- [ ] Wait till 9:00 and check at least one restriction on each challenge
+
 
 ## Used Tutorials
 
