@@ -20,10 +20,14 @@ Rem If this stops working, maybe run "choco install pandoc" on the PowerShell ag
 pandoc %cd%\README.md -t html -o %outputFolder%\Readme.html -s --metadata title="Slothsoft Challenger"
 
 Rem Replace the image URLs of the HTML
-powershell -Command "((gc %outputFolder%\Readme.html -encoding utf8) -replace 'readme/', 'https://github.com/slothsoft/stardew-challenger/raw/main/readme/') | Out-File -encoding utf8 %outputFolder%\Readme.html"
+powershell -Command "((gc %outputFolder%\Readme.html -encoding utf8) -replace 'readme/dev', 'https://github.com/slothsoft/stardew-challenger/blob/main/readme/dev' -replace 'readme/screen', 'https://github.com/slothsoft/stardew-challenger/raw/main/readme/screen') | Out-File -encoding utf8 %outputFolder%\Readme.html"
+
+Rem Clear target folder
+rmdir "%cd%\bin" /s /q
+mkdir "%cd%\bin"
 
 Rem Now zip the entire folder
-"C:\Program Files\7-Zip\7z.exe" a %zipFolder%\Challenger-%1.zip %zipFolder%/*
+"C:\Program Files\7-Zip\7z.exe" a %cd%\bin\Challenger-%1.zip %zipFolder%/*
 
 
 
@@ -39,7 +43,4 @@ xcopy /y %projectFolderAutomate%\bin\Release\net5.0\publish\ChallengerAutomate.p
 xcopy /y %projectFolderAutomate%\manifest.json %outputFolderAutomate%
 
 Rem Now zip the entire folder
-"C:\Program Files\7-Zip\7z.exe" a %zipFolderAutomate%\ChallengerAutomate-%1.zip %zipFolderAutomate%/*
-
-Rem Move the ZIP file next to the first one
-move %zipFolderAutomate%\ChallengerAutomate-%1.zip %zipFolder%\ChallengerAutomate-%1.zip
+"C:\Program Files\7-Zip\7z.exe" a %cd%\bin\ChallengerAutomate-%1.zip %zipFolderAutomate%/*
