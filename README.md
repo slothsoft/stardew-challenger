@@ -21,6 +21,8 @@ focus on another part.
   - [Installing](#installing)
   - [Using the Mod](#using-the-mod)
     - [No Challenge](#no-challenge)
+    - [Brewery](#brewery)
+    - [Hermit](#hermit)
     - [No Capitalist](#no-capitalist)
     - [Vinyard](#vinyard)
   - [Versions](#versions)
@@ -66,6 +68,8 @@ start the challenge and can be used as any other object of the kind it turns int
 This mod brings the following challenges:
 
 - [No Challenge](#no-challenge)
+- [Brewery](#brewery)
+- [Hermit](#hermit)
 - [No Capitalist](#no-capitalist)
 - [Vinyard](#vinyard)
 
@@ -73,10 +77,25 @@ This mod brings the following challenges:
 
 - default value without any restrictions - for when you are sick and tired of following rules
 
+
+#### Brewery
+
+- rice juice is renamed to rice beer
+- you can only sell beers (which includes the new rice beer)
+- you can only buy seeds for plants that make beer (which includes rice)
+- you cannot build animal buildings, i.e. coop, barn and silo
+
+
+#### Hermit
+
+- You cannot leave the farm, except on Sundays
+
+
 #### No Capitalist
 
 - You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
 - You get a seed maker to tide you over your imminent lack of seeds
+
 
 #### Vinyard
 
@@ -84,6 +103,7 @@ This mod brings the following challenges:
 - you can only sell wine and mead (which includes the new rice wine)
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
+
 
 ### Versions
 

@@ -14,7 +14,6 @@ public class BreweryChallenge : BaseChallenge {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
-            CreateAllowOnlySellingWine(modHelper),
             VinyardChallenge.CreateExcludeAnimalBuildings(modHelper),
         };
     }
@@ -31,9 +30,11 @@ public class BreweryChallenge : BaseChallenge {
         var beerSeeds = new [] {
             SeedIds.Rice, SeedIds.Hops, SeedIds.Wheat
         };
-        return new ExcludeGlobalStock(modHelper.Translation.Get("BreweryChallenge.IncludeFruitOnly"), s => {
+        return new ExcludeGlobalStock(modHelper.Translation.Get("BreweryChallenge.IncludeBeerVegetablesOnly"), s => {
             // everything that is not a basic object is allowed
             if (s is not SObject obj) return false;
+            // everything that is a sapling is not allowed
+            if (SaplingIds.AllSaplings.Contains(obj.ParentSheetIndex)) return true;
             // everything that is not a seed is allowed
             if (!SeedIds.AllSeeds.Contains(obj.ParentSheetIndex)) return false;
             // everything that is a seed for beer is allowed
@@ -41,10 +42,6 @@ public class BreweryChallenge : BaseChallenge {
             // and we won't allow anything else
             return true;
         });
-    }
-
-    private static IRestriction CreateAllowOnlySellingWine(IModHelper modHelper) {
-        return new ExcludeGlobalSell(modHelper.Translation.Get("BreweryChallenge.AllowOnlySellingBeer"),  CategoryIds.ArtisanGoods);
     }
     
     public override MagicalReplacement GetMagicalReplacement() {

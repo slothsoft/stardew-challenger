@@ -11,9 +11,8 @@
 
   "BreweryChallenge": "Brauerei",
   "BreweryChallenge.RenameRiceJuice": "Reisbier",
-  "BreweryChallenge.IncludeFruitOnly": "Nur Samen für Bier können gekauft werden",
-  "BreweryChallenge.AllowOnlySellingBeer": "Nur Biere können verkauft werden",
-  
+  "BreweryChallenge.IncludeBeerVegetablesOnly": "Nur Samen für Bier können gekauft werden",
+ 
   "HermitChallenge": "Einsiedler",
   "HermitChallenge.CanOnlyLeaveOnSunday": "Du kannst die Farm nur Sonntag verlassen",
   
@@ -22,7 +21,6 @@
   "VinyardChallenge": "Weinberg",
   "VinyardChallenge.RenameRiceJuice": "Wein (Reis)",
   "VinyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst können gekauft werden",
-  "VinyardChallenge.AllowOnlySellingWine": "Nur Wein und Met können verkauft werden",
   "VinyardChallenge.ExcludeAnimalBuildings": "Tiergebäude können nicht gebaut werden",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
