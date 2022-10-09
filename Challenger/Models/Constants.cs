@@ -90,11 +90,30 @@ internal static class SeedIds {
     public const int TaroRoot = 831;
     public const int TeaLeaves = 251;
 
-    public static readonly int[] AllSeeds = new[] {
+    public static readonly int[] AllSeeds = {
         BlueJazz, Cauliflower, CoffeeBean, Garlic, GreenBean, Kale, Parsnip, Potato, Rhubarb, Strawberry, Tulip, Rice,
         Blueberry, Corn, Hops, HotPepper, Melon, Poppy, Radish, RedCabbage, Starfruit, SummerSpangle, Sunflower, Tomato,
         Wheat, Amaranth, Artichoke, Beet, BokChoy, Cranberries, Eggplant, FairyRose, Grape, Pumpkin, Yam, AncientFruit,
         CactusFruit, Pineapple, QiFruit, SweetGemBerry, TaroRoot, TeaLeaves,
+    };
+}
+
+/// <summary>
+/// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
+/// See https://stardewcommunitywiki.com/Modding:Object_data
+/// </summary>
+internal static class SaplingIds {
+    public const int AppleTree = 633;
+    public const int ApricotTree = 629;
+    public const int BananaTree = 69;
+    public const int CherryTree = 628;
+    public const int MangoTree = 835;
+    public const int OrangeTree = 630;
+    public const int PeachTree = 631;
+    public const int PomegranateTree = 632;
+    
+    public static readonly int[] AllSaplings = {
+        AppleTree, ApricotTree, BananaTree, CherryTree, MangoTree, OrangeTree, PeachTree, PomegranateTree,
     };
 }
 
