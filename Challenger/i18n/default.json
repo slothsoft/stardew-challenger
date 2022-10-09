@@ -12,7 +12,6 @@
   "BreweryChallenge": "Brewery",
   "BreweryChallenge.RenameRiceJuice": "Rice Beer",
   "BreweryChallenge.IncludeBeerVegetablesOnly": "Can only buy seeds for plants that make beer",
-  "BreweryChallenge.AllowOnlySellingBeer": "Can only sell beer",
 
   "HermitChallenge": "Hermit",
   "HermitChallenge.CanOnlyLeaveOnSunday": "You can only leave the farm on Sunday",
@@ -22,7 +21,6 @@
   "VinyardChallenge": "Vinyard",
   "VinyardChallenge.RenameRiceJuice": "Rice Wine",
   "VinyardChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make wine",
-  "VinyardChallenge.AllowOnlySellingWine": "Can only sell wine and mead",
   "VinyardChallenge.ExcludeAnimalBuildings": "You cannot build animal buildings",
   
   "CannotBuyFromShop.DisplayText": "Cannot buy from {{shopKeeper}}",

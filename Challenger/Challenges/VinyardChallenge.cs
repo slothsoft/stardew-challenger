@@ -14,7 +14,6 @@ public class VinyardChallenge : BaseChallenge {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
-            CreateAllowOnlySellingWine(modHelper),
             CreateExcludeAnimalBuildings(modHelper),
         };
     }
@@ -43,10 +42,6 @@ public class VinyardChallenge : BaseChallenge {
             // and we won't allow anything else
             return true;
         });
-    }
-
-    private static IRestriction CreateAllowOnlySellingWine(IModHelper modHelper) {
-        return new ExcludeGlobalSell(modHelper.Translation.Get("VinyardChallenge.AllowOnlySellingWine"),  CategoryIds.ArtisanGoods);
     }
 
     internal static IRestriction CreateExcludeAnimalBuildings(IModHelper modHelper) {

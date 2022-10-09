@@ -14,7 +14,6 @@ public class BreweryChallenge : BaseChallenge {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
-            CreateAllowOnlySellingWine(modHelper),
             VinyardChallenge.CreateExcludeAnimalBuildings(modHelper),
         };
     }
@@ -43,10 +42,6 @@ public class BreweryChallenge : BaseChallenge {
             // and we won't allow anything else
             return true;
         });
-    }
-
-    private static IRestriction CreateAllowOnlySellingWine(IModHelper modHelper) {
-        return new ExcludeGlobalSell(modHelper.Translation.Get("BreweryChallenge.AllowOnlySellingBeer"),  CategoryIds.ArtisanGoods);
     }
     
     public override MagicalReplacement GetMagicalReplacement() {
