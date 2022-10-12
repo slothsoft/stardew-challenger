@@ -1,7 +1,7 @@
 {
   "Name": "Challenger",
   "Author": "Slothsoft",
-  "Version": "1.0.0",
+  "Version": "0.3.1",
   "Description": "A mod that makes playing a challenge again.",
   "UniqueID": "Slothsoft.Challenger",
   "EntryDll": "Challenger.dll",
