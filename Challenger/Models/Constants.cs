@@ -7,6 +7,10 @@ internal static class ShopIds {
     public const string Pierre = "SeedShop";
     public const string Clint = "Blacksmith";
     public const string JoJo = "JojaMart";
+    
+    public static string GetShopDisplayName(this ITranslationHelper translation, string shopId) {
+        return translation.Get("ShopIds." + shopId);
+    }
 }
 
 /// <summary>

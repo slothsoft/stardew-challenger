@@ -35,5 +35,9 @@
   "ChallengerMail.MagicalObjectMail": "Ich weiß aus unzweifelhafter Quelle, dass du neue Herausforderungen suchst?^^Ich, Kämpfer Kevin, heiße dich zu diesem neuen Pfad willkommen.^^Ich habe einen Gegenstand angehangen, der dir helfen wird eine neue Herausforderung zu finden, wenn du ihn benutzt.",
 
   "ChallengerConfig.ButtonOpenMenu.Name": "Menü-Taste",
-  "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet"
+  "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet",
+  
+  "ShopIds.SeedShop": "Pierre",
+  "ShopIds.Blacksmith": "Clint",
+  "ShopIds.JojaMart": "Joja Mart"
 }
