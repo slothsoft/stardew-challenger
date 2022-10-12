@@ -2,7 +2,7 @@
 
 _(This page contains notes to myself.)_
 
-- [Starting Development](#starting-development
+- [Starting Development](#starting-development)
 - [Release](#release)
 - [Test Plan](#test-plan)
 - [Used Tutorials](#used-tutorials)
