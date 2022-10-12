@@ -15,6 +15,8 @@ public class RenameVanillaObject : IRestriction {
         int? PreservedParentSheetIndex = null
     );
     
+    private const string HarmonySuffix = ".RenameVanillaObject";
+    
     private static Harmony? _harmony;
     private static readonly IDictionary<VanillaObject, string> _appliedVanillaObjectToDisplayName = new Dictionary<VanillaObject, string>();
     
@@ -50,11 +52,11 @@ public class RenameVanillaObject : IRestriction {
             _vanillaObjectToDisplayName.Values.Select(v => _modHelper.Translation.Get("RenameVanillaObject.DisplayText", new { NewObject = v } ).ToString())
             );
     }
-
+    
     public void Apply() {
         if (_harmony == null) {
             // If harmony is not null, it was instanciated by this instance or another one
-            _harmony = new Harmony(ChallengerMod.Instance.ModManifest.UniqueID + ".RenameVanillaObject");
+            _harmony = new Harmony(ChallengerMod.Instance.ModManifest.UniqueID + HarmonySuffix);
             _harmony.Patch(
                 original: AccessTools.Method(
                     typeof(SObject),
@@ -76,7 +78,7 @@ public class RenameVanillaObject : IRestriction {
 
         if (_appliedVanillaObjectToDisplayName.Count == 0 && _harmony != null) {
             // if there is nothing to replace, we don't need harmony any longer
-            _harmony.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + ".RenameVanillaObject");
+            _harmony.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + HarmonySuffix);
             _harmony = null;
         }
     }
