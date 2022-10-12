@@ -15,6 +15,7 @@ public class VinyardChallenge : BaseChallenge {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
             CreateExcludeAnimalBuildings(modHelper),
+            ChangeGlobalStock.AddRiceInFirstSpring(modHelper),
         };
     }
 
@@ -32,7 +33,7 @@ public class VinyardChallenge : BaseChallenge {
             SeedIds.Grape, SeedIds.AncientFruit, SeedIds.CactusFruit, SeedIds.Pineapple, SeedIds.QiFruit, 
             SeedIds.SweetGemBerry,
         };
-        return new ExcludeGlobalStock(modHelper.Translation.Get("VinyardChallenge.IncludeFruitOnly"), s => {
+        return ChangeGlobalStock.ExcludeSalables(modHelper.Translation.Get("VinyardChallenge.IncludeFruitOnly"), s => {
             // everything that is not a basic object is allowed
             if (s is not SObject obj) return false;
             // everything that is not a seed is allowed

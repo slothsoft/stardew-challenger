@@ -137,3 +137,7 @@ internal static class LocationName {
     public const string BusStop = "BusStop";
     public const string Forest = "Forest";
 }
+
+internal static class Seasons {
+    public const string Spring = "spring";
+}

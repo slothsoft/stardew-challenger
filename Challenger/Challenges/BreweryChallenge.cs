@@ -15,6 +15,7 @@ public class BreweryChallenge : BaseChallenge {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
             VinyardChallenge.CreateExcludeAnimalBuildings(modHelper),
+            ChangeGlobalStock.AddRiceInFirstSpring(modHelper),
         };
     }
     
@@ -30,7 +31,7 @@ public class BreweryChallenge : BaseChallenge {
         var beerSeeds = new [] {
             SeedIds.Rice, SeedIds.Hops, SeedIds.Wheat
         };
-        return new ExcludeGlobalStock(modHelper.Translation.Get("BreweryChallenge.IncludeBeerVegetablesOnly"), s => {
+        return ChangeGlobalStock.ExcludeSalables(modHelper.Translation.Get("BreweryChallenge.IncludeBeerVegetablesOnly"), s => {
             // everything that is not a basic object is allowed
             if (s is not SObject obj) return false;
             // everything that is a sapling is not allowed

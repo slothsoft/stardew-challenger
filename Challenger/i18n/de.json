@@ -27,6 +27,8 @@
   "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden.",
 
   "RenameVanillaObject.DisplayText": "Existierendes Objekt umbenannt: {{NewObject}}",
+
+  "ChangeGlobalStock.AddRiceInFirstSpring": "Reis kann im ersten Frühling gekauft werden",
   
   "ChallengerMail.Hello": "Grüße {{name}},",
   "ChallengerMail.Goodbye": "Wir sehen uns, Kämpfer Kevin",
