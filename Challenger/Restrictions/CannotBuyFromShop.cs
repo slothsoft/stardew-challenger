@@ -20,7 +20,7 @@ public class CannotBuyFromShop : IRestriction {
 
     public string GetDisplayText() {
         return CommonHelpers.ToListString(_bannedShopKeepers.Select(k => _modHelper.Translation.Get("CannotBuyFromShop.DisplayText",
-            new { shopKeeper = k }).ToString()));
+            new { shopKeeper = _modHelper.Translation.GetShopDisplayName(k) }).ToString()));
     }
 
     public void Apply() {

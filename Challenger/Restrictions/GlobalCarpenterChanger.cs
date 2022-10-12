@@ -9,12 +9,14 @@ namespace Slothsoft.Challenger.Restrictions;
 
 internal static class GlobalCarpenterChanger {
     
+    private const string HarmonySuffix = ".GlobalCarpenterChanger";
+    
     private static Harmony? _harmony;
     private static readonly IList<string> ExcludedBluePrintNames = new List<string>();
 
     public static void AddExcludedBluePrintNames(IEnumerable<string> excludedBluePrintNames) {
         if (_harmony == null) {
-            _harmony = new Harmony(ChallengerMod.Instance.ModManifest.UniqueID + ".GlobalCarpenterChanger");
+            _harmony = new Harmony(ChallengerMod.Instance.ModManifest.UniqueID + HarmonySuffix);
             _harmony.Patch(
                 original: AccessTools.Constructor(
                     typeof(CarpenterMenu),
@@ -35,6 +37,8 @@ internal static class GlobalCarpenterChanger {
         var blueprints = blueprintsField.Value;
         var newBlueprints = blueprints.Where(b => !ExcludedBluePrintNames.Contains(b.name)).ToList();
         blueprintsField.Value = newBlueprints;
+
+        __instance.setNewActiveBlueprint();
     }
 
     public static void RemoveExcludedBluePrintNames(IEnumerable<string> excludedBluePrintNames) {
@@ -43,7 +47,7 @@ internal static class GlobalCarpenterChanger {
         }
 
         if (ExcludedBluePrintNames.Count == 0) {
-            _harmony?.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + ".GlobalCarpenterChanger");
+            _harmony?.UnpatchAll(ChallengerMod.Instance.ModManifest.UniqueID + HarmonySuffix);
             _harmony = null;
         }
     }
