@@ -19,18 +19,30 @@ public interface IChallenge {
     string GetDisplayText();
 
     /// <summary>
-    /// This applies all restriction this challenge has to the game.
+    /// This applies all restriction this challenge has to the game and starts tracking the goal.
     /// </summary>
-    void ApplyRestrictions();
+    void Start();
 
     /// <summary>
-    /// This removes all restriction this challenge has from the game.
+    /// This removes all restriction this challenge has from the game and stops tracking the goal.
     /// </summary>
-    void RemoveRestrictions();
+    void Stop();
 
     /// <summary>
     /// Returns the object you wish to replace the magical object with.
     /// </summary>
     /// <returns>replacement object.</returns>
     MagicalReplacement GetMagicalReplacement();
+    
+    /// <summary>
+    /// Returns the goal that should be reached.
+    /// </summary>
+    /// <returns>the goal.</returns>
+    IGoal GetGoal();
+
+    /// <summary>
+    /// Returns if the challenge is completed. 
+    /// </summary>
+    /// <returns></returns>
+    bool IsCompleted();
 }

@@ -4,6 +4,7 @@ namespace Slothsoft.Challenger.Objects;
 
 public static class ChallengerMail {
     private const string MagicalObjectMail = "Slothsoft.Challenger/MagicalObjectMail";
+    public const string GoalCompletedMail = "Slothsoft.Challenger/GoalCompletedMail";
     
     public static void InitAndSend() {
         var helper = ChallengerMod.Instance.Helper;
@@ -13,6 +14,13 @@ public static class ChallengerMail {
             if (!Game1.player.mailReceived.Contains(MagicalObjectMail)) {
                 Game1.player.mailbox.Add(MagicalObjectMail);
                 Game1.player.mailReceived.Add(MagicalObjectMail);
+            }
+        };
+        helper.Events.GameLoop.DayStarted += (_, _) => {
+            if (!Game1.player.mailReceived.Contains(GoalCompletedMail) && 
+                ChallengerMod.Instance.GetApi()!.GetActiveChallenge().IsCompleted()) {
+                Game1.player.mailbox.Add(GoalCompletedMail);
+                Game1.player.mailReceived.Add(GoalCompletedMail);
             }
         };
     }
@@ -32,6 +40,12 @@ public static class ChallengerMail {
                     data.Add(
                         MagicalObjectMail,
                         $"{hello}^^{mailBody}^^{goodbye}^^%item bigobject {MagicalObject.ObjectId} %%"
+                    );
+                    
+                    mailBody = helper.Translation.Get("ChallengerMail.GoalCompletedMail");
+                    data.Add(
+                        GoalCompletedMail,
+                        $"{hello}^^{mailBody}^^{goodbye}"
                     );
                 });
         }

@@ -16,6 +16,7 @@ internal static class ShopIds {
 /// <summary>
 /// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// See https://stardewcommunitywiki.com/Modding:Object_data
+/// See https://stardewcommunitywiki.com/Modding:Big_craftables_data
 /// </summary>
 public static class ObjectIds {
     public const int Juice = 350;

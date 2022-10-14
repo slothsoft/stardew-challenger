@@ -6,7 +6,8 @@ namespace Slothsoft.Challenger.Menus;
 
 public class ChallengePage : OptionsPage {
     private readonly OptionsDropDown _challengeSelection;
-    private readonly OptionsElement _description;
+    private OptionsElement _goal;
+    private OptionsElement _description;
 
     public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
         options.Clear();
@@ -20,12 +21,10 @@ public class ChallengePage : OptionsPage {
             _challengeSelection.bounds.Height);
         options.Add(_challengeSelection);
 
-        _description = new OptionsElement("") {
-            style = OptionsElement.Style.OptionLabel
-        };
-        var descriptionSize = Game1.smallFont.MeasureString(_description.label);
-        _description.bounds = new Rectangle(_description.bounds.X, _description.bounds.Y, (int)descriptionSize.X,
-            (int)descriptionSize.Y);
+        _goal = CreateOptionsElement("\n");
+        options.Add(_goal);
+        
+        _description = CreateOptionsElement();
         options.Add(_description);
 
         var api = ChallengerMod.Instance.GetApi()!;
@@ -49,6 +48,16 @@ public class ChallengePage : OptionsPage {
         RefreshDescriptionLabel(false);
     }
 
+    private static OptionsElement CreateOptionsElement(string label = "") {
+        var result = new OptionsElement(label) {
+            style = OptionsElement.Style.OptionLabel
+        };
+        var descriptionSize = Game1.smallFont.MeasureString(result.label);
+        result.bounds = new Rectangle(result.bounds.X, result.bounds.Y, (int)descriptionSize.X,
+            (int)descriptionSize.Y);
+        return result;
+    }
+
     public override void releaseLeftClick(int x, int y) {
         base.releaseLeftClick(x, y);
         RefreshDescriptionLabel(true);
@@ -62,6 +71,14 @@ public class ChallengePage : OptionsPage {
 
         if (_description.label != newLabel) {
             _description.label = newLabel;
+
+            var challengeGoal = newChallenge.GetGoal();
+            var goal = ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Goal");
+            _goal.label = $"{goal}: {challengeGoal.GetDisplayName()}aw";
+
+            if (challengeGoal.WasStarted()) {
+                _goal.label += $"\n      ({challengeGoal.GetProgress()})";
+            }
 
             if (saveAllowed) {
                 api.SetActiveChallenge(newChallenge);

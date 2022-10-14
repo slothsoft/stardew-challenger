@@ -30,7 +30,7 @@ internal class ChallengerApi : IChallengerApi {
     private IChallenge LoadActiveChallenge() {
         var dto = _modHelper.Data.ReadSaveData<ChallengerSaveDto>(ChallengerSaveDto.Key);
         var activeChallenge = _challenges.Single(c => c.Id == (dto?.ChallengeId ?? NoChallenge.ChallengeId));
-        activeChallenge.ApplyRestrictions();
+        activeChallenge.Start();
         return activeChallenge;
     }
 
@@ -44,14 +44,14 @@ internal class ChallengerApi : IChallengerApi {
 
     public void SetActiveChallenge(IChallenge activeChallenge) {
         if (activeChallenge != _activeChallenge) {
-            _activeChallenge.RemoveRestrictions();
+            _activeChallenge.Stop();
             ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was ended.",
                 LogLevel.Debug);
 
             _activeChallenge = activeChallenge;
             _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id));
 
-            _activeChallenge.ApplyRestrictions();
+            _activeChallenge.Start();
             ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was activated.",
                 LogLevel.Debug);
         }
