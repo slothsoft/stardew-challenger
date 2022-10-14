@@ -1,0 +1,23 @@
+<Project>
+
+    <PropertyGroup>
+        <RootNamespace>ChallengerTest</RootNamespace>
+
+        <EnableGameDebugging>false</EnableGameDebugging>
+        <EnableModDeploy>false</EnableModDeploy>
+        <EnableModZip>false</EnableModZip>
+    </PropertyGroup>
+
+    <Import Project="..\build\common.targets" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\Challenger\Challenger.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+        <PackageReference Include="Moq" Version="4.18.2" />
+        <PackageReference Include="NUnit" Version="3.13.1" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    </ItemGroup>
+</Project>
