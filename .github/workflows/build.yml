@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+ 
+    steps:
+      - name: ⏬ Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: 🏗 Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '5.0.x'
+          
+      - name: 📦 Install Dependencies
+        run: dotnet restore
+        
+      - name: ✈ Dotnet Publish
+        run: dotnet publish --configuration Release --no-restore
+
