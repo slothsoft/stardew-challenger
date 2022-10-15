@@ -31,9 +31,6 @@ public class PerfectionGoal : IGoal {
     }
 
     public string GetProgress() {
-        return _modHelper.Translation.Get("PerfectionGoal.Progress", new {
-            Value = $"{(Utility.percentGameComplete() * 100):0}",
-            Max = 100
-        });
+        return $"{(Utility.percentGameComplete() * 100):0} / 100%";
     }
 }

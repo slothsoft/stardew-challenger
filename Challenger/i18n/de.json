@@ -39,13 +39,14 @@
   "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet",
 
   "PerfectionGoal": "Perfektion",
-  "PerfectionGoal.Progress": "{{Value}} / {{Max}}%",
 
   "EarnMoneyGoal": "Verdiene {{Value}}",
   "EarnMoneyGoal.Wine": "Verdiene {{Value}} durch Wein",
   "EarnMoneyGoal.Beer": "Verdiene {{Value}} durch Bier",
   
   "ChallengePage.Goal": "Ziel",
+  
+  "CommunityCenterGoal": "Gemeinschaftszentrum fertigstellen",
   
   "ShopIds.SeedShop": "Pierre",
   "ShopIds.Blacksmith": "Clint",
