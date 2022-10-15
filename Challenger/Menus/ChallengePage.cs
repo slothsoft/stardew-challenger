@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.Xna.Framework;
+using Slothsoft.Challenger.Challenges;
 using StardewValley.Menus;
 
 namespace Slothsoft.Challenger.Menus;
@@ -70,14 +71,20 @@ public class ChallengePage : OptionsPage {
         var newLabel = newChallenge.GetDisplayText();
 
         if (_description.label != newLabel) {
-            _description.label = newLabel;
+            if (newChallenge.Id == NoChallenge.ChallengeId) {
+                // no challenge will only display its description as the goal and nothing else
+                _goal.label = newLabel; 
+                _description.label = "";
+            } else {
+                _description.label = newLabel;
+                
+                var challengeGoal = newChallenge.GetGoal();
+                var goal = ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Goal");
+                _goal.label = $"{goal}: {challengeGoal.GetDisplayName()}";
 
-            var challengeGoal = newChallenge.GetGoal();
-            var goal = ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Goal");
-            _goal.label = $"{goal}: {challengeGoal.GetDisplayName()}aw";
-
-            if (challengeGoal.WasStarted()) {
-                _goal.label += $"\n      ({challengeGoal.GetProgress()})";
+                if (challengeGoal.WasStarted()) {
+                    _goal.label += $"\n      ({challengeGoal.GetProgress()})";
+                }
             }
 
             if (saveAllowed) {

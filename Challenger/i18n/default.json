@@ -40,6 +40,10 @@
 
   "PerfectionGoal": "Perfection",
   "PerfectionGoal.Progress": "{{Value}} / {{Max}}%",
+
+  "EarnMoneyGoal": "Earn {{Value}}",
+  "EarnMoneyGoal.Wine": "Earn {{Value}} with wine",
+  "EarnMoneyGoal.Beer": "Earn {{Value}} with beer",
   
   "ChallengePage.Goal": "Goal",
   

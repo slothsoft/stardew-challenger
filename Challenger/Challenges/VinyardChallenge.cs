@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 
@@ -51,5 +51,18 @@ public class VinyardChallenge : BaseChallenge {
     
     public override MagicalReplacement GetMagicalReplacement() {
         return MagicalReplacement.Keg;
+    }
+    
+    protected override IGoal CreateGoal(IModHelper modHelper) {
+        return new EarnMoneyGoal(ModHelper, 5_000_000, "Wine", salable => {
+            if (salable.ParentSheetIndex == ObjectIds.Wine)
+                return true;
+            // this is rice "wine"
+            if (salable.ParentSheetIndex == ObjectIds.Juice) {
+                var obj = salable as SObject;
+                return obj != null && obj.preservedParentSheetIndex.Value == ObjectIds.UnmilledRice;
+            }
+            return false;
+        });
     }
 }

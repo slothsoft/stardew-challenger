@@ -5,7 +5,7 @@ using StardewValley.Menus;
 
 // ReSharper disable InconsistentNaming
 
-namespace Slothsoft.Challenger.Restrictions;
+namespace Slothsoft.Challenger.Events;
 
 internal static class GlobalSellChanger {
     

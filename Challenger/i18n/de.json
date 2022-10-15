@@ -41,6 +41,10 @@
   "PerfectionGoal": "Perfektion",
   "PerfectionGoal.Progress": "{{Value}} / {{Max}}%",
 
+  "EarnMoneyGoal": "Verdiene {{Value}}",
+  "EarnMoneyGoal.Wine": "Verdiene {{Value}} durch Wein",
+  "EarnMoneyGoal.Beer": "Verdiene {{Value}} durch Bier",
+  
   "ChallengePage.Goal": "Ziel",
   
   "ShopIds.SeedShop": "Pierre",
