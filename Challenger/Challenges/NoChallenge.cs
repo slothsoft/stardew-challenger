@@ -1,5 +1,6 @@
 ﻿using System;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 
 namespace Slothsoft.Challenger.Challenges;
 
@@ -15,5 +16,9 @@ public class NoChallenge : BaseChallenge {
 
     protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
         return Array.Empty<IRestriction>();
+    }
+    
+    protected override IGoal CreateGoal(IModHelper modHelper) {
+        return new NoGoal(modHelper);
     }
 }

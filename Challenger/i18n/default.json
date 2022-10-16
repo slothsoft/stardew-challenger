@@ -47,6 +47,8 @@
   "ChallengePage.Goal": "Goal",
 
   "CommunityCenterGoal": "Finish Community Center",
+
+  "NoGoal": "No Goal",
   
   "ShopIds.SeedShop": "Pierre",
   "ShopIds.Blacksmith": "Clint",
