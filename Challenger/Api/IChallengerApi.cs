@@ -7,7 +7,7 @@ public interface IChallengerApi {
     /// Returns all challenges that are registered in this mod.
     /// </summary>
     /// <returns></returns>
-    IReadOnlyCollection<IChallenge> GetAllChallenges();
+    IEnumerable<IChallenge> GetAllChallenges();
 
     /// <summary>
     /// Returns the currently active challenge. Note that this value is never null,

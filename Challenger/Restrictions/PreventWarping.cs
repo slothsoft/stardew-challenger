@@ -18,7 +18,7 @@ public class PreventWarping : IRestriction {
     private static Harmony? _harmony;
     private static readonly IDictionary<WarpDirection, Func<string?>> _appliedWarpDirections = new Dictionary<WarpDirection, Func<string?>>();
     
-    public static bool WarpFarmer(LocationRequest locationRequest, int tileX, int tileY, int facingDirectionAfterWarp) {
+    private static bool WarpFarmer(LocationRequest locationRequest, int tileX, int tileY, int facingDirectionAfterWarp) {
         var warpDirection = new WarpDirection(
             Game1.currentLocation.Name,
             locationRequest.Name
@@ -60,7 +60,7 @@ public class PreventWarping : IRestriction {
                         typeof(int),
                         typeof(int),
                     }),
-                prefix: new(typeof(PreventWarping), nameof(WarpFarmer))
+                prefix: new HarmonyMethod(typeof(PreventWarping), nameof(WarpFarmer))
             );
         }
         

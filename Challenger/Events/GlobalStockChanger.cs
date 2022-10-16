@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using HarmonyLib;
 using StardewValley.Locations;
+
 // ReSharper disable InconsistentNaming
 
-namespace Slothsoft.Challenger.Restrictions;
+namespace Slothsoft.Challenger.Events;
 
 internal static class GlobalStockChanger {
     
@@ -20,14 +21,14 @@ internal static class GlobalStockChanger {
                     typeof(SeedShop),
                     nameof(SeedShop.shopStock)
                 ),
-                postfix: new(typeof(GlobalStockChanger), nameof(ChangeShopStock))
+                postfix: new HarmonyMethod(typeof(GlobalStockChanger), nameof(ChangeShopStock))
             );
             _harmony.Patch(
                 original: AccessTools.Method(
                     typeof(Utility),
                     nameof(Utility.getJojaStock)
                 ),
-                postfix: new(typeof(GlobalStockChanger), nameof(ChangeShopStock))
+                postfix: new HarmonyMethod(typeof(GlobalStockChanger), nameof(ChangeShopStock))
             );
         }
         ChangerList.Add(changer);

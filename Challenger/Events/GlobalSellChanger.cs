@@ -5,7 +5,7 @@ using StardewValley.Menus;
 
 // ReSharper disable InconsistentNaming
 
-namespace Slothsoft.Challenger.Restrictions;
+namespace Slothsoft.Challenger.Events;
 
 internal static class GlobalSellChanger {
     
@@ -20,14 +20,14 @@ internal static class GlobalSellChanger {
                     typeof(ShopMenu),
                     nameof(ShopMenu.setUpStoreForContext)
                 ),
-                postfix: new(typeof(GlobalSellChanger), nameof(ChangeShopContext))
+                postfix: new HarmonyMethod(typeof(GlobalSellChanger), nameof(ChangeShopContext))
             );
             _harmony.Patch(
                 original: AccessTools.Method(
                     typeof(SObject),
                     nameof(SObject.canBeShipped)
                 ),
-                postfix: new(typeof(GlobalSellChanger), nameof(ChangeCanBeShipped))
+                postfix: new HarmonyMethod(typeof(GlobalSellChanger), nameof(ChangeCanBeShipped))
             );
         }
         foreach (var allowedCategory in allowedCategories) {

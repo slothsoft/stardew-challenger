@@ -1,4 +1,7 @@
-﻿namespace Slothsoft.Challenger.Models;
+﻿// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedMember.Global
+// ReSharper disable UnusedType.Global
+namespace Slothsoft.Challenger.Models;
 
 /// <summary>
 /// These constants can be used to compare to <code>ShopMenu.storeContext</code>.
@@ -16,10 +19,14 @@ internal static class ShopIds {
 /// <summary>
 /// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// See https://stardewcommunitywiki.com/Modding:Object_data
+/// See https://stardewcommunitywiki.com/Modding:Big_craftables_data
 /// </summary>
 public static class ObjectIds {
+    public const int Beer = 346;
     public const int Juice = 350;
+    public const int PaleAle = 303;
     public const int UnmilledRice = 271;
+    public const int Wine = 348;
     
     public const int Keg = 12;
     public const int SeedMaker = 25;

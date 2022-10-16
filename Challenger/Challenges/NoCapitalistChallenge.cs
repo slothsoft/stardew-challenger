@@ -1,4 +1,5 @@
 ﻿using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 
@@ -16,5 +17,9 @@ public class NoCapitalistChallenge : BaseChallenge {
 
     public override MagicalReplacement GetMagicalReplacement() {
         return MagicalReplacement.SeedMaker;
+    }
+    
+    protected override IGoal CreateGoal(IModHelper modHelper) {
+        return new CommunityCenterGoal(modHelper);
     }
 }

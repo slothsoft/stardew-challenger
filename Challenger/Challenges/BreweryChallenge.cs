@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 
@@ -47,5 +47,19 @@ public class BreweryChallenge : BaseChallenge {
     
     public override MagicalReplacement GetMagicalReplacement() {
         return MagicalReplacement.Keg;
+    }
+    
+    protected override IGoal CreateGoal(IModHelper modHelper) {
+        var beerIndexes = new[] { ObjectIds.Beer, ObjectIds.PaleAle };
+        return new EarnMoneyGoal(ModHelper, 5_000_000, "Beer", salable => {
+            if (beerIndexes.Contains(salable.ParentSheetIndex))
+                return true;
+            // this is rice "beer"
+            if (salable.ParentSheetIndex == ObjectIds.Juice) {
+                var obj = salable as SObject;
+                return obj != null && obj.preservedParentSheetIndex.Value == ObjectIds.UnmilledRice;
+            }
+            return false;
+        });
     }
 }

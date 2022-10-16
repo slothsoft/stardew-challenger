@@ -5,7 +5,7 @@ using StardewValley.Menus;
 
 // ReSharper disable InconsistentNaming
 
-namespace Slothsoft.Challenger.Restrictions;
+namespace Slothsoft.Challenger.Events;
 
 internal static class GlobalCarpenterChanger {
     
@@ -24,7 +24,7 @@ internal static class GlobalCarpenterChanger {
                         typeof(bool),
                     }
                 ),
-                postfix: new(typeof(GlobalCarpenterChanger), nameof(ChangeBluePrints))
+                postfix: new HarmonyMethod(typeof(GlobalCarpenterChanger), nameof(ChangeBluePrints))
             );
         }
         foreach (var excludedBluePrintName in excludedBluePrintNames) {

@@ -1,4 +1,6 @@
-﻿using Slothsoft.Challenger.Api;
+﻿using System.Collections.Generic;
+using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 
 namespace Slothsoft.Challenger.Challenges;
@@ -9,6 +11,7 @@ public abstract class BaseChallenge : IChallenge {
 
     private IRestriction[]? _restrictions;
     private string? _magicalReplacementName;
+    private IGoal? _goal;
 
     protected BaseChallenge(IModHelper modHelper, string id) {
         ModHelper = modHelper;
@@ -54,26 +57,41 @@ public abstract class BaseChallenge : IChallenge {
         return _magicalReplacementName;
     }
 
-    public void ApplyRestrictions() {
+    public void Start() {
         foreach (var restriction in GetOrCreateRestrictions()) {
             restriction.Apply();
         }
+        GetGoal().Start();
     }
 
-    private IRestriction[] GetOrCreateRestrictions() {
+    private IEnumerable<IRestriction> GetOrCreateRestrictions() {
         _restrictions ??= CreateRestrictions(ModHelper);
         return _restrictions;
     }
 
     protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper);
 
-    public void RemoveRestrictions() {
+    public void Stop() {
         foreach (var restriction in GetOrCreateRestrictions()) {
             restriction.Remove();
         }
+        GetGoal().Stop();
     }
 
     public virtual MagicalReplacement GetMagicalReplacement() {
         return MagicalReplacement.Default;
+    }
+
+    public IGoal GetGoal() {
+        _goal ??= CreateGoal(ModHelper);
+        return _goal;
+    }
+
+    protected virtual IGoal CreateGoal(IModHelper modHelper) {
+        return new PerfectionGoal(ModHelper);
+    }
+
+    public bool IsCompleted() {
+        return GetGoal().IsCompleted();
     }
 }

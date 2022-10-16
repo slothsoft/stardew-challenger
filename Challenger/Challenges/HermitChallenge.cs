@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 
@@ -22,5 +23,9 @@ public class HermitChallenge : BaseChallenge {
 
     private static bool IsNotSunday() {
         return Game1.dayOfMonth % 7 != 0;
+    }
+    
+    protected override IGoal CreateGoal(IModHelper modHelper) {
+        return new CommunityCenterGoal(modHelper);
     }
 }

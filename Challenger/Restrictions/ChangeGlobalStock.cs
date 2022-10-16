@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Events;
 using Slothsoft.Challenger.Models;
 
 // ReSharper disable InconsistentNaming
@@ -28,7 +29,7 @@ public class ChangeGlobalStock : IRestriction {
              
                 stock.Clear();
                 
-                StardewValley.Object riceSeeds = new StardewValley.Object(Vector2.Zero, SeedIds.Rice, 1);
+                var riceSeeds = new StardewValley.Object(Vector2.Zero, SeedIds.Rice, 1);
                 stock.Add(riceSeeds, new[]
                 {
                     40,

@@ -33,9 +33,20 @@
   "ChallengerMail.Hello": "Grüße {{name}},",
   "ChallengerMail.Goodbye": "Wir sehen uns, Kämpfer Kevin",
   "ChallengerMail.MagicalObjectMail": "Ich weiß aus unzweifelhafter Quelle, dass du neue Herausforderungen suchst?^^Ich, Kämpfer Kevin, heiße dich zu diesem neuen Pfad willkommen.^^Ich habe einen Gegenstand angehangen, der dir helfen wird eine neue Herausforderung zu finden, wenn du ihn benutzt.",
-
+  "ChallengerMail.GoalCompletedMail": "Ich weiß aus unzweifelhafter Quelle, dass du deine neuste Herausforderungen abgeschlossen hast.^^Ich, Kämpfer Kevin, beglückwünsche dich dazu!",
+  
   "ChallengerConfig.ButtonOpenMenu.Name": "Menü-Taste",
   "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet",
+
+  "PerfectionGoal": "Perfektion",
+
+  "EarnMoneyGoal": "Verdiene {{Value}}",
+  "EarnMoneyGoal.Wine": "Verdiene {{Value}} durch Wein",
+  "EarnMoneyGoal.Beer": "Verdiene {{Value}} durch Bier",
+  
+  "ChallengePage.Goal": "Ziel",
+  
+  "CommunityCenterGoal": "Gemeinschaftszentrum fertigstellen",
   
   "ShopIds.SeedShop": "Pierre",
   "ShopIds.Blacksmith": "Clint",

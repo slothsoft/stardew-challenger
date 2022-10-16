@@ -9,7 +9,7 @@ namespace Slothsoft.Challenger.Objects;
 /// This class patches <code>StardewValley.Debris</code>.
 /// </summary>
 
-static class MagicalDebris {
+internal static class MagicalDebris {
     internal static void PatchObject(Harmony harmony) {
         harmony.Patch(
             original: AccessTools.Method(
@@ -19,7 +19,7 @@ static class MagicalDebris {
                     typeof(Farmer),
                     typeof(Chunk),
                 }),
-            prefix: new(typeof(MagicalDebris), nameof(Collect))
+            prefix: new HarmonyMethod(typeof(MagicalDebris), nameof(Collect))
         );
     }
 
