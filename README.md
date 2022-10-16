@@ -118,6 +118,7 @@ This mod brings the following challenges:
 | Version | Issues                                                                         | Changes                                                                                                                                 |
 |---------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)          |                                                                                                                                         |
+| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1) | 2nd Alpha Test Bugfixes |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1) | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable |
 | 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1) | Fix of the most glaring bugs                                                                                                            |
 | 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1) | More challenges                                                                                                                         |

@@ -1,7 +1,7 @@
 {
   "Name": "ChallengerAutomate",
   "Author": "Slothsoft",
-  "Version": "0.4.0",
+  "Version": "0.4.1",
   "Description": "Hooks the Challenger mod to Automate.",
   "UniqueID": "Slothsoft.ChallengerAutomate",
   "EntryDll": "ChallengerAutomate.dll",
