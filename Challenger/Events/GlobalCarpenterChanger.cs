@@ -24,7 +24,7 @@ internal static class GlobalCarpenterChanger {
                         typeof(bool),
                     }
                 ),
-                postfix: new(typeof(GlobalCarpenterChanger), nameof(ChangeBluePrints))
+                postfix: new HarmonyMethod(typeof(GlobalCarpenterChanger), nameof(ChangeBluePrints))
             );
         }
         foreach (var excludedBluePrintName in excludedBluePrintNames) {

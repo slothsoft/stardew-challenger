@@ -8,7 +8,7 @@ namespace Slothsoft.ChallengerAutomate;
 ///
 /// Documentation: https://github.com/Pathoschild/StardewMods/blob/develop/Automate/docs/technical.md#extensibility-for-modders
 /// </summary>
-
+// ReSharper disable once ClassNeverInstantiated.Global
 public class ChallengerAutomateMod : Mod {
     internal static ChallengerAutomateMod Instance = null!;
 

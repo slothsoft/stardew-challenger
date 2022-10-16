@@ -4,7 +4,7 @@ namespace Slothsoft.Challenger.Goals;
 
 public class PerfectionGoal : IGoal {
 
-    private IModHelper _modHelper;
+    private readonly IModHelper _modHelper;
     
     public PerfectionGoal(IModHelper modHelper) {
         _modHelper = modHelper;

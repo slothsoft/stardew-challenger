@@ -20,7 +20,7 @@ public class RenameVanillaObject : IRestriction {
     private static Harmony? _harmony;
     private static readonly IDictionary<VanillaObject, string> _appliedVanillaObjectToDisplayName = new Dictionary<VanillaObject, string>();
     
-    public static bool LoadDisplayName(SObject __instance, ref string __result) {
+    private static bool LoadDisplayName(SObject __instance, ref string __result) {
         var vanillaObject = new VanillaObject(
             __instance.ParentSheetIndex,
             __instance.preserve.Value,
@@ -62,7 +62,7 @@ public class RenameVanillaObject : IRestriction {
                     typeof(SObject),
                     "loadDisplayName"
                 ),
-                prefix: new(typeof(RenameVanillaObject), nameof(LoadDisplayName))
+                prefix: new HarmonyMethod(typeof(RenameVanillaObject), nameof(LoadDisplayName))
             );
         }
         

@@ -21,7 +21,7 @@ internal class ChallengerApi : IChallengerApi {
             new VinyardChallenge(modHelper),
         };
         _challenges.Sort((a, b) =>
-            String.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));
+            string.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));
         _challenges.Insert(0, new NoChallenge(modHelper));
 
         _activeChallenge = LoadActiveChallenge();
@@ -34,7 +34,7 @@ internal class ChallengerApi : IChallengerApi {
         return activeChallenge;
     }
 
-    public IReadOnlyCollection<IChallenge> GetAllChallenges() {
+    public IEnumerable<IChallenge> GetAllChallenges() {
         return _challenges.ToImmutableArray();
     }
 

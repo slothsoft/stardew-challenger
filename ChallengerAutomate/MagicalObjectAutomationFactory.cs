@@ -7,7 +7,7 @@ using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.ChallengerAutomate; 
 
-public class MagicalObjectAutomationFactory : IAutomationFactory
+internal class MagicalObjectAutomationFactory : IAutomationFactory
 {
     /// <summary>Get a machine, container, or connector instance for a given object.</summary>
     /// <param name="obj">The in-game object.</param>

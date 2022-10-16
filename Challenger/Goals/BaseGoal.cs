@@ -5,15 +5,12 @@ namespace Slothsoft.Challenger.Goals;
 
 public abstract class BaseGoal<TProgress> : IGoal
     where TProgress : class {
-    protected string Id { get; }
+    private string Id { get; }
     protected IModHelper ModHelper { get; }
 
     protected TProgress Progress {
         get {
-            if (_progress == null) {
-                _progress = ReadProgressType();
-            }
-
+            _progress ??= ReadProgressType();
             return _progress;
         }
     }

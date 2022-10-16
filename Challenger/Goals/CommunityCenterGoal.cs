@@ -5,7 +5,7 @@ namespace Slothsoft.Challenger.Goals;
 
 public class CommunityCenterGoal : IGoal {
 
-    private IModHelper _modHelper;
+    private readonly IModHelper _modHelper;
     
     public CommunityCenterGoal(IModHelper modHelper) {
         _modHelper = modHelper;

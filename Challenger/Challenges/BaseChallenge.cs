@@ -1,4 +1,5 @@
-﻿using Slothsoft.Challenger.Api;
+﻿using System.Collections.Generic;
+using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Goals;
 using Slothsoft.Challenger.Models;
 
@@ -63,7 +64,7 @@ public abstract class BaseChallenge : IChallenge {
         GetGoal().Start();
     }
 
-    private IRestriction[] GetOrCreateRestrictions() {
+    private IEnumerable<IRestriction> GetOrCreateRestrictions() {
         _restrictions ??= CreateRestrictions(ModHelper);
         return _restrictions;
     }

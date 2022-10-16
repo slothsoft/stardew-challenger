@@ -29,7 +29,7 @@ public class ChangeGlobalStock : IRestriction {
              
                 stock.Clear();
                 
-                StardewValley.Object riceSeeds = new StardewValley.Object(Vector2.Zero, SeedIds.Rice, 1);
+                var riceSeeds = new StardewValley.Object(Vector2.Zero, SeedIds.Rice, 1);
                 stock.Add(riceSeeds, new[]
                 {
                     40,

@@ -24,8 +24,8 @@ internal static class GlobalMoneyCounter {
                     typeof(ShopMenu),
                     nameof(ShopMenu.receiveLeftClick)
                 ),
-                prefix: new(typeof(GlobalMoneyCounter), nameof(MenuReceivingLeftClick)),
-                finalizer: new(typeof(GlobalMoneyCounter), nameof(MenuReceivedLeftClick))
+                prefix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivingLeftClick)),
+                finalizer: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivedLeftClick))
             );
         }
 

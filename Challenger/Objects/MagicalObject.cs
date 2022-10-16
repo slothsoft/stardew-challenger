@@ -22,7 +22,7 @@ public static class MagicalObject {
 
     private static readonly HashSet<SObject> MagicalObjects = new();
 
-    public static void PatchObject(string uniqueId) {
+    internal static void PatchObject(string uniqueId) {
         var helper = ChallengerMod.Instance.Helper;
         helper.Events.Content.AssetRequested += OnAssetRequested;
         helper.Events.Input.ButtonPressed += OnButtonPressed;
@@ -42,8 +42,8 @@ public static class MagicalObject {
                     typeof(int),
                     typeof(float),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -56,8 +56,8 @@ public static class MagicalObject {
                     typeof(float),
                     typeof(float),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -66,8 +66,8 @@ public static class MagicalObject {
                 new[] {
                     typeof(SpriteBatch),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -83,8 +83,8 @@ public static class MagicalObject {
                     typeof(Color),
                     typeof(bool),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
         harmony.Patch(
             original: AccessTools.Method(
@@ -95,8 +95,8 @@ public static class MagicalObject {
                     typeof(Vector2),
                     typeof(Farmer),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
 
         harmony.Patch(
@@ -106,8 +106,8 @@ public static class MagicalObject {
                 new[] {
                     typeof(Farmer),
                 }),
-            prefix: new(typeof(MagicalObject), nameof(MakeVanillaObject)),
-            postfix: new(typeof(MagicalObject), nameof(MakeMagicalObject))
+            prefix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeVanillaObject)),
+            postfix: new HarmonyMethod(typeof(MagicalObject), nameof(MakeMagicalObject))
         );
     }
 

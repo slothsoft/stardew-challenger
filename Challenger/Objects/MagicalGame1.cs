@@ -9,7 +9,7 @@ namespace Slothsoft.Challenger.Objects;
 /// <summary>
 /// This class patches <code>StardewValley.Game1</code>.
 /// </summary>
-static class MagicalGame1 {
+internal static class MagicalGame1 {
     internal static void PatchObject(Harmony harmony) {
         harmony.Patch(
             original: AccessTools.Method(
@@ -21,7 +21,7 @@ static class MagicalGame1 {
                     typeof(int),
                     typeof(int),
                 }),
-            prefix: new(typeof(MagicalGame1), nameof(GetArbitrarySourceRect))
+            prefix: new HarmonyMethod(typeof(MagicalGame1), nameof(GetArbitrarySourceRect))
         );
     }
 

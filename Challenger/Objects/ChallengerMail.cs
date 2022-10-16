@@ -2,9 +2,9 @@
 
 namespace Slothsoft.Challenger.Objects; 
 
-public static class ChallengerMail {
+internal static class ChallengerMail {
     private const string MagicalObjectMail = "Slothsoft.Challenger/MagicalObjectMail";
-    public const string GoalCompletedMail = "Slothsoft.Challenger/GoalCompletedMail";
+    private const string GoalCompletedMail = "Slothsoft.Challenger/GoalCompletedMail";
     
     public static void InitAndSend() {
         var helper = ChallengerMod.Instance.Helper;

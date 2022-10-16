@@ -5,10 +5,10 @@ using StardewValley.Menus;
 
 namespace Slothsoft.Challenger.Menus;
 
-public class ChallengePage : OptionsPage {
+internal class ChallengePage : OptionsPage {
     private readonly OptionsDropDown _challengeSelection;
-    private OptionsElement _goal;
-    private OptionsElement _description;
+    private readonly OptionsElement _goal;
+    private readonly OptionsElement _description;
 
     public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
         options.Clear();

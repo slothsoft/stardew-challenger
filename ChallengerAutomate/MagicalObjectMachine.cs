@@ -12,8 +12,7 @@ namespace Slothsoft.ChallengerAutomate;
 /// https://github.com/Pathoschild/StardewMods/blob/develop/Automate/Framework/Machines/Objects/KegMachine.cs
 /// https://github.com/Pathoschild/StardewMods/blob/develop/Automate/Framework/Machines/Objects/SeedMakerMachine.cs
 /// </summary>
-
-public class MagicalObjectMachine : IMachine {
+internal class MagicalObjectMachine : IMachine {
     /// <summary>The location which contains the machine.</summary>
     public GameLocation Location => GetDelegate()?.Location ?? _location;
     /// <summary>The tile area covered by the machine.</summary>

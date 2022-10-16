@@ -1,6 +1,6 @@
 ﻿namespace Slothsoft.Challenger;
 
-public record ChallengerConfig {
+internal record ChallengerConfig {
 
     public SButton ButtonOpenMenu { get; set; } = SButton.K;
 }

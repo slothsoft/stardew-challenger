@@ -6,6 +6,7 @@ using StardewModdingAPI.Events;
 
 namespace Slothsoft.Challenger;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public class ChallengerMod : Mod {
     public static ChallengerMod Instance = null!;
 
@@ -25,6 +26,7 @@ public class ChallengerMod : Mod {
         Helper.Events.Input.ButtonPressed += OnButtonPressed;
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;
 
+        
         // Patches
         MagicalObject.PatchObject(ModManifest.UniqueID);
         ChallengerMail.InitAndSend();

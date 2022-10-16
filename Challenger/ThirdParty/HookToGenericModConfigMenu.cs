@@ -1,6 +1,6 @@
 ﻿namespace Slothsoft.Challenger.ThirdParty; 
 
-public static class HookToGenericModConfigMenu {
+internal static class HookToGenericModConfigMenu {
     
     public static void Apply(ChallengerMod challengerMod) {
         // get Generic Mod Config Menu's API (if it's installed)
