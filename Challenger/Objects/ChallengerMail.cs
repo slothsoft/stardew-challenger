@@ -3,8 +3,9 @@
 namespace Slothsoft.Challenger.Objects; 
 
 internal static class ChallengerMail {
-    private const string MagicalObjectMail = "Slothsoft.Challenger/MagicalObjectMail";
+    internal const string MagicalObjectMail = "Slothsoft.Challenger/MagicalObjectMail";
     private const string GoalCompletedMail = "Slothsoft.Challenger/GoalCompletedMail";
+    internal const string MagicalObjectLostMail = "Slothsoft.Challenger/MagicalObjectLostMail";
     
     public static void InitAndSend() {
         var helper = ChallengerMod.Instance.Helper;
@@ -46,6 +47,12 @@ internal static class ChallengerMail {
                     data.Add(
                         GoalCompletedMail,
                         $"{hello}^^{mailBody}^^{goodbye}"
+                    );
+                    
+                    mailBody = helper.Translation.Get("ChallengerMail.MagicalObjectLostMail");
+                    data.Add(
+                        MagicalObjectLostMail,
+                        $"{hello}^^{mailBody}^^{goodbye}^^%item bigobject {MagicalObject.ObjectId} %%"
                     );
                 });
         }

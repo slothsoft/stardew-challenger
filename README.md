@@ -19,12 +19,14 @@ focus on another part.
 - **[User Manual](#user-manual)**
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
+  - [Removing the Mod](#removing-the-mod)
   - [Using the Mod](#using-the-mod)
     - [No Challenge](#no-challenge)
     - [Brewery](#brewery)
     - [Hermit](#hermit)
     - [No Capitalist](#no-capitalist)
-    - [Vinyard](#vinyard)
+    - [Vineyard](#vineyard)
+  - [Configuration](#configuration)
   - [Versions](#versions)
 - **[Translator Guide](#translator-guide)**
 - **[Developer Notes](#developer-notes)**
@@ -46,6 +48,16 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 1. Unzip the latest _[Challenger.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_ to the _Mods/_ folder
 1. If you want to use spacechase0's [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098), this mod automatically hooks into its menu
 1. If you want to use Pathoschild's [Automate](https://www.nexusmods.com/stardewvalley/mods/1063), unzip the _[ChallengerAutomate.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_, too
+
+
+
+### Removing the Mod
+
+<img alt="Screenshot" align="right" width="100" src="readme/screenshot_revert.png">
+
+1. Just remove the _Challenger/_ folder (and _ChallengerAutomate/_ if you have it).
+1. If you have a **Magical Challenge Object**™ on your map, it should revert to a pink plush bunny
+1. If you experienced bugs with the mod, please take the time to [report them](https://github.com/slothsoft/stardew-challenger/issues)
 
 
 
@@ -71,7 +83,7 @@ This mod brings the following challenges:
 - [Brewery](#brewery)
 - [Hermit](#hermit)
 - [No Capitalist](#no-capitalist)
-- [Vinyard](#vinyard)
+- [Vineyard](#vineyard)
 
 #### No Challenge
 
@@ -103,7 +115,7 @@ This mod brings the following challenges:
 - You get a seed maker to tide you over your imminent lack of seeds
 
 
-#### Vinyard
+#### Vineyard
 
 **Goal:** To earn 5.000.000 gold by selling wine
 
@@ -113,11 +125,35 @@ This mod brings the following challenges:
 - you cannot build animal buildings, i.e. coop, barn and silo
 
 
+### Configuration
+
+If you wish to configure this mod, it's advised to install spacechase0's
+[Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098). Then the config
+page will look like this:
+
+<img alt="Screenshot" src="readme/screenshot_config.png" width="300"/>
+
+But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all 
+entries is:
+
+```json
+{
+     "ButtonOpenMenu": "K"
+}
+```
+
+| Key in JSON      | Config Name | Default Value | Explanation                                                                                       |
+|------------------|-------------|---------------|---------------------------------------------------------------------------------------------------|
+| `ButtonOpenMenu` | Menu Button | K             | The button to use when you want to open the menu to select the challenge or observe your progress |
+
+
+
 ### Versions
 
 | Version | Issues                                                                         | Changes                                                                                                                                 |
 |---------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)          |                                                                                                                                         |
+| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1) | Release Blockers |
 | 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1) | 2nd Alpha Test Bugfixes |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1) | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable |
 | 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1) | Fix of the most glaring bugs                                                                                                            |

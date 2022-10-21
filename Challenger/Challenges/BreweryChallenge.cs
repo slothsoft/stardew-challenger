@@ -14,7 +14,7 @@ public class BreweryChallenge : BaseChallenge {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
-            VinyardChallenge.CreateExcludeAnimalBuildings(modHelper),
+            VineyardChallenge.CreateExcludeAnimalBuildings(modHelper),
             ChangeGlobalStock.AddRiceInFirstSpring(modHelper),
         };
     }

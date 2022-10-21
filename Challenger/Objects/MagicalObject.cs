@@ -139,7 +139,7 @@ public static class MagicalObject {
         // Filter out all objects that are not magical or still in use
         var pos = CommonHelpers.GetCursorTile(1);
         if (!Game1.currentLocation.Objects.TryGetValue(pos, out var obj)
-            || IsNotMagicalObject(obj)
+            || !IsMagicalObject(obj)
             || obj.heldObject.Value is not null
             || obj.MinutesUntilReady > 0) {
             return;
@@ -165,7 +165,7 @@ public static class MagicalObject {
     }
 
     private static void MakeVanillaObject(SObject __instance) {
-        if (IsNotMagicalObject(__instance) || !ChallengerMod.Instance.IsInitialized())
+        if (!IsMagicalObject(__instance) || !ChallengerMod.Instance.IsInitialized())
             return;
 
         MagicalObjects.Add(__instance);
@@ -175,8 +175,8 @@ public static class MagicalObject {
         __instance.Name = magicalReplacement.Name;
     }
 
-    private static bool IsNotMagicalObject(SObject instance) {
-        return instance is not { bigCraftable.Value: ObjectBigCraftable, ParentSheetIndex: ObjectId };
+    internal static bool IsMagicalObject(SObject instance) {
+        return instance is { bigCraftable.Value: ObjectBigCraftable, ParentSheetIndex: ObjectId };
     }
 
     private static void MakeMagicalObject(SObject __instance) {

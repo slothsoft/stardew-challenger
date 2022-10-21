@@ -6,8 +6,8 @@ using Slothsoft.Challenger.Restrictions;
 
 namespace Slothsoft.Challenger.Challenges;
 
-public class VinyardChallenge : BaseChallenge {
-    public VinyardChallenge(IModHelper modHelper) : base(modHelper, "vinyard") {
+public class VineyardChallenge : BaseChallenge {
+    public VineyardChallenge(IModHelper modHelper) : base(modHelper, "vineyard") {
     }
 
     protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
@@ -23,7 +23,7 @@ public class VinyardChallenge : BaseChallenge {
         return new RenameVanillaObject(
             modHelper,
             new RenameVanillaObject.VanillaObject(ObjectIds.Juice, SObject.PreserveType.Juice, ObjectIds.UnmilledRice),
-            modHelper.Translation.Get("VinyardChallenge.RenameRiceJuice")
+            modHelper.Translation.Get("VineyardChallenge.RenameRiceJuice")
         );
     }
 
@@ -33,7 +33,7 @@ public class VinyardChallenge : BaseChallenge {
             SeedIds.Grape, SeedIds.AncientFruit, SeedIds.CactusFruit, SeedIds.Pineapple, SeedIds.QiFruit, 
             SeedIds.SweetGemBerry,
         };
-        return ChangeGlobalStock.ExcludeSalables(modHelper.Translation.Get("VinyardChallenge.IncludeFruitOnly"), s => {
+        return ChangeGlobalStock.ExcludeSalables(modHelper.Translation.Get("VineyardChallenge.IncludeFruitOnly"), s => {
             // everything that is not a basic object is allowed
             if (s is not SObject obj) return false;
             // everything that is not a seed is allowed
@@ -46,7 +46,7 @@ public class VinyardChallenge : BaseChallenge {
     }
 
     internal static IRestriction CreateExcludeAnimalBuildings(IModHelper modHelper) {
-        return new ExcludeGlobalCarpenter(modHelper.Translation.Get("VinyardChallenge.ExcludeAnimalBuildings"),  BluePrintNames.Barn, BluePrintNames.Silo, BluePrintNames.Coop);
+        return new ExcludeGlobalCarpenter(modHelper.Translation.Get("VineyardChallenge.ExcludeAnimalBuildings"),  BluePrintNames.Barn, BluePrintNames.Silo, BluePrintNames.Coop);
     }
     
     public override MagicalReplacement GetMagicalReplacement() {

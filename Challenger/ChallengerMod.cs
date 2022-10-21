@@ -1,4 +1,6 @@
-﻿using Slothsoft.Challenger.Api;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Menus;
 using Slothsoft.Challenger.Objects;
 using Slothsoft.Challenger.ThirdParty;
@@ -19,13 +21,13 @@ public class ChallengerMod : Mod {
         Instance = this;
         Config = Helper.ReadConfig<ChallengerConfig>();
 
-        Helper.Events.GameLoop.SaveLoaded += (_, _) => {
-            _api = new ChallengerApi(modHelper);
-            Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was activated.", LogLevel.Debug);
-        };
+        Helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
         Helper.Events.Input.ButtonPressed += OnButtonPressed;
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+        Helper.Events.GameLoop.ReturnedToTitle += OnReturnToTitle;
 
+        Helper.Events.GameLoop.DayStarted += OnDayStarted;
+        Helper.Events.GameLoop.DayEnding += OnDayEnding;
         
         // Patches
         MagicalObject.PatchObject(ModManifest.UniqueID);
@@ -51,5 +53,73 @@ public class ChallengerMod : Mod {
 
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e) {
         HookToGenericModConfigMenu.Apply(this);
+    }
+    
+    /// <summary>
+    /// This method sets up everything necessary for the current save file.
+    /// <see cref="OnReturnToTitle"/>
+    /// </summary>
+    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e) {
+        _api = new ChallengerApi(Helper);
+        Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was initialized.", LogLevel.Debug);
+    }
+    
+    /// <summary>
+    /// This methods cleans up everything that was necessary in the current save file.
+    /// <see cref="OnSaveLoaded"/>
+    /// </summary>
+    private void OnReturnToTitle(object? sender, ReturnedToTitleEventArgs e) {
+        Monitor.Log($"Challenge \"{_api?.GetActiveChallenge().GetDisplayName()}\" was cleaned up.", LogLevel.Debug);
+        _api?.Dispose();
+        _api = null;
+    }
+
+    private void OnDayStarted(object? sender, DayStartedEventArgs e) {
+        var count = 0;
+        foreach (var obj in FetchAllObjects().Where(IsVanillaSaveObject)) {
+            RestoreVanillaObjectFromSave(obj);
+            count++;
+        }
+        if (count == 0 && Game1.player.hasOrWillReceiveMail(ChallengerMail.MagicalObjectMail)) {
+            // the player received the mail, but no longer has the magical object - resend it
+            Game1.player.mailbox.Add(ChallengerMail.MagicalObjectLostMail);
+            Game1.player.mailReceived.Add(ChallengerMail.MagicalObjectLostMail);
+        }
+    }
+
+    private IEnumerable<SObject> FetchAllObjects() {
+        foreach (var playerItem in Game1.player.Items) {
+            if (playerItem is SObject item) {
+                yield return item;
+            }
+        }
+
+        foreach (var location in Game1.locations) {
+            foreach (var obj in location.netObjects.Values) {
+                yield return obj;
+            }
+        }
+    }
+
+    private static bool IsVanillaSaveObject(SObject instance) {
+        return instance is { bigCraftable.Value: true} bigCraftable 
+               && bigCraftable.ParentSheetIndex == MagicalReplacement.Default.ParentSheetIndex
+               && bigCraftable.preservedParentSheetIndex.Value == MagicalObject.ObjectId;
+    }
+    
+    private static void RestoreVanillaObjectFromSave(SObject obj) {
+        obj.ParentSheetIndex = MagicalObject.ObjectId;
+    }
+    
+
+    private void OnDayEnding(object? sender, DayEndingEventArgs e) {
+        foreach (var obj in FetchAllObjects().Where(MagicalObject.IsMagicalObject)) {
+            MakeVanillaObjectForSave(obj);
+        }
+    }
+
+    private void MakeVanillaObjectForSave(SObject obj) {
+        obj.preservedParentSheetIndex.Value = MagicalObject.ObjectId;
+        obj.ParentSheetIndex = MagicalReplacement.Default.ParentSheetIndex;
     }
 }

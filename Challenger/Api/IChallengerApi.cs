@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Slothsoft.Challenger.Api;
 
-public interface IChallengerApi {
+public interface IChallengerApi : IDisposable {
     /// <summary>
     /// Returns all challenges that are registered in this mod.
     /// </summary>
