@@ -25,6 +25,7 @@ focus on another part.
     - [Hermit](#hermit)
     - [No Capitalist](#no-capitalist)
     - [Vinyard](#vinyard)
+  - [Configuration](#configuration)
   - [Versions](#versions)
 - **[Translator Guide](#translator-guide)**
 - **[Developer Notes](#developer-notes)**
@@ -113,11 +114,35 @@ This mod brings the following challenges:
 - you cannot build animal buildings, i.e. coop, barn and silo
 
 
+### Configuration
+
+If you wish to configure this mod, it's advised to install spacechase0's
+[Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098). Then the config
+page will look like this:
+
+<img alt="Screenshot" src="readme/screenshot_config.png" width="300"/>
+
+But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all 
+entries is:
+
+```json
+{
+     "ButtonOpenMenu": "K"
+}
+```
+
+| Key in JSON      | Config Name | Default Value | Explanation                                                                                       |
+|------------------|-------------|---------------|---------------------------------------------------------------------------------------------------|
+| `ButtonOpenMenu` | Menu Button | K             | The button to use when you want to open the menu to select the challenge or observe your progress |
+
+
+
 ### Versions
 
 | Version | Issues                                                                         | Changes                                                                                                                                 |
 |---------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)          |                                                                                                                                         |
+| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1) | Release Blockers |
 | 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1) | 2nd Alpha Test Bugfixes |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1) | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable |
 | 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1) | Fix of the most glaring bugs                                                                                                            |
