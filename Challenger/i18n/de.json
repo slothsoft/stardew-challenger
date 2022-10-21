@@ -18,10 +18,10 @@
   
   "NoCapitalistChallenge": "Anti-Kapitalist",
 
-  "VinyardChallenge": "Weinberg",
-  "VinyardChallenge.RenameRiceJuice": "Wein (Reis)",
-  "VinyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst können gekauft werden",
-  "VinyardChallenge.ExcludeAnimalBuildings": "Tiergebäude können nicht gebaut werden",
+  "VineyardChallenge": "Weinberg",
+  "VineyardChallenge.RenameRiceJuice": "Wein (Reis)",
+  "VineyardChallenge.IncludeFruitOnly": "Nur Samen für Weinobst können gekauft werden",
+  "VineyardChallenge.ExcludeAnimalBuildings": "Tiergebäude können nicht gebaut werden",
   
   "CannotBuyFromShop.DisplayText": "Von {{shopKeeper}} kann nicht gekauft werden",
   "CannotBuyFromShop.Message": "Von {{shopKeeper}} kann wegen einer Herausforderung nicht gekauft werden.",

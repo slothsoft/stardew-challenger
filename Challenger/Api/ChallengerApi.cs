@@ -18,7 +18,7 @@ internal class ChallengerApi : IChallengerApi {
             new BreweryChallenge(modHelper),
             new HermitChallenge(modHelper),
             new NoCapitalistChallenge(modHelper),
-            new VinyardChallenge(modHelper),
+            new VineyardChallenge(modHelper),
         };
         _challenges.Sort((a, b) =>
             string.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));
@@ -29,7 +29,14 @@ internal class ChallengerApi : IChallengerApi {
 
     private IChallenge LoadActiveChallenge() {
         var dto = _modHelper.Data.ReadSaveData<ChallengerSaveDto>(ChallengerSaveDto.Key);
-        var activeChallenge = _challenges.Single(c => c.Id == (dto?.ChallengeId ?? NoChallenge.ChallengeId));
+        var challengeId = dto?.ChallengeId ?? NoChallenge.ChallengeId;
+        
+        var activeChallenge = _challenges.SingleOrDefault(c => c.Id == challengeId);
+        if (activeChallenge == null) {
+            // this can happen if a challenge ID changed or a challenge was removed
+            ChallengerMod.Instance.Monitor.Log($"Challenge \"{challengeId}\" was not found.", LogLevel.Debug);
+            activeChallenge = new NoChallenge(_modHelper);
+        }
         activeChallenge.Start();
         return activeChallenge;
     }

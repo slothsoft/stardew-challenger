@@ -24,7 +24,7 @@ focus on another part.
     - [Brewery](#brewery)
     - [Hermit](#hermit)
     - [No Capitalist](#no-capitalist)
-    - [Vinyard](#vinyard)
+    - [Vineyard](#vineyard)
   - [Configuration](#configuration)
   - [Versions](#versions)
 - **[Translator Guide](#translator-guide)**
@@ -72,7 +72,7 @@ This mod brings the following challenges:
 - [Brewery](#brewery)
 - [Hermit](#hermit)
 - [No Capitalist](#no-capitalist)
-- [Vinyard](#vinyard)
+- [Vineyard](#vineyard)
 
 #### No Challenge
 
@@ -104,7 +104,7 @@ This mod brings the following challenges:
 - You get a seed maker to tide you over your imminent lack of seeds
 
 
-#### Vinyard
+#### Vineyard
 
 **Goal:** To earn 5.000.000 gold by selling wine
 

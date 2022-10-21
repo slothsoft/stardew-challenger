@@ -18,10 +18,10 @@
   
   "NoCapitalistChallenge": "No Capitalist",
 
-  "VinyardChallenge": "Vinyard",
-  "VinyardChallenge.RenameRiceJuice": "Rice Wine",
-  "VinyardChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make wine",
-  "VinyardChallenge.ExcludeAnimalBuildings": "You cannot build animal buildings",
+  "VineyardChallenge": "Vineyard",
+  "VineyardChallenge.RenameRiceJuice": "Rice Wine",
+  "VineyardChallenge.IncludeFruitOnly": "Can only buy seeds for plants that make wine",
+  "VineyardChallenge.ExcludeAnimalBuildings": "You cannot build animal buildings",
   
   "CannotBuyFromShop.DisplayText": "Cannot buy from {{shopKeeper}}",
   "CannotBuyFromShop.Message": "Cannot buy from {{shopKeeper}} because of challenge.",
