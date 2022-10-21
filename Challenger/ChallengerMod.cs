@@ -19,12 +19,10 @@ public class ChallengerMod : Mod {
         Instance = this;
         Config = Helper.ReadConfig<ChallengerConfig>();
 
-        Helper.Events.GameLoop.SaveLoaded += (_, _) => {
-            _api = new ChallengerApi(modHelper);
-            Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was activated.", LogLevel.Debug);
-        };
+        Helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
         Helper.Events.Input.ButtonPressed += OnButtonPressed;
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+        Helper.Events.GameLoop.ReturnedToTitle += OnReturnToTitle;
 
         
         // Patches
@@ -52,4 +50,24 @@ public class ChallengerMod : Mod {
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e) {
         HookToGenericModConfigMenu.Apply(this);
     }
+    
+    /// <summary>
+    /// This method sets up everything necessary for the current save file.
+    /// <see cref="OnReturnToTitle"/>
+    /// </summary>
+    private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e) {
+        _api = new ChallengerApi(Helper);
+        Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was initialized.", LogLevel.Debug);
+    }
+    
+    /// <summary>
+    /// This methods cleans up everything that was necessary in the current save file.
+    /// <see cref="OnSaveLoaded"/>
+    /// </summary>
+    private void OnReturnToTitle(object? sender, ReturnedToTitleEventArgs e) {
+        Monitor.Log($"Challenge \"{_api?.GetActiveChallenge().GetDisplayName()}\" was cleaned up.", LogLevel.Debug);
+        _api?.Dispose();
+        _api = null;
+    }
+
 }

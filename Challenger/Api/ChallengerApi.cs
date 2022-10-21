@@ -45,16 +45,20 @@ internal class ChallengerApi : IChallengerApi {
     public void SetActiveChallenge(IChallenge activeChallenge) {
         if (activeChallenge != _activeChallenge) {
             _activeChallenge.Stop();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was ended.",
+            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was stopped.",
                 LogLevel.Debug);
 
             _activeChallenge = activeChallenge;
             _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id));
 
             _activeChallenge.Start();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was activated.",
+            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was started.",
                 LogLevel.Debug);
         }
+    }
+
+    public void Dispose() {
+        _activeChallenge.Stop();
     }
 }
 
