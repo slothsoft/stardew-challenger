@@ -19,6 +19,7 @@ focus on another part.
 - **[User Manual](#user-manual)**
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
+  - [Removing the Mod](#removing-the-mod)
   - [Using the Mod](#using-the-mod)
     - [No Challenge](#no-challenge)
     - [Brewery](#brewery)
@@ -47,6 +48,16 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 1. Unzip the latest _[Challenger.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_ to the _Mods/_ folder
 1. If you want to use spacechase0's [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098), this mod automatically hooks into its menu
 1. If you want to use Pathoschild's [Automate](https://www.nexusmods.com/stardewvalley/mods/1063), unzip the _[ChallengerAutomate.zip](https://github.com/slothsoft/stardew-challenger/releases/latest)_, too
+
+
+
+### Removing the Mod
+
+<img alt="Screenshot" align="right" width="100" src="readme/screenshot_revert.png">
+
+1. Just remove the _Challenger/_ folder (and _ChallengerAutomate/_ if you have it).
+1. If you have a **Magical Challenge Object**™ on your map, it should revert to a pink plush bunny
+1. If you experienced bugs with the mod, please take the time to [report them](https://github.com/slothsoft/stardew-challenger/issues)
 
 
 

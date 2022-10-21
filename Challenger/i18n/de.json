@@ -34,7 +34,8 @@
   "ChallengerMail.Goodbye": "Wir sehen uns, Kämpfer Kevin",
   "ChallengerMail.MagicalObjectMail": "Ich weiß aus unzweifelhafter Quelle, dass du neue Herausforderungen suchst?^^Ich, Kämpfer Kevin, heiße dich zu diesem neuen Pfad willkommen.^^Ich habe einen Gegenstand angehangen, der dir helfen wird eine neue Herausforderung zu finden, wenn du ihn benutzt.",
   "ChallengerMail.GoalCompletedMail": "Ich weiß aus unzweifelhafter Quelle, dass du deine neuste Herausforderungen abgeschlossen hast.^^Ich, Kämpfer Kevin, beglückwünsche dich dazu!",
-  
+  "ChallengerMail.MagicalObjectLostMail": "Ich weiß aus unzweifelhafter Quelle, dass du diesen Gegenstand verloren hast. Er wird dir helfen, eine neue Herausforderung zu finden, wenn du ihn benutzt.",
+
   "ChallengerConfig.ButtonOpenMenu.Name": "Menü-Taste",
   "ChallengerConfig.ButtonOpenMenu.Description": "Die Taste, die das Herausforderungs-Menü öffnet",
 
