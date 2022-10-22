@@ -94,7 +94,7 @@ This mod brings the following challenges:
 **Goal:** To earn 5.000.000 gold by selling beer
 
 - rice juice is renamed to rice beer
-- you can only sell beers (which includes the new rice beer)
+- only beers (including the new rice beer) count towards the goal
 - you can only buy seeds for plants that make beer (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
 
@@ -119,7 +119,7 @@ This mod brings the following challenges:
 **Goal:** To earn 5.000.000 gold by selling wine
 
 - rice juice is renamed to rice wine
-- you can only sell wine and mead (which includes the new rice wine)
+- only wine and mead (and the new rice wine) count towards the goal
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
 
