@@ -80,7 +80,7 @@ public class ChallengerMod : Mod {
             RestoreVanillaObjectFromSave(obj);
             count++;
         }
-        if (count == 0 && Game1.player.hasOrWillReceiveMail(ChallengerMail.MagicalObjectMail)) {
+        if (count == 0 && Game1.player.mailReceived.Contains(ChallengerMail.MagicalObjectMail) && !Game1.player.mailbox.Contains(ChallengerMail.MagicalObjectMail)) {
             // the player received the mail, but no longer has the magical object - resend it
             Game1.player.mailbox.Add(ChallengerMail.MagicalObjectLostMail);
             Game1.player.mailReceived.Add(ChallengerMail.MagicalObjectLostMail);
