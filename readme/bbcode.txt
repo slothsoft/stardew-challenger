@@ -60,6 +60,15 @@ If you wish to configure this mod, it’s advised to install spacechase0’s [ur
 But if you wish to change the [i]config.json[/i] file manually, you can also do that. The [i]config.json[/i] with all entries is documented [url=https://github.com/slothsoft/stardew-challenger/blob/main/README.md#configuration]here[/url].
 
 
+[size=6]Removing the Mod[/size]
+
+[list=1]
+[*]Just remove the [i]Challenger/[/i] folder (and [i]ChallengerAutomate/[/i] if you have it).
+[*]If you have a [b]Magical Challenge Object[/b]™ on your map, it should revert to a pink plush bunny
+[*]If you experienced bugs with the mod, please take the time to [url=https://github.com/slothsoft/stardew-challenger/issues]report them[/url]
+[/list]
+
+
 [size=6]Translator Guide[/size]
 
 Right now, not all translations are provided. If you want to help, translate either file in the [i][url=https://github.com/slothsoft/stardew-challenger/blob/main/Challenger/i18n/]i18n/[/url][/i] and test it right in your Stardew Valley (the same folder exists in your [i]Mods/[/i] folder). You can than provide it to me via [url=https://github.com/slothsoft/stardew-challenger/fork]pull request[/url] or [url=mailto:s.schulz@slothsoft.de]email[/url].

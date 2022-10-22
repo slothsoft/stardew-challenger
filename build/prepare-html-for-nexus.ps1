@@ -6,6 +6,8 @@ $htmlFile=$args[0]
 
 $html = [string]::Join("`n", (gc $htmlFile -encoding utf8))
 
+$deinstallationGuide = $html -replace "(?ms)<h1(.*)<h3 id=""removing",'<h3 id=""removing' -replace "(?ms)/ol>(.*)",'/ol>'
+
 # Removes the header info of the readme file
 $html = $html -replace "(?ms)</h1>(.*?)</ul>",'</h1>'
 # Removes the TOC and installation and deinstallation guides
@@ -25,6 +27,7 @@ $html = $html -replace "(?ms)The <em>config.json</em> with all entries(.*?)</tab
 # Remove the versions section
 $html = $html -replace "(?ms)<h3 id=""versions(.*?)</p>(\n\r|\n|\r)+",''
 # Replace the translation table with link
+$html = $html -replace "(?ms)<h2 id=""translator-guide","$deinstallationGuide`n`r<h2 id=""translator-guide"
 $html = $html -replace "(?ms)<table(.*?)German(.*?)</table>","<p>More information can be found <a href=""https://github.com/slothsoft/stardew-challenger/blob/main/README.md#translator-guide"">here</a>.</p>"
 # Add link to GitHub
 $html = $html -replace "dev-notes.md"">here</a>.</p>", "dev-notes.md"">here</a>.</p>`n`r<p>The source code for this mod is on <a href=""https://github.com/slothsoft/stardew-challenger"">GitHub</a>.</p>"
