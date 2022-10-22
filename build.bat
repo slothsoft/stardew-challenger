@@ -1,4 +1,5 @@
-﻿
+﻿@echo off
+
 Rem Release the entire solution
 dotnet publish -c Release
 
@@ -45,4 +46,14 @@ xcopy /y %projectFolderAutomate%\manifest.json %outputFolderAutomate%
 Rem Now zip the entire folder
 "C:\Program Files\7-Zip\7z.exe" a %cd%\bin\ChallengerAutomate-%1.zip %zipFolderAutomate%/*
 
+
+
+Rem Create Readme Files for Nexus
+call build/create-plaintext.bat %cd%\README.md %cd%\bin\Readme.txt
+call build/create-bbcode.bat %cd%\README.md %cd%\bin\bbcode.txt
+xcopy /y %cd%\bin\BBCode.txt %cd%\readme\
+
+
+
+Rem Open the folder with the results
 %SystemRoot%\explorer.exe "%cd%\bin"
