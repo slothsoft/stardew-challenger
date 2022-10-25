@@ -43,7 +43,11 @@ public class ChallengerMod : Mod {
             return;
 
         if (e.Button == Config.ButtonOpenMenu) {
-            Game1.activeClickableMenu = new ChallengeMenu();
+            if (Game1.activeClickableMenu is ChallengeMenu) {
+                Game1.activeClickableMenu.exitThisMenu();
+            } else {
+                Game1.activeClickableMenu = new ChallengeMenu();
+            }
         }
     }
 

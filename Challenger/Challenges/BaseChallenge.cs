@@ -12,7 +12,7 @@ public abstract class BaseChallenge : IChallenge {
     protected IModHelper ModHelper { get; }
 
     private IRestriction[]? _restrictions;
-    private IGoal _goal;
+    private IGoal? _goal;
 
     protected BaseChallenge(IModHelper modHelper, string id) {
         ModHelper = modHelper;

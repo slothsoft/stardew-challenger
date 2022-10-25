@@ -7,7 +7,8 @@ using StardewValley.Menus;
 
 namespace Slothsoft.Challenger.Menus;
 
-internal class ChallengePage : OptionsPage {
+internal class ChallengePage : BaseOptionsPage {
+    
     private readonly OptionsDropDown _challengeSelection;
     private readonly OptionsDropDown _difficultySelection;
     private readonly OptionsElement _goal;
@@ -15,30 +16,23 @@ internal class ChallengePage : OptionsPage {
 
     private string? _lastUpdatedChallenge;
     
-    public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
-        options.Clear();
+    public ChallengePage() {
         
         _difficultySelection = new OptionsDropDown("", -1);
-        _difficultySelection.bounds = new Rectangle(
-            width - _difficultySelection.bounds.Width - 2 * _difficultySelection.bounds.X,
-            _difficultySelection.bounds.Y, 
-            _difficultySelection.bounds.Width,
-            _difficultySelection.bounds.Height);
-        options.Add(_difficultySelection);
+        AddOption(new MultiOptionElement(
+            InitSingleLineElement(new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":")),
+            InitSingleLineElement(_difficultySelection)));
 
         _challengeSelection = new OptionsDropDown("", -1);
-        _challengeSelection.bounds = new Rectangle(
-            _challengeSelection.bounds.X,
-            _challengeSelection.bounds.Y,
-            width - 3 * _challengeSelection.bounds.X,
-            _challengeSelection.bounds.Height);
-        options.Add(_challengeSelection);
+        AddOption(_challengeSelection);
         
         _goal = CreateOptionsElement("\n");
-        options.Add(_goal);
+        AddOption(_goal);
         
         _description = CreateOptionsElement();
-        options.Add(_description);
+        AddOption(_description);
+        
+        AddOption(new OptionsDropDown("", -1));
         
         var api = ChallengerMod.Instance.GetApi()!;
         var activeChallenge = api.ActiveChallenge;
@@ -56,15 +50,6 @@ internal class ChallengePage : OptionsPage {
             _challengeSelection.dropDownOptions.Add(challenge.Id);
             _challengeSelection.dropDownDisplayOptions.Add(challenge.DisplayName);
         }
-        
-        var title = new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":");
-        title.bounds = new Rectangle(
-            title.bounds.X,
-            _difficultySelection.bounds.Y, 
-            title.bounds.Width,
-            title.bounds.Height);
-        title.labelOffset.Y -= 100;
-        options.Add(title);
 
         _challengeSelection.selectedOption = selectedOption;
         _challengeSelection.RecalculateBounds();
