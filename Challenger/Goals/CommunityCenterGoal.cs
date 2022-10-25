@@ -1,5 +1,6 @@
 using System.Linq;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Challenges;
 
 namespace Slothsoft.Challenger.Goals;
 
@@ -11,11 +12,11 @@ public class CommunityCenterGoal : IGoal {
         _modHelper = modHelper;
     }
 
-    public string GetDisplayName() {
+    public string GetDisplayName(Difficulty difficulty) {
         return _modHelper.Translation.Get(GetType().Name);
     }
     
-    public bool IsCompleted() {
+    public bool IsCompleted(Difficulty difficulty) {
         return Game1.netWorldState.Value.Bundles.Values.SelectMany(b => b).All(v => v);
     }
     
@@ -31,7 +32,7 @@ public class CommunityCenterGoal : IGoal {
         return true;
     }
 
-    public string GetProgress() {
+    public string GetProgress(Difficulty difficulty) {
         int finished, all;
         
         if (Game1.player.hasCompletedCommunityCenter()) {

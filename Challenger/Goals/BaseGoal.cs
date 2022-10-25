@@ -1,5 +1,6 @@
 ﻿using System;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Challenges;
 
 namespace Slothsoft.Challenger.Goals;
 
@@ -31,7 +32,7 @@ public abstract class BaseGoal<TProgress> : IGoal
         ModHelper.Data.WriteSaveData(Id, progress);
     }
 
-    public virtual string GetDisplayName() {
+    public virtual string GetDisplayName(Difficulty difficulty) {
         return ModHelper.Translation.Get(GetType().Name);
     }
 
@@ -41,7 +42,7 @@ public abstract class BaseGoal<TProgress> : IGoal
 
     public abstract bool WasStarted();
 
-    public abstract string GetProgress();
+    public abstract string GetProgress(Difficulty difficulty);
 
-    public abstract bool IsCompleted();
+    public abstract bool IsCompleted(Difficulty difficulty);
 }

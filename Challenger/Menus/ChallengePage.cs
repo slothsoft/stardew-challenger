@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
+using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Challenges;
 using StardewValley.Menus;
 
@@ -7,12 +9,22 @@ namespace Slothsoft.Challenger.Menus;
 
 internal class ChallengePage : OptionsPage {
     private readonly OptionsDropDown _challengeSelection;
+    private readonly OptionsDropDown _difficultySelection;
     private readonly OptionsElement _goal;
     private readonly OptionsElement _description;
 
+    private string? _lastUpdatedChallenge;
+    
     public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
         options.Clear();
-        options.Add(new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":"));
+        
+        _difficultySelection = new OptionsDropDown("", -1);
+        _difficultySelection.bounds = new Rectangle(
+            width - _difficultySelection.bounds.Width - 2 * _difficultySelection.bounds.X,
+            _difficultySelection.bounds.Y, 
+            _difficultySelection.bounds.Width,
+            _difficultySelection.bounds.Height);
+        options.Add(_difficultySelection);
 
         _challengeSelection = new OptionsDropDown("", -1);
         _challengeSelection.bounds = new Rectangle(
@@ -21,15 +33,16 @@ internal class ChallengePage : OptionsPage {
             width - 3 * _challengeSelection.bounds.X,
             _challengeSelection.bounds.Height);
         options.Add(_challengeSelection);
-
+        
         _goal = CreateOptionsElement("\n");
         options.Add(_goal);
         
         _description = CreateOptionsElement();
         options.Add(_description);
-
+        
         var api = ChallengerMod.Instance.GetApi()!;
-        var activeChallenge = api.GetActiveChallenge();
+        var activeChallenge = api.ActiveChallenge;
+        var activeDifficulty = api.ActiveDifficulty;
         var allChallenges = api.GetAllChallenges().ToArray();
 
         var selectedOption = 0;
@@ -41,11 +54,28 @@ internal class ChallengePage : OptionsPage {
             }
 
             _challengeSelection.dropDownOptions.Add(challenge.Id);
-            _challengeSelection.dropDownDisplayOptions.Add(challenge.GetDisplayName());
+            _challengeSelection.dropDownDisplayOptions.Add(challenge.DisplayName);
         }
+        
+        var title = new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":");
+        title.bounds = new Rectangle(
+            title.bounds.X,
+            _difficultySelection.bounds.Y, 
+            title.bounds.Width,
+            title.bounds.Height);
+        title.labelOffset.Y -= 100;
+        options.Add(title);
 
         _challengeSelection.selectedOption = selectedOption;
         _challengeSelection.RecalculateBounds();
+        
+        foreach (var difficulty in (Difficulty[]) Enum.GetValues(typeof(Difficulty))) {
+            _difficultySelection.dropDownOptions.Add(difficulty.ToString());
+            _difficultySelection.dropDownDisplayOptions.Add(difficulty.ToString());
+        }
+        _difficultySelection.selectedOption = (int) activeDifficulty;
+        _difficultySelection.RecalculateBounds();
+        
         RefreshDescriptionLabel(false);
     }
 
@@ -68,28 +98,31 @@ internal class ChallengePage : OptionsPage {
         var api = ChallengerMod.Instance.GetApi()!;
         var allChallenges = api.GetAllChallenges().ToArray();
         var newChallenge = allChallenges[_challengeSelection.selectedOption];
-        var newLabel = newChallenge.GetDisplayText();
+        var newDifficulty = (Difficulty) _difficultySelection.selectedOption;
 
-        if (_description.label != newLabel) {
+        var updatedChallenge = newChallenge.Id + "-" + newDifficulty;
+
+        if (updatedChallenge != _lastUpdatedChallenge) {
             if (newChallenge.Id == NoChallenge.ChallengeId) {
                 // no challenge will only display its description as the goal and nothing else
-                _goal.label = newLabel; 
+                _goal.label = newChallenge.GetDisplayText(newDifficulty); 
                 _description.label = "";
             } else {
-                _description.label = newLabel;
+                _description.label = newChallenge.GetDisplayText(newDifficulty); 
                 
-                var challengeGoal = newChallenge.GetGoal();
                 var goal = ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Goal");
-                _goal.label = $"{goal}: {challengeGoal.GetDisplayName()}";
+                _goal.label = $"{goal}: {newChallenge.GetGoalDisplayName(newDifficulty)}";
 
-                if (challengeGoal.WasStarted()) {
-                    _goal.label += $"\n      ({challengeGoal.GetProgress()})";
+                if (newChallenge.WasStarted()) {
+                    _goal.label += $"\n      ({newChallenge.GetProgress(newDifficulty)})";
                 }
             }
 
             if (saveAllowed) {
-                api.SetActiveChallenge(newChallenge);
+                api.ActiveChallenge = newChallenge;
+                api.ActiveDifficulty = newDifficulty;
             }
+            _lastUpdatedChallenge = updatedChallenge;
         }
     }
 }

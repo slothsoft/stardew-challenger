@@ -49,7 +49,7 @@ internal class MagicalObjectMachine : IMachine {
     
     private IMachine? GetDelegate()
     {
-        var magicalReplacement = ChallengerMod.Instance.GetApi()!.GetActiveChallenge().GetMagicalReplacement();
+        var magicalReplacement = ChallengerMod.Instance.GetApi()!.ActiveChallengeMagicalReplacement;
         if (magicalReplacement.ParentSheetIndex == _delegateParentSheetId) {
             // we have the delegate method cached; return it
             return _delegate;

@@ -61,7 +61,7 @@ public class ChallengerMod : Mod {
     /// </summary>
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e) {
         _api = new ChallengerApi(Helper);
-        Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was initialized.", LogLevel.Debug);
+        Monitor.Log($"Challenge \"{_api.ActiveChallenge.DisplayName}\" was initialized.", LogLevel.Debug);
     }
     
     /// <summary>
@@ -69,7 +69,7 @@ public class ChallengerMod : Mod {
     /// <see cref="OnSaveLoaded"/>
     /// </summary>
     private void OnReturnToTitle(object? sender, ReturnedToTitleEventArgs e) {
-        Monitor.Log($"Challenge \"{_api?.GetActiveChallenge().GetDisplayName()}\" was cleaned up.", LogLevel.Debug);
+        Monitor.Log($"Challenge \"{_api?.ActiveChallenge.DisplayName}\" was cleaned up.", LogLevel.Debug);
         _api?.Dispose();
         _api = null;
     }

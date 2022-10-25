@@ -170,7 +170,7 @@ public static class MagicalObject {
 
         MagicalObjects.Add(__instance);
 
-        var magicalReplacement = ChallengerMod.Instance.GetApi()!.GetActiveChallenge().GetMagicalReplacement();
+        var magicalReplacement = ChallengerMod.Instance.GetApi()!.ActiveChallengeMagicalReplacement;
         __instance.ParentSheetIndex = magicalReplacement.ParentSheetIndex;
         __instance.Name = magicalReplacement.Name;
     }

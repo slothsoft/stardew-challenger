@@ -9,12 +9,14 @@ public class NoChallenge : BaseChallenge {
 
     public NoChallenge(IModHelper modHelper) : base(modHelper, ChallengeId) {
     }
+    
+    public override Difficulty[] SupportedDifficulties => new [] {Difficulty.Medium};
 
-    public override string GetDisplayText() {
+    public override string GetDisplayText(Difficulty difficulty) {
         return ModHelper.Translation.Get("NoChallenge.DisplayText");
     }
 
-    protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
+    protected override IRestriction[] CreateRestrictions(IModHelper modHelper, Difficulty difficulty) {
         return Array.Empty<IRestriction>();
     }
     

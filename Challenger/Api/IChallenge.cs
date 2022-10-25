@@ -9,19 +9,29 @@ public interface IChallenge {
     /// <summary>
     /// Returns the display name of this challenge.
     /// </summary>
-    /// <returns></returns>
-    string GetDisplayName();
+    string DisplayName { get; }
+    
+    /// <summary>
+    /// Returns the difficulties this challenge supports.
+    /// </summary>
+    Difficulty[] SupportedDifficulties { get; }
+    
+    /// <summary>
+    /// Returns the goal that should be reached.
+    /// </summary>
+    /// <returns>the goal.</returns>
+    string GetGoalDisplayName(Difficulty difficulty);
 
     /// <summary>
     /// Returns a string explaining what you can or cannot do in this challenge.
     /// </summary>
     /// <returns></returns>
-    string GetDisplayText();
+    string GetDisplayText(Difficulty difficulty);
 
     /// <summary>
     /// This applies all restriction this challenge has to the game and starts tracking the goal.
     /// </summary>
-    void Start();
+    void Start(Difficulty difficulty);
 
     /// <summary>
     /// This removes all restriction this challenge has from the game and stops tracking the goal.
@@ -32,17 +42,24 @@ public interface IChallenge {
     /// Returns the object you wish to replace the magical object with.
     /// </summary>
     /// <returns>replacement object.</returns>
-    MagicalReplacement GetMagicalReplacement();
-    
-    /// <summary>
-    /// Returns the goal that should be reached.
-    /// </summary>
-    /// <returns>the goal.</returns>
-    IGoal GetGoal();
+    MagicalReplacement GetMagicalReplacement(Difficulty difficulty);
 
     /// <summary>
-    /// Returns if the challenge is completed. 
+    /// Returns if the challenge's goal is completed. 
     /// </summary>
     /// <returns></returns>
-    bool IsCompleted();
+    bool IsCompleted(Difficulty difficulty);
+    
+    /// <summary>
+    /// Returns if some progress was made in completing this challenge's goal.
+    /// </summary>
+    /// <returns></returns>
+    /// 
+    bool WasStarted();
+    
+    /// <summary>
+    /// Returns a string describing the progress that was made in completing this challenge's goal.
+    /// </summary>
+    /// <returns></returns>
+    string GetProgress(Difficulty difficulty);
 }

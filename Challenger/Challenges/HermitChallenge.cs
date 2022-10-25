@@ -11,7 +11,7 @@ public class HermitChallenge : BaseChallenge {
     public HermitChallenge(IModHelper modHelper) : base(modHelper, "hermit") {
     }
 
-    protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
+    protected override IRestriction[] CreateRestrictions(IModHelper modHelper, Difficulty difficulty) {
         return new IRestriction[] {
             new PreventWarping(modHelper.Translation.Get("HermitChallenge.CanOnlyLeaveOnSunday"), new Dictionary<PreventWarping.WarpDirection, Func<bool>>{
                 { new PreventWarping.WarpDirection(LocationName.Farm, LocationName.Backwoods), IsNotSunday},

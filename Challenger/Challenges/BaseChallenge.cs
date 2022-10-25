@@ -6,83 +6,94 @@ using Slothsoft.Challenger.Models;
 namespace Slothsoft.Challenger.Challenges;
 
 public abstract class BaseChallenge : IChallenge {
+    internal static readonly Difficulty[] DefaultDifficulties = {Difficulty.Simple, Difficulty.Medium, Difficulty.Hard};
+
     public string Id { get; }
     protected IModHelper ModHelper { get; }
 
     private IRestriction[]? _restrictions;
-    private string? _magicalReplacementName;
-    private IGoal? _goal;
+    private IGoal _goal;
 
     protected BaseChallenge(IModHelper modHelper, string id) {
         ModHelper = modHelper;
         Id = id;
     }
 
-    public string GetDisplayName() {
-        return ModHelper.Translation.Get(GetType().Name);
-    }
+    public string DisplayName => ModHelper.Translation.Get(GetType().Name);
 
-    public virtual string GetDisplayText() {
+    public virtual Difficulty[] SupportedDifficulties => DefaultDifficulties;
+
+    public virtual string GetDisplayText(Difficulty difficulty) {
         var result = "";
-        foreach (var restriction in GetOrCreateRestrictions()) {
+        foreach (var restriction in CreateRestrictions(ModHelper, difficulty)) {
             result += restriction.GetDisplayText();
         }
 
-        var magicalReplacementName = FetchMagicalReplacementName();
-        if (magicalReplacementName.Length > 0) { // if empty it's the default or completely broken
+        var magicalReplacementName = FetchMagicalReplacementName(difficulty);
+        if (magicalReplacementName.Length > 0) {
+            // if empty it's the default or completely broken
             result += CommonHelpers.ToListString(ModHelper.Translation.Get("BaseChallenge.MagicalObject",
-                new { item = magicalReplacementName }).ToString());
+                new {item = magicalReplacementName}).ToString());
         }
         return result;
     }
 
-    private string FetchMagicalReplacementName() {
-        if (_magicalReplacementName == null) {
-            var magicalReplacement = GetMagicalReplacement();
-            if (magicalReplacement != MagicalReplacement.Default) {
-                Game1.bigCraftablesInformation.TryGetValue(magicalReplacement.ParentSheetIndex, out var info);
-                if (info != null) {
-                    var split = info.Split('/');
-                    if (split.Length > 8) {
-                        _magicalReplacementName = split[8];
-                    } else {
-                        ChallengerMod.Instance.Monitor.Log($"BaseChallenge found info string of {magicalReplacement.ParentSheetIndex} with missing name: {info}", LogLevel.Error);
-                    }
-                } else {
-                    ChallengerMod.Instance.Monitor.Log($"BaseChallenge could not find info string of {magicalReplacement.ParentSheetIndex}", LogLevel.Error);
+    private string FetchMagicalReplacementName(Difficulty difficulty) {
+        var magicalReplacement = GetMagicalReplacement(difficulty);
+        if (magicalReplacement != MagicalReplacement.Default) {
+            Game1.bigCraftablesInformation.TryGetValue(magicalReplacement.ParentSheetIndex, out var info);
+            if (info != null) {
+                var split = info.Split('/');
+                if (split.Length > 8) {
+                    return split[8];
                 }
+
+                ChallengerMod.Instance.Monitor.Log(
+                    $"BaseChallenge found info string of {magicalReplacement.ParentSheetIndex} with missing name: {info}",
+                    LogLevel.Error);
+            } else {
+                ChallengerMod.Instance.Monitor.Log(
+                    $"BaseChallenge could not find info string of {magicalReplacement.ParentSheetIndex}",
+                    LogLevel.Error);
             }
-            _magicalReplacementName ??= "";
         }
-        return _magicalReplacementName;
+        return "";
     }
 
-    public void Start() {
-        foreach (var restriction in GetOrCreateRestrictions()) {
+    public void Start(Difficulty difficulty) {
+        foreach (var restriction in GetOrCreateRestrictions(difficulty)) {
             restriction.Apply();
         }
+
         GetGoal().Start();
     }
 
-    private IEnumerable<IRestriction> GetOrCreateRestrictions() {
-        _restrictions ??= CreateRestrictions(ModHelper);
+    private IEnumerable<IRestriction> GetOrCreateRestrictions(Difficulty difficulty) {
+        _restrictions ??= CreateRestrictions(ModHelper, difficulty);
         return _restrictions;
     }
 
-    protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper);
+    protected abstract IRestriction[] CreateRestrictions(IModHelper modHelper, Difficulty difficulty);
 
     public void Stop() {
-        foreach (var restriction in GetOrCreateRestrictions()) {
-            restriction.Remove();
+        if (_restrictions != null) {
+            foreach (var restriction in _restrictions) {
+                restriction.Remove();
+            }
+
+            _restrictions = null;
         }
-        GetGoal().Stop();
     }
 
-    public virtual MagicalReplacement GetMagicalReplacement() {
+    public virtual MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
         return MagicalReplacement.Default;
     }
 
-    public IGoal GetGoal() {
+    public string GetGoalDisplayName(Difficulty difficulty) {
+        return GetGoal().GetDisplayName(difficulty);
+    }
+
+    protected internal IGoal GetGoal() {
         _goal ??= CreateGoal(ModHelper);
         return _goal;
     }
@@ -91,7 +102,15 @@ public abstract class BaseChallenge : IChallenge {
         return new PerfectionGoal(ModHelper);
     }
 
-    public bool IsCompleted() {
-        return GetGoal().IsCompleted();
+    public bool IsCompleted(Difficulty difficulty) {
+        return GetGoal().IsCompleted(difficulty);
+    }
+
+    public string GetProgress(Difficulty difficulty) {
+        return GetGoal().GetProgress(difficulty);
+    }
+
+    public bool WasStarted() {
+        return GetGoal().WasStarted();
     }
 }

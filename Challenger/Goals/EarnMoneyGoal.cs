@@ -1,29 +1,30 @@
 using System;
+using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Events;
 
 namespace Slothsoft.Challenger.Goals;
 
 public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
     
-    private readonly int _targetMoney;
+    private readonly Func<Difficulty, int> _targetMoney;
     private readonly Func<Item, bool> _isCountingAllowed;
     private readonly string _displayNameKey;
 
-    public EarnMoneyGoal(IModHelper modHelper, int targetMoney) : base(modHelper, "earn-money") {
+    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney) : base(modHelper, "earn-money") {
         _targetMoney = targetMoney;
         _isCountingAllowed = _ => true;
         _displayNameKey = GetType().Name;
     }
     
-    public EarnMoneyGoal(IModHelper modHelper, int targetMoney, string suffix, Func<Item, bool> isCountingAllowed) : base(modHelper, $"earn-money-{suffix}") {
+    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney, string suffix, Func<Item, bool> isCountingAllowed) : base(modHelper, $"earn-money-{suffix}") {
         _targetMoney = targetMoney;
         _isCountingAllowed = isCountingAllowed;
         _displayNameKey = GetType().Name + "." + suffix;
     }
 
-    public override string GetDisplayName() {
+    public override string GetDisplayName(Difficulty difficulty) {
         return ModHelper.Translation.Get(_displayNameKey, new {
-            Value = StringifyCurrency(_targetMoney),
+            Value = StringifyCurrency(_targetMoney(difficulty)),
         });
     }
     
@@ -50,12 +51,12 @@ public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
         return Progress.MoneyEarned > 0;
     }
 
-    public override string GetProgress() {
-        return $"{StringifyCurrency(Progress.MoneyEarned)} / {StringifyCurrency(_targetMoney)}";
+    public override string GetProgress(Difficulty difficulty) {
+        return $"{StringifyCurrency(Progress.MoneyEarned)} / {StringifyCurrency(_targetMoney(difficulty))}";
     }
 
-    public override bool IsCompleted() {
-        return Progress.MoneyEarned >= _targetMoney;
+    public override bool IsCompleted(Difficulty difficulty) {
+        return Progress.MoneyEarned >= _targetMoney(difficulty);
     }
 }
 

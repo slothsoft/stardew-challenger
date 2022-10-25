@@ -14,13 +14,21 @@ public interface IChallengerApi : IDisposable {
     /// Returns the currently active challenge. Note that this value is never null,
     /// but instance of the class "NoChallenge" at worst.
     /// </summary>
-    /// <returns></returns>
-    IChallenge GetActiveChallenge();
+    IChallenge ActiveChallenge { get; set; }
+    
+    /// <summary>
+    /// Returns the currently active difficulty.
+    /// </summary>
+    Difficulty ActiveDifficulty { get; set; }
 
     /// <summary>
-    /// Sets the currently active challenge. Note that this value cannot be null;
-    /// use instance of the class "NoChallenge" if you want to set no challenge.
+    /// Returns the currently active Magical Object Replacement ("active" means <see cref="ActiveChallenge"/> and <see cref="ActiveDifficulty"/>).
     /// </summary>
-    /// <returns></returns>
-    void SetActiveChallenge(IChallenge activeChallenge);
+    MagicalReplacement ActiveChallengeMagicalReplacement => ActiveChallenge.GetMagicalReplacement(ActiveDifficulty);
+    /// <summary>
+    /// Returns the currently active Magical Object Replacement ("active" means <see cref="ActiveChallenge"/> and <see cref="ActiveDifficulty"/>).
+    /// </summary>
+    bool IsActiveChallengeCompleted => ActiveChallenge.IsCompleted(ActiveDifficulty);
+
+
 }

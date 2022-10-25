@@ -10,7 +10,7 @@ public class VineyardChallenge : BaseChallenge {
     public VineyardChallenge(IModHelper modHelper) : base(modHelper, "vineyard") {
     }
 
-    protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
+    protected override IRestriction[] CreateRestrictions(IModHelper modHelper, Difficulty difficulty) {
         return new[] {
             CreateRenameRiceJuice(modHelper),
             CreateIncludeFruitOnly(modHelper),
@@ -49,12 +49,12 @@ public class VineyardChallenge : BaseChallenge {
         return new ExcludeGlobalCarpenter(modHelper.Translation.Get("VineyardChallenge.ExcludeAnimalBuildings"),  BluePrintNames.Barn, BluePrintNames.Silo, BluePrintNames.Coop);
     }
     
-    public override MagicalReplacement GetMagicalReplacement() {
-        return MagicalReplacement.Keg;
+    public override MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
+        return difficulty == Difficulty.Hard ? MagicalReplacement.Default : MagicalReplacement.Keg;
     }
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
-        return new EarnMoneyGoal(ModHelper, 5_000_000, "Wine", salable => {
+        return new EarnMoneyGoal(ModHelper, BreweryChallenge.CalculateTargetMoney, "Wine", salable => {
             if (salable.ParentSheetIndex == ObjectIds.Wine)
                 return true;
             // this is rice "wine"

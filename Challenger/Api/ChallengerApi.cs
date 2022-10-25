@@ -7,9 +7,12 @@ using Slothsoft.Challenger.Challenges;
 namespace Slothsoft.Challenger.Api;
 
 internal class ChallengerApi : IChallengerApi {
+    
     private readonly List<IChallenge> _challenges;
     private readonly IModHelper _modHelper;
+    
     private IChallenge _activeChallenge;
+    private Difficulty _activeDifficulty;
 
     public ChallengerApi(IModHelper modHelper) {
         _modHelper = modHelper;
@@ -21,7 +24,7 @@ internal class ChallengerApi : IChallengerApi {
             new VineyardChallenge(modHelper),
         };
         _challenges.Sort((a, b) =>
-            string.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));
+            string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
         _challenges.Insert(0, new NoChallenge(modHelper));
 
         _activeChallenge = LoadActiveChallenge();
@@ -30,6 +33,7 @@ internal class ChallengerApi : IChallengerApi {
     private IChallenge LoadActiveChallenge() {
         var dto = _modHelper.Data.ReadSaveData<ChallengerSaveDto>(ChallengerSaveDto.Key);
         var challengeId = dto?.ChallengeId ?? NoChallenge.ChallengeId;
+        var difficulty = dto?.Difficulty ?? Difficulty.Medium;
         
         var activeChallenge = _challenges.SingleOrDefault(c => c.Id == challengeId);
         if (activeChallenge == null) {
@@ -37,7 +41,7 @@ internal class ChallengerApi : IChallengerApi {
             ChallengerMod.Instance.Monitor.Log($"Challenge \"{challengeId}\" was not found.", LogLevel.Debug);
             activeChallenge = new NoChallenge(_modHelper);
         }
-        activeChallenge.Start();
+        activeChallenge.Start(difficulty);
         return activeChallenge;
     }
 
@@ -49,19 +53,36 @@ internal class ChallengerApi : IChallengerApi {
         return _activeChallenge;
     }
 
-    public void SetActiveChallenge(IChallenge activeChallenge) {
-        if (activeChallenge != _activeChallenge) {
-            _activeChallenge.Stop();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was stopped.",
-                LogLevel.Debug);
-
-            _activeChallenge = activeChallenge;
-            _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id));
-
-            _activeChallenge.Start();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was started.",
-                LogLevel.Debug);
+    public Difficulty ActiveDifficulty {
+        get => _activeDifficulty;
+        set {
+            if (value != _activeDifficulty) {
+                UpdateChallengeAndDifficulty(_activeChallenge, value);
+            }
         }
+    }
+    
+    public IChallenge ActiveChallenge {
+        get => _activeChallenge;
+        set {
+            if (value != _activeChallenge) {
+                UpdateChallengeAndDifficulty(value, _activeDifficulty);
+            }
+        }
+    }
+
+    private void UpdateChallengeAndDifficulty(IChallenge newActiveChallenge, Difficulty newDifficulty) {
+        _activeChallenge.Stop();
+        ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.DisplayName}\" was stopped.",
+            LogLevel.Debug);
+
+        _activeChallenge = newActiveChallenge;
+        _activeDifficulty = newDifficulty;
+        _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id, _activeDifficulty));
+
+        _activeChallenge.Start(newDifficulty);
+        ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.DisplayName} ({newDifficulty})\" was started.",
+            LogLevel.Debug);
     }
 
     public void Dispose() {
@@ -69,6 +90,6 @@ internal class ChallengerApi : IChallengerApi {
     }
 }
 
-internal record ChallengerSaveDto(string ChallengeId) {
+internal record ChallengerSaveDto(string ChallengeId, Difficulty Difficulty) {
     public const string Key = "ChallengerSaveDto";
 }
