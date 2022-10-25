@@ -65,7 +65,7 @@ public class BreweryChallenge : BaseChallenge {
 
     internal static int CalculateTargetMoney(Difficulty difficulty) {
         switch (difficulty) {
-            case Difficulty.Simple:
+            case Difficulty.Easy:
                 return 2_500_000;
             case Difficulty.Medium:
                 return 5_000_000;

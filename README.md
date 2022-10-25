@@ -91,37 +91,43 @@ This mod brings the following challenges:
 
 #### Brewery
 
-**Goal:** To earn 5.000.000 gold by selling beer
+**Goal:** To earn gold by selling beer [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
 
 - rice juice is renamed to rice beer
 - only beers (including the new rice beer) count towards the goal
 - you can only buy seeds for plants that make beer (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
+- [easy and medium] you get a keg to start you off
 
 
 #### Hermit
 
-**Goal:** To finish the community center
+**Goal:** 
+  - [easy and medium] To finish the community center
+  - [hard] To reach perfection
 
 - You cannot leave the farm, except on Sundays
+- [easy] you get a seed maker
 
 
 #### No Capitalist
 
 **Goal:** To finish the community center
 
-- You cannot buy from Pierre, Clint or the Joja Mart (upgrading tools and opening geodes at Clint's is still possible though)
-- You get a seed maker to tide you over your imminent lack of seeds
+- You cannot buy from Pierre or the Joja Mart
+- [hard] You cannot buy from Clint (upgrading tools and opening geodes at Clint's is still possible though)
+- [easy] You get a seed maker to tide you over your imminent lack of seeds
 
 
 #### Vineyard
 
-**Goal:** To earn 5.000.000 gold by selling wine
+**Goal:** To earn by selling wine [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
 
 - rice juice is renamed to rice wine
 - only wine and mead (and the new rice wine) count towards the goal
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
+- (not for hard) you get a keg to start you off
 
 
 ### Configuration
@@ -152,10 +158,10 @@ entries is:
 | Version | Issues                                                                          | Changes                                                                                                                                 |
 |---------|---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)           |                                                                                                                                         |
-| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | Difficulty                                                                                                                              |
-| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release Blockers II                                                                                                                     |
-| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release Blockers                                                                                                                        |
-| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd Alpha Test Bugfixes                                                                                                                 |
+| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | Difficulty and re-balancing of challenges                                                                                               |
+| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release blockers II                                                                                                                     |
+| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release blockers                                                                                                                        |
+| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd alpha test bugfixes                                                                                                                 |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1)  | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable |
 | 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1)  | Fix of the most glaring bugs                                                                                                            |
 | 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1)  | More challenges                                                                                                                         |

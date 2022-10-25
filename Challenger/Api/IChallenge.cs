@@ -12,11 +12,6 @@ public interface IChallenge {
     string DisplayName { get; }
     
     /// <summary>
-    /// Returns the difficulties this challenge supports.
-    /// </summary>
-    Difficulty[] SupportedDifficulties { get; }
-    
-    /// <summary>
     /// Returns the goal that should be reached.
     /// </summary>
     /// <returns>the goal.</returns>

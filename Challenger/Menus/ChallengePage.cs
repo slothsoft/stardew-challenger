@@ -17,21 +17,17 @@ internal class ChallengePage : OptionsPage {
     
     public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
         options.Clear();
+
+        var modHelper = ChallengerMod.Instance.Helper;
+        var title = new OptionsElement(modHelper.Translation.Get("ChallengePage.Title") + ":");
+        InitObjectsElement(title);
         
         _difficultySelection = new OptionsDropDown("", -1);
-        _difficultySelection.bounds = new Rectangle(
-            width - _difficultySelection.bounds.Width - 2 * _difficultySelection.bounds.X,
-            _difficultySelection.bounds.Y, 
-            _difficultySelection.bounds.Width,
-            _difficultySelection.bounds.Height);
-        options.Add(_difficultySelection);
+        InitObjectsElement(_difficultySelection);
+        options.Add(new MultiOptionsElement(title.bounds, title, _difficultySelection));
 
         _challengeSelection = new OptionsDropDown("", -1);
-        _challengeSelection.bounds = new Rectangle(
-            _challengeSelection.bounds.X,
-            _challengeSelection.bounds.Y,
-            width - 3 * _challengeSelection.bounds.X,
-            _challengeSelection.bounds.Height);
+        InitObjectsElement(_challengeSelection);
         options.Add(_challengeSelection);
         
         _goal = CreateOptionsElement("\n");
@@ -39,6 +35,8 @@ internal class ChallengePage : OptionsPage {
         
         _description = CreateOptionsElement();
         options.Add(_description);
+        
+        options.Add(CreateOptionsElement());
         
         var api = ChallengerMod.Instance.GetApi()!;
         var activeChallenge = api.ActiveChallenge;
@@ -56,27 +54,28 @@ internal class ChallengePage : OptionsPage {
             _challengeSelection.dropDownOptions.Add(challenge.Id);
             _challengeSelection.dropDownDisplayOptions.Add(challenge.DisplayName);
         }
-        
-        var title = new OptionsElement(ChallengerMod.Instance.Helper.Translation.Get("ChallengePage.Title") + ":");
-        title.bounds = new Rectangle(
-            title.bounds.X,
-            _difficultySelection.bounds.Y, 
-            title.bounds.Width,
-            title.bounds.Height);
-        title.labelOffset.Y -= 100;
-        options.Add(title);
 
         _challengeSelection.selectedOption = selectedOption;
         _challengeSelection.RecalculateBounds();
         
         foreach (var difficulty in (Difficulty[]) Enum.GetValues(typeof(Difficulty))) {
             _difficultySelection.dropDownOptions.Add(difficulty.ToString());
-            _difficultySelection.dropDownDisplayOptions.Add(difficulty.ToString());
+            _difficultySelection.dropDownDisplayOptions.Add(modHelper.Translation.Get("Difficulty." + difficulty));
         }
         _difficultySelection.selectedOption = (int) activeDifficulty;
         _difficultySelection.RecalculateBounds();
         
         RefreshDescriptionLabel(false);
+    }
+
+    private TElement InitObjectsElement<TElement>(TElement optionsElement) 
+        where TElement: OptionsElement {
+        optionsElement.bounds = new Rectangle(
+            optionsElement.bounds.X,
+            optionsElement.bounds.Y,
+            width - 3 * optionsElement.bounds.X,
+            optionsElement.bounds.Height);
+        return optionsElement;
     }
 
     private static OptionsElement CreateOptionsElement(string label = "") {

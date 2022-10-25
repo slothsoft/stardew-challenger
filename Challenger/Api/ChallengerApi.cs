@@ -23,8 +23,7 @@ internal class ChallengerApi : IChallengerApi {
             new NoCapitalistChallenge(modHelper),
             new VineyardChallenge(modHelper),
         };
-        _challenges.Sort((a, b) =>
-            string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
+        _challenges.Sort((a, b) => string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
         _challenges.Insert(0, new NoChallenge(modHelper));
 
         _activeChallenge = LoadActiveChallenge();
@@ -33,7 +32,7 @@ internal class ChallengerApi : IChallengerApi {
     private IChallenge LoadActiveChallenge() {
         var dto = _modHelper.Data.ReadSaveData<ChallengerSaveDto>(ChallengerSaveDto.Key);
         var challengeId = dto?.ChallengeId ?? NoChallenge.ChallengeId;
-        var difficulty = dto?.Difficulty ?? Difficulty.Medium;
+        _activeDifficulty = dto?.Difficulty ?? Difficulty.Medium;
         
         var activeChallenge = _challenges.SingleOrDefault(c => c.Id == challengeId);
         if (activeChallenge == null) {
@@ -41,7 +40,7 @@ internal class ChallengerApi : IChallengerApi {
             ChallengerMod.Instance.Monitor.Log($"Challenge \"{challengeId}\" was not found.", LogLevel.Debug);
             activeChallenge = new NoChallenge(_modHelper);
         }
-        activeChallenge.Start(difficulty);
+        activeChallenge.Start(_activeDifficulty);
         return activeChallenge;
     }
 

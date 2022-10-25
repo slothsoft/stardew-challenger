@@ -16,12 +16,12 @@ public class NoCapitalistChallenge : BaseChallenge {
             };
         }
         return new IRestriction[] {
-            new CannotBuyFromShop(modHelper, ShopIds.Pierre, ShopIds.Clint),
+            new CannotBuyFromShop(modHelper, ShopIds.Pierre, ShopIds.JoJo),
         };
     }
 
     public override MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
-        return MagicalReplacement.SeedMaker;
+        return difficulty == Difficulty.Easy ? MagicalReplacement.SeedMaker : MagicalReplacement.Default;
     }
 
     protected override IGoal CreateGoal(IModHelper modHelper) {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HarmonyLib;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Models;
 
 // ReSharper disable InconsistentNaming
 
@@ -43,7 +44,7 @@ public class PreventWarping : IRestriction {
     }
 
     public string GetDisplayText() {
-        return _displayName;
+        return CommonHelpers.ToListString(_displayName);
     }
 
     public void Apply() {

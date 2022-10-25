@@ -26,6 +26,10 @@ public class HermitChallenge : BaseChallenge {
     }
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
-        return new CommunityCenterGoal(modHelper);
+        return new CommunityCenterOrPerfectionGoal(modHelper);
+    }
+    
+    public override MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
+        return difficulty == Difficulty.Easy ? MagicalReplacement.SeedMaker : MagicalReplacement.Default;
     }
 }

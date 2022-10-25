@@ -61,7 +61,7 @@ public class ChallengerMod : Mod {
     /// </summary>
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e) {
         _api = new ChallengerApi(Helper);
-        Monitor.Log($"Challenge \"{_api.ActiveChallenge.DisplayName}\" was initialized.", LogLevel.Debug);
+        Monitor.Log($"Challenge \"{_api.ActiveChallenge.DisplayName} ({_api.ActiveDifficulty})\" was initialized.", LogLevel.Debug);
     }
     
     /// <summary>

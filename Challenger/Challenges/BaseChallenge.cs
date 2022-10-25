@@ -6,22 +6,17 @@ using Slothsoft.Challenger.Models;
 namespace Slothsoft.Challenger.Challenges;
 
 public abstract class BaseChallenge : IChallenge {
-    internal static readonly Difficulty[] DefaultDifficulties = {Difficulty.Simple, Difficulty.Medium, Difficulty.Hard};
-
-    public string Id { get; }
-    protected IModHelper ModHelper { get; }
 
     private IRestriction[]? _restrictions;
-    private IGoal _goal;
+    private IGoal? _goal;
 
     protected BaseChallenge(IModHelper modHelper, string id) {
         ModHelper = modHelper;
         Id = id;
     }
-
+    public string Id { get; }
+    protected IModHelper ModHelper { get; }
     public string DisplayName => ModHelper.Translation.Get(GetType().Name);
-
-    public virtual Difficulty[] SupportedDifficulties => DefaultDifficulties;
 
     public virtual string GetDisplayText(Difficulty difficulty) {
         var result = "";
