@@ -8,7 +8,7 @@ using StardewValley.Menus;
 
 namespace Slothsoft.Challenger.Menus;
 
-internal class ChallengePage : OptionsPage {
+internal class ChallengePage : BaseOptionsPage {
     private readonly OptionsDropDown _challengeSelection;
     private readonly OptionsDropDown _difficultySelection;
     private readonly OptionsElement _goal;
@@ -16,28 +16,26 @@ internal class ChallengePage : OptionsPage {
 
     private string? _lastUpdatedChallenge;
     
-    public ChallengePage(int x, int y, int width, int height) : base(x, y, width, height) {
-        options.Clear();
-
+    public ChallengePage(Rectangle bounds) : base(bounds) {
         var modHelper = ChallengerMod.Instance.Helper;
         var title = new OptionsElement(modHelper.Translation.Get("ChallengePage.Title") + ":");
         InitObjectsElement(title);
         
         _difficultySelection = new OptionsDropDown("", -1);
         InitObjectsElement(_difficultySelection);
-        options.Add(new MultiOptionsElement(title.bounds, title, _difficultySelection));
+        AddOption(new MultiOptionsElement(title.bounds, title, _difficultySelection));
 
         _challengeSelection = new OptionsDropDown("", -1);
         InitObjectsElement(_challengeSelection);
-        options.Add(_challengeSelection);
+        AddOption(_challengeSelection);
         
         _goal = CreateOptionsElement("\n");
-        options.Add(_goal);
+        AddOption(_goal);
         
         _description = CreateOptionsElement();
-        options.Add(_description);
+        AddOption(_description);
         
-        options.Add(CreateOptionsElement());
+        AddOption(CreateOptionsElement());
         
         var api = ChallengerMod.Instance.GetApi()!;
         var activeChallenge = api.ActiveChallenge;
