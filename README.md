@@ -106,9 +106,7 @@ This mod brings the following challenges:
 
 #### Hermit
 
-**Goal:** 
-  - [easy and medium] To finish the community center
-  - [hard] To reach perfection
+**Goal:** [easy and medium] To finish the community center / [hard] To reach perfection
 
 - You cannot leave the farm, except on Sundays
 - [easy] you get a seed maker
