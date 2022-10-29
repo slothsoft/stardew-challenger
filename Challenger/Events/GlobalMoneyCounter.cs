@@ -26,7 +26,15 @@ internal static class GlobalMoneyCounter {
                     nameof(ShopMenu.receiveLeftClick)
                 ),
                 prefix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivingLeftClick)),
-                postfix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivedLeftClick))
+                postfix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivedInput))
+            );
+            _harmony.Patch(
+                original: AccessTools.Method(
+                    typeof(ShopMenu),
+                    nameof(ShopMenu.receiveRightClick)
+                ),
+                prefix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivingRightClick)),
+                postfix: new HarmonyMethod(typeof(GlobalMoneyCounter), nameof(MenuReceivedInput))
             );
             _harmony.Patch(
                 original: AccessTools.Method(
@@ -50,7 +58,7 @@ internal static class GlobalMoneyCounter {
         return true;
     }
     
-    private static void MenuReceivedLeftClick() {
+    private static void MenuReceivedInput() {
         if (_soldItem != null) {
             if (_beforeMoney < Game1.player.Money) {
                 foreach (var sellEvent in SellEvents) {
@@ -60,6 +68,16 @@ internal static class GlobalMoneyCounter {
             _soldItem = null;
             _beforeMoney = null;
         }
+    }
+    
+    private static bool MenuReceivingRightClick(ShopMenu __instance, int x, int y, bool playSound = true) {
+        if (Game1.activeClickableMenu == null)
+            return true;
+        if (__instance.heldItem == null && !__instance.readOnly) {
+            _soldItem = __instance.inventory.rightClick(x, y, null, false);
+            _beforeMoney = Game1.player.Money;
+        }
+        return true;
     }
 
     private static bool NewDayAfterFade() {
