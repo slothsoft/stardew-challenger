@@ -115,19 +115,19 @@ This mod brings the following challenges:
 **Goal:** To finish the community center
 
 - You cannot buy from Pierre or the Joja Mart
-- [hard] You cannot buy from Clint (upgrading tools and opening geodes at Clint's is still possible though)
+- [hard] You cannot buy from Clint either (upgrading tools and opening geodes at Clint's is still possible though)
 - [easy] You get a seed maker to tide you over your imminent lack of seeds
 
 
 #### Vineyard
 
-**Goal:** To earn by selling wine [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
+**Goal:** To earn gold by selling wine [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
 
 - rice juice is renamed to rice wine
 - only wine and mead (and the new rice wine) count towards the goal
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
-- (not for hard) you get a keg to start you off
+- [easy and medium] you get a keg to start you off
 
 
 ### Configuration

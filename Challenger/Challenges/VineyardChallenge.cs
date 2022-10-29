@@ -54,7 +54,7 @@ public class VineyardChallenge : BaseChallenge {
     }
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
-        return new EarnMoneyGoal(ModHelper, BreweryChallenge.CalculateTargetMoney, "Wine", salable => {
+        return new EarnMoneyGoal(ModHelper, EarnMoneyChallenge.CalculateTargetMoney, "Wine", salable => {
             if (salable.ParentSheetIndex == ObjectIds.Wine)
                 return true;
             // this is rice "wine"
