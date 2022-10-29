@@ -8,7 +8,7 @@ public interface IChallengerApi : IDisposable {
     /// Returns all challenges that are registered in this mod.
     /// </summary>
     /// <returns></returns>
-    IEnumerable<IChallenge> GetAllChallenges();
+    IEnumerable<IChallenge> AllChallenges { get; }
 
     /// <summary>
     /// Returns the currently active challenge. Note that this value is never null,
@@ -20,6 +20,11 @@ public interface IChallengerApi : IDisposable {
     /// Returns the currently active difficulty.
     /// </summary>
     Difficulty ActiveDifficulty { get; set; }
+    
+    /// <summary>
+    /// Returns if the player is allowed to change <see cref="ActiveChallenge"/> or <see cref="ActiveDifficulty"/>.
+    /// </summary>
+    bool CanEditChallenges { get; }
 
     /// <summary>
     /// Returns the currently active Magical Object Replacement ("active" means <see cref="ActiveChallenge"/> and <see cref="ActiveDifficulty"/>).

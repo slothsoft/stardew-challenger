@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Challenges;
+using Slothsoft.Challenger.Objects;
 using StardewValley.Menus;
 
 namespace Slothsoft.Challenger.Menus;
@@ -41,7 +42,10 @@ internal class ChallengePage : OptionsPage {
         var api = ChallengerMod.Instance.GetApi()!;
         var activeChallenge = api.ActiveChallenge;
         var activeDifficulty = api.ActiveDifficulty;
-        var allChallenges = api.GetAllChallenges().ToArray();
+        var allChallenges = api.AllChallenges.ToArray();
+
+        _difficultySelection.greyedOut = !api.CanEditChallenges;
+        _challengeSelection.greyedOut = !api.CanEditChallenges;
 
         var selectedOption = 0;
 
@@ -66,6 +70,7 @@ internal class ChallengePage : OptionsPage {
         _difficultySelection.RecalculateBounds();
         
         RefreshDescriptionLabel(false);
+        Game1.netWorldState.Value.GetChallengerState().ChallengeSelection.fieldChangeEvent += (_, _, _) => RefreshDescriptionLabel(false);
     }
 
     private TElement InitObjectsElement<TElement>(TElement optionsElement) 
@@ -95,7 +100,7 @@ internal class ChallengePage : OptionsPage {
 
     private void RefreshDescriptionLabel(bool saveAllowed) {
         var api = ChallengerMod.Instance.GetApi()!;
-        var allChallenges = api.GetAllChallenges().ToArray();
+        var allChallenges = api.AllChallenges.ToArray();
         var newChallenge = allChallenges[_challengeSelection.selectedOption];
         var newDifficulty = (Difficulty) _difficultySelection.selectedOption;
 

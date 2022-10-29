@@ -31,6 +31,7 @@ public static class MagicalObject {
 
         MagicalDebris.PatchObject(harmony);
         MagicalGame1.PatchObject(harmony);
+        MagicalWorldState.PatchObject(harmony);
 
         harmony.Patch(
             original: AccessTools.Method(

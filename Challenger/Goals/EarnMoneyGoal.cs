@@ -1,6 +1,8 @@
 using System;
 using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Events;
+using Slothsoft.Challenger.Models;
+using Slothsoft.Challenger.Objects;
 
 namespace Slothsoft.Challenger.Goals;
 
@@ -10,13 +12,15 @@ public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
     private readonly Func<Item, bool> _isCountingAllowed;
     private readonly string _displayNameKey;
 
-    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney) : base(modHelper, "earn-money") {
+    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney) 
+        : base(modHelper, "earn-money", Game1.netWorldState.Value.GetChallengerState().EarnMoneyProgresses) {
         _targetMoney = targetMoney;
         _isCountingAllowed = _ => true;
         _displayNameKey = GetType().Name;
     }
     
-    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney, string suffix, Func<Item, bool> isCountingAllowed) : base(modHelper, $"earn-money-{suffix}") {
+    public EarnMoneyGoal(IModHelper modHelper, Func<Difficulty, int> targetMoney, string suffix, Func<Item, bool> isCountingAllowed) 
+        : base(modHelper, $"earn-money-{suffix}", Game1.netWorldState.Value.GetChallengerState().EarnMoneyProgresses) {
         _targetMoney = targetMoney;
         _isCountingAllowed = isCountingAllowed;
         _displayNameKey = GetType().Name + "." + suffix;
@@ -33,6 +37,7 @@ public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
     }
     
     public override void Start() {
+        base.Start();
         GlobalMoneyCounter.AddSellEvent(OnItemSold);
     }
     
@@ -44,6 +49,7 @@ public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
     }
 
     public override void Stop() {
+        base.Stop();
         GlobalMoneyCounter.RemoveSellEvent(OnItemSold);
     }
 
@@ -58,9 +64,4 @@ public class EarnMoneyGoal : BaseGoal<EarnMoneyProgress> {
     public override bool IsCompleted(Difficulty difficulty) {
         return Progress.MoneyEarned >= _targetMoney(difficulty);
     }
-}
-
-public record EarnMoneyProgress {
-
-    public int MoneyEarned { get; set; }
 }
