@@ -51,7 +51,7 @@ public class BreweryChallenge : BaseChallenge {
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
         var beerIndexes = new[] { ObjectIds.Beer, ObjectIds.PaleAle };
-        return new EarnMoneyGoal(ModHelper, CalculateTargetMoney, "Beer", salable => {
+        return new EarnMoneyGoal(ModHelper, EarnMoneyChallenge.CalculateTargetMoney, "Beer", salable => {
             if (beerIndexes.Contains(salable.ParentSheetIndex))
                 return true;
             // this is rice "beer"
@@ -61,16 +61,5 @@ public class BreweryChallenge : BaseChallenge {
             }
             return false;
         });
-    }
-
-    internal static int CalculateTargetMoney(Difficulty difficulty) {
-        switch (difficulty) {
-            case Difficulty.Easy:
-                return 2_500_000;
-            case Difficulty.Medium:
-                return 5_000_000;
-            default:
-                return 10_000_000;
-        }
     }
 }

@@ -13,11 +13,14 @@
 [*] add difficulty selection
 [*] re-balancing of challenges using this difficulty feature
 [*] basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it)
+[*] various bugfixes
+[*] more information can be found in the [url=https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1]GitHub issue list[/url]
 [/list]
 
 [size=5]0.4.3[/size]
 
 [list=1]
 [*] first Nexus release which functions more like a play-tested proof of concept
+[*] more information can be found in the [url=https://github.com/slothsoft/stardew-challenger/issues?q=is%3Aissue+is%3Aclosed]GitHub issue list[/url]
 [/list]
 

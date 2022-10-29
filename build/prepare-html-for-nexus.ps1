@@ -38,7 +38,8 @@ $html = $html -replace '<([/])*h3','<$1h2'
 $html = $html -replace '<([/])*h4','<$1h3'
 
 # Make some changes to get better BBCode
-$html = $html -replace "<h2","`n`r<h2" # Shouldn't it be only `n ?
+$html = $html -replace "<h2","`n`n<h2"
+$html = $html -replace "<h3","`n<h3"
 $html = $html -replace "<p><p>",'<p>'
 
 $html| Out-File -encoding utf8 $htmlFileSnip

@@ -25,6 +25,9 @@ internal class ChallengerApi : IChallengerApi {
             new NoCapitalistChallenge(modHelper),
             new VineyardChallenge(modHelper),
         };
+        if (ChallengerMod.Instance.Config.DisplayEarnMoneyChallenge) {
+            _challenges.Add(new EarnMoneyChallenge(modHelper));
+        }
         _challenges.Sort((a, b) => string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
         _challenges.Insert(0, new NoChallenge(modHelper));
 

@@ -25,6 +25,7 @@ which restricts some parts of the game and lets you focus on another part.
         - [Hermit](#hermit)
         - [No Capitalist](#no-capitalist)
         - [Vineyard](#vineyard)
+    - [FAQ](#faq)
     - [Configuration](#configuration)
     - [Versions](#versions)
 - **[Translator Guide](#translator-guide)**
@@ -76,6 +77,9 @@ This will display all the restrictions you have to face - but you might get a li
 make the challenge possible. The **Magical Challenge Object**™ will turn into this "something extra" once you
 start the challenge and can be used as any other object of the kind it turns into.
 
+After the challenge was finished, nothing really happens. The restrictions stay in place, but at least you get a congratulatory mail.
+[The plan](https://github.com/slothsoft/stardew-challenger/issues/76) is to get a reward in future versions.
+
 This mod brings the following challenges:
 
 - [No Challenge](#no-challenge)
@@ -115,19 +119,46 @@ This mod brings the following challenges:
 **Goal:** To finish the community center
 
 - You cannot buy from Pierre or the Joja Mart
-- [hard] You cannot buy from Clint (upgrading tools and opening geodes at Clint's is still possible though)
+- [hard] You cannot buy from Clint either (upgrading tools and opening geodes at Clint's is still possible though)
 - [easy] You get a seed maker to tide you over your imminent lack of seeds
 
 
 #### Vineyard
 
-**Goal:** To earn by selling wine [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
+**Goal:** To earn gold by selling wine [2.500.000 for easy, 5.000.000 for medium or 10.000.000 for hard]
 
 - rice juice is renamed to rice wine
 - only wine and mead (and the new rice wine) count towards the goal
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
-- (not for hard) you get a keg to start you off
+- [easy and medium] you get a keg to start you off
+
+
+### FAQ
+
+#### Can I disable / pause the challenges?
+
+Yes, absolutely. You can just select "no challenge" in the challenge menu at any time to 
+pause the challenge. 
+So if not buying from Clint is no fun for you, you can just pause the challenge, buy, 
+and then select the challenge again. Your progress might not get counted if the challenge 
+is paused, but you're not losing the current progress either.
+
+#### The bunny turned into a Seedmaker and now I can't open the menu?
+
+You don't need the bunny, you can also press [K] to open the same menu. Then when you select 
+another challenge, the seedmaker will change into another object (or back to the bunny again).
+
+#### Does the mod change the inventory / farm?
+
+Your inventory and the farm will not be changed, only the **Magical Challenge Object**™
+might change. This mod is only applied to current interactions. 
+
+#### Can you start challenges mid-playthrough?
+
+You can start the challenges at any time, and you can even pause them (by selecting
+"no challenge" in the menu) whenever you feel like it.
+
 
 
 ### Configuration
@@ -155,18 +186,18 @@ entries is:
 
 ### Versions
 
-| Version | Issues                                                                          | Changes                                                                                                                                                                                                            |
-|---------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)           |                                                                                                                                                                                                                    |
-| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | - add difficulty selection<br>- re-balancing of challenges using this difficulty feature<br>- basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it) |
-| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release blockers II                                                                                                                                                                                                |
-| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release blockers                                                                                                                                                                                                   |
-| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd alpha test bugfixes                                                                                                                                                                                            |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1)  | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable                                                                            |
-| 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1)  | Fix of the most glaring bugs                                                                                                                                                                                       |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1)  | More challenges                                                                                                                                                                                                    |
-| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1)  | Alpha test                                                                                                                                                                                                         |
-| 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1)  | Proof of concept                                                                                                                                                                                                   |
+| Version | Issues                                                                          | Changes                                                                                                                                                                                                                                  |
+|---------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)           |                                                                                                                                                                                                                                          |
+| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | - add difficulty selection<br>- re-balancing of challenges using this difficulty feature<br>- basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it)<br>- various bugfixes |
+| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release blockers II                                                                                                                                                                                                                      |
+| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release blockers                                                                                                                                                                                                                         |
+| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd alpha test bugfixes                                                                                                                                                                                                                  |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1)  | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable                                                                                                  |
+| 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1)  | Fix of the most glaring bugs                                                                                                                                                                                                             |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1)  | More challenges                                                                                                                                                                                                                          |
+| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1)  | Alpha test                                                                                                                                                                                                                               |
+| 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1)  | Proof of concept                                                                                                                                                                                                                         |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-challenger/issues).)_
 

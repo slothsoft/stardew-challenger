@@ -51,7 +51,8 @@ Rem Now zip the entire folder
 Rem Create Readme Files for Nexus
 call build/create-plaintext.bat %cd%\README.md %cd%\bin\Readme.txt
 call build/create-bbcode.bat %cd%\README.md %cd%\bin\bbcode.txt
-xcopy /y %cd%\bin\BBCode.txt %cd%\readme\
+xcopy /y %cd%\bin\bbcode.txt %cd%\readme\
+xcopy /y %cd%\readme\bbcode-version.txt %cd%\bin\
 
 
 
