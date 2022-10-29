@@ -25,6 +25,7 @@ which restricts some parts of the game and lets you focus on another part.
         - [Hermit](#hermit)
         - [No Capitalist](#no-capitalist)
         - [Vineyard](#vineyard)
+    - [FAQ](#faq)
     - [Configuration](#configuration)
     - [Versions](#versions)
 - **[Translator Guide](#translator-guide)**
@@ -75,6 +76,9 @@ key [K] (you can customize the key in either the mod's config file or the [Gener
 This will display all the restrictions you have to face - but you might get a little something extra to
 make the challenge possible. The **Magical Challenge Object**™ will turn into this "something extra" once you
 start the challenge and can be used as any other object of the kind it turns into.
+
+After the challenge was finished, nothing really happens. The restrictions stay in place, but at least you get a congratulatory mail.
+[The plan](https://github.com/slothsoft/stardew-challenger/issues/76) is to get a reward in future versions.
 
 This mod brings the following challenges:
 
@@ -128,6 +132,33 @@ This mod brings the following challenges:
 - you can only buy seeds for plants that make wine (which includes rice)
 - you cannot build animal buildings, i.e. coop, barn and silo
 - [easy and medium] you get a keg to start you off
+
+
+### FAQ
+
+#### Can I disable / pause the challenges?
+
+Yes, absolutely. You can just select "no challenge" in the challenge menu at any time to 
+pause the challenge. 
+So if not buying from Clint is no fun for you, you can just pause the challenge, buy, 
+and then select the challenge again. Your progress might not get counted if the challenge 
+is paused, but you're not losing the current progress either.
+
+#### The bunny turned into a Seedmaker and now I can't open the menu?
+
+You don't need the bunny, you can also press [K] to open the same menu. Then when you select 
+another challenge, the seedmaker will change into another object (or back to the bunny again).
+
+#### Does the mod change the inventory / farm?
+
+Your inventory and the farm will not be changed, only the **Magical Challenge Object**™
+might change. This mod is only applied to current interactions. 
+
+#### Can you start challenges mid-playthrough?
+
+You can start the challenges at any time, and you can even pause them (by selecting
+"no challenge" in the menu) whenever you feel like it.
+
 
 
 ### Configuration
