@@ -84,7 +84,6 @@ More information can be found [url=https://github.com/slothsoft/stardew-challeng
 
 Can be found [url=https://github.com/slothsoft/stardew-challenger/blob/main/readme/dev-notes.md]here[/url].
 
-
 The source code for this mod is on [url=https://github.com/slothsoft/stardew-challenger]GitHub[/url].
 
 
