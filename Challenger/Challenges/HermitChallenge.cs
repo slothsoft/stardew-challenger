@@ -11,7 +11,7 @@ public class HermitChallenge : BaseChallenge {
     public HermitChallenge(IModHelper modHelper) : base(modHelper, "hermit") {
     }
 
-    protected override IRestriction[] CreateRestrictions(IModHelper modHelper) {
+    protected override IRestriction[] CreateRestrictions(IModHelper modHelper, Difficulty difficulty) {
         return new IRestriction[] {
             new PreventWarping(modHelper.Translation.Get("HermitChallenge.CanOnlyLeaveOnSunday"), new Dictionary<PreventWarping.WarpDirection, Func<bool>>{
                 { new PreventWarping.WarpDirection(LocationName.Farm, LocationName.Backwoods), IsNotSunday},
@@ -26,6 +26,10 @@ public class HermitChallenge : BaseChallenge {
     }
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
-        return new CommunityCenterGoal(modHelper);
+        return new CommunityCenterOrPerfectionGoal(modHelper);
+    }
+    
+    public override MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
+        return difficulty == Difficulty.Easy ? MagicalReplacement.SeedMaker : MagicalReplacement.Default;
     }
 }

@@ -28,7 +28,7 @@ internal static class MagicalGame1 {
     private static bool GetArbitrarySourceRect(GameLocation __instance, ref Rectangle __result,
         Texture2D tileSheet, int tileWidth, int tileHeight, int tilePosition) {
         if (tilePosition == MagicalObject.ObjectId) {
-            var magicalReplacement = ChallengerMod.Instance.GetApi()!.GetActiveChallenge().GetMagicalReplacement();
+            var magicalReplacement = ChallengerMod.Instance.GetApi()!.ActiveChallengeMagicalReplacement;
             __result = Game1.getArbitrarySourceRect(tileSheet, tileWidth, tileHeight, magicalReplacement.ParentSheetIndex);
             return false;
         }

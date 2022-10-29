@@ -19,7 +19,7 @@ internal static class ChallengerMail {
         };
         helper.Events.GameLoop.DayStarted += (_, _) => {
             if (!Game1.player.mailReceived.Contains(GoalCompletedMail) && 
-                ChallengerMod.Instance.GetApi()!.GetActiveChallenge().IsCompleted()) {
+                ChallengerMod.Instance.GetApi()!.IsActiveChallengeCompleted) {
                 Game1.player.mailbox.Add(GoalCompletedMail);
                 Game1.player.mailReceived.Add(GoalCompletedMail);
             }

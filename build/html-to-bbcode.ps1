@@ -9,7 +9,7 @@ $outputFile=$args[1]
 $html = [string]::Join("`n", (gc $htmlFile -encoding utf8))
 
 # Specific to Challenger (!)
-$html = $html -replace '<img(.*?)src="readme/(.*?)"(.*?)width="(.*?)"(.*?)>(\n\r|\n|\r)+','' # removes images entirely
+$html = $html -replace '<img(.*?)src="readme/(.*?)"(.*?)width="(.*?)"(.*?)>(\n)+','' # removes images entirely
 $html = $html -replace '<a href="#(.*?)">(.*?)</a>','$2' # removes anchor links
 $html = $html -replace '<a href="LICENSE">(.*?)</a>','[url=https://github.com/slothsoft/stardew-challenger/blob/main/LICENSE]$1[/url]' # links license
 
@@ -41,8 +41,8 @@ $html = $html -replace '<p>',"`r`n"
 
 # Remove all the tags that don't exist in BBCode
 $html = $html -replace '(</p>)',''
-$html = $html -replace '<([/])*tbody>(\n\r|\n|\r)+',''
-$html = $html -replace '<([/])*colgroup>(\n\r|\n|\r)+',''
-$html = $html -replace '<col(.*?)/>(\n\r|\n|\r)+',''
+$html = $html -replace '<([/])*tbody>(\n)+',''
+$html = $html -replace '<([/])*colgroup>(\n)+',''
+$html = $html -replace '<col(.*?)/>(\n)+',''
 
 $html| Out-File -encoding utf8 $outputFile

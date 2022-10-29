@@ -1,47 +1,58 @@
 ﻿using System;
+using Netcode;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Challenges;
+using Slothsoft.Challenger.Models;
+using StardewModdingAPI.Events;
+using StardewValley.Network;
 
 namespace Slothsoft.Challenger.Goals;
 
 public abstract class BaseGoal<TProgress> : IGoal
-    where TProgress : class {
+    where TProgress : class, INetObject<INetSerializable> {
     private string Id { get; }
     protected IModHelper ModHelper { get; }
+    protected TProgress Progress { get; private set; }
+    private readonly NetStringDictionary<TProgress, NetRef<TProgress>> _netProgresses;
 
-    protected TProgress Progress {
-        get {
-            _progress ??= ReadProgressType();
-            return _progress;
-        }
-    }
-
-    private TProgress? _progress;
-
-    protected BaseGoal(IModHelper modHelper, string id) {
+    protected BaseGoal(IModHelper modHelper, string id, NetStringDictionary<TProgress, NetRef<TProgress>> netProgresses) {
         ModHelper = modHelper;
         Id = id;
+        _netProgresses = netProgresses;
+        Progress = ReadProgressType();
     }
 
     private TProgress ReadProgressType() {
-        return ModHelper.Data.ReadSaveData<TProgress>(Id) ?? Activator.CreateInstance<TProgress>();
+        return _netProgresses.GetOrRead(Id) ?? Activator.CreateInstance<TProgress>();
     }
 
     protected void WriteProgressType(TProgress progress) {
-        _progress = progress;
-        ModHelper.Data.WriteSaveData(Id, progress);
+        Progress = progress;
+        _netProgresses.Write(Id, progress);
     }
 
-    public virtual string GetDisplayName() {
+    public virtual string GetDisplayName(Difficulty difficulty) {
         return ModHelper.Translation.Get(GetType().Name);
     }
 
-    public abstract void Start();
+    public virtual void Start() {
+        ModHelper.Events.GameLoop.DayEnding += OnDayEnding;
+    }
 
-    public abstract void Stop();
+    private void OnDayEnding(object? sender, DayEndingEventArgs e) {
+        if (NetRefExtensions.IsHostPlayer()) {
+            // the host player needs to store the data at the end of the day
+            _netProgresses.Write(Id, Progress);
+        }
+    }
+
+    public virtual void Stop() {
+        ModHelper.Events.GameLoop.DayEnding -= OnDayEnding;
+    }
 
     public abstract bool WasStarted();
 
-    public abstract string GetProgress();
+    public abstract string GetProgress(Difficulty difficulty);
 
-    public abstract bool IsCompleted();
+    public abstract bool IsCompleted(Difficulty difficulty);
 }

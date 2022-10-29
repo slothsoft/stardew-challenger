@@ -43,7 +43,11 @@ public class ChallengerMod : Mod {
             return;
 
         if (e.Button == Config.ButtonOpenMenu) {
-            Game1.activeClickableMenu = new ChallengeMenu();
+            if (Game1.activeClickableMenu is ChallengeMenu) {
+                Game1.activeClickableMenu.exitThisMenu();
+            } else {
+                Game1.activeClickableMenu = new ChallengeMenu();
+            }
         }
     }
 
@@ -61,7 +65,7 @@ public class ChallengerMod : Mod {
     /// </summary>
     private void OnSaveLoaded(object? sender, SaveLoadedEventArgs e) {
         _api = new ChallengerApi(Helper);
-        Monitor.Log($"Challenge \"{_api.GetActiveChallenge().GetDisplayName()}\" was initialized.", LogLevel.Debug);
+        Monitor.Log($"Challenge \"{_api.ActiveChallenge.DisplayName} ({_api.ActiveDifficulty})\" was initialized.", LogLevel.Debug);
     }
     
     /// <summary>
@@ -69,7 +73,7 @@ public class ChallengerMod : Mod {
     /// <see cref="OnSaveLoaded"/>
     /// </summary>
     private void OnReturnToTitle(object? sender, ReturnedToTitleEventArgs e) {
-        Monitor.Log($"Challenge \"{_api?.GetActiveChallenge().GetDisplayName()}\" was cleaned up.", LogLevel.Debug);
+        Monitor.Log($"Challenge \"{_api?.ActiveChallenge.DisplayName}\" was cleaned up.", LogLevel.Debug);
         _api?.Dispose();
         _api = null;
     }

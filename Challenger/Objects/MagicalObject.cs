@@ -31,6 +31,7 @@ public static class MagicalObject {
 
         MagicalDebris.PatchObject(harmony);
         MagicalGame1.PatchObject(harmony);
+        MagicalWorldState.PatchObject(harmony);
 
         harmony.Patch(
             original: AccessTools.Method(
@@ -170,7 +171,7 @@ public static class MagicalObject {
 
         MagicalObjects.Add(__instance);
 
-        var magicalReplacement = ChallengerMod.Instance.GetApi()!.GetActiveChallenge().GetMagicalReplacement();
+        var magicalReplacement = ChallengerMod.Instance.GetApi()!.ActiveChallengeMagicalReplacement;
         __instance.ParentSheetIndex = magicalReplacement.ParentSheetIndex;
         __instance.Name = magicalReplacement.Name;
     }

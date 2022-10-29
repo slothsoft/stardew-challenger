@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Slothsoft.Challenger.Challenges;
+using Slothsoft.Challenger.Models;
+using Slothsoft.Challenger.Objects;
 
 namespace Slothsoft.Challenger.Api;
 
 internal class ChallengerApi : IChallengerApi {
+    
     private readonly List<IChallenge> _challenges;
     private readonly IModHelper _modHelper;
+    
     private IChallenge _activeChallenge;
+    private Difficulty _activeDifficulty;
 
     public ChallengerApi(IModHelper modHelper) {
         _modHelper = modHelper;
@@ -20,55 +25,67 @@ internal class ChallengerApi : IChallengerApi {
             new NoCapitalistChallenge(modHelper),
             new VineyardChallenge(modHelper),
         };
-        _challenges.Sort((a, b) =>
-            string.Compare(a.GetDisplayName(), b.GetDisplayName(), StringComparison.CurrentCulture));
+        _challenges.Sort((a, b) => string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
         _challenges.Insert(0, new NoChallenge(modHelper));
 
         _activeChallenge = LoadActiveChallenge();
+        Game1.netWorldState.Value.GetChallengerState().ChallengeSelection.fieldChangeEvent += (_, __, newValue) => {
+            UpdateChallengeAndDifficulty(FetchChallenge(newValue?.ChallengeId), newValue?.Difficulty ?? Difficulty.Medium);
+        };
     }
+    
+    public bool CanEditChallenges { get; } = Context.IsMainPlayer && Context.IsOnHostComputer;
 
     private IChallenge LoadActiveChallenge() {
-        var dto = _modHelper.Data.ReadSaveData<ChallengerSaveDto>(ChallengerSaveDto.Key);
-        var challengeId = dto?.ChallengeId ?? NoChallenge.ChallengeId;
-        
+        var dto = Game1.netWorldState.Value.GetChallengerState().ChallengeSelection.GetOrRead(ChallengeSelection.Key) ?? new ChallengeSelection();
+        var activeChallenge = FetchChallenge(dto.ChallengeId);
+        _activeDifficulty = dto.Difficulty;
+        activeChallenge.Start(_activeDifficulty);
+        return activeChallenge;
+    }
+
+    private IChallenge FetchChallenge(string? challengeId) {
         var activeChallenge = _challenges.SingleOrDefault(c => c.Id == challengeId);
         if (activeChallenge == null) {
             // this can happen if a challenge ID changed or a challenge was removed
             ChallengerMod.Instance.Monitor.Log($"Challenge \"{challengeId}\" was not found.", LogLevel.Debug);
             activeChallenge = new NoChallenge(_modHelper);
         }
-        activeChallenge.Start();
         return activeChallenge;
     }
 
-    public IEnumerable<IChallenge> GetAllChallenges() {
-        return _challenges.ToImmutableArray();
+    public IEnumerable<IChallenge> AllChallenges => _challenges.ToImmutableArray();
+
+    public Difficulty ActiveDifficulty {
+        get => _activeDifficulty;
+        set => UpdateChallengeAndDifficulty(_activeChallenge, value);
+    }
+    
+    public IChallenge ActiveChallenge {
+        get => _activeChallenge;
+        set => UpdateChallengeAndDifficulty(value, _activeDifficulty);
     }
 
-    public IChallenge GetActiveChallenge() {
-        return _activeChallenge;
-    }
-
-    public void SetActiveChallenge(IChallenge activeChallenge) {
-        if (activeChallenge != _activeChallenge) {
-            _activeChallenge.Stop();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was stopped.",
-                LogLevel.Debug);
-
-            _activeChallenge = activeChallenge;
-            _modHelper.Data.WriteSaveData(ChallengerSaveDto.Key, new ChallengerSaveDto(_activeChallenge.Id));
-
-            _activeChallenge.Start();
-            ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.GetDisplayName()}\" was started.",
-                LogLevel.Debug);
+    private void UpdateChallengeAndDifficulty(IChallenge newActiveChallenge, Difficulty newDifficulty) {
+        if (newActiveChallenge == _activeChallenge && newDifficulty == _activeDifficulty) {
+            return;
         }
+        
+        _activeChallenge.Stop();
+        ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.DisplayName}\" was stopped.",
+            LogLevel.Debug);
+
+        _activeChallenge = newActiveChallenge;
+        _activeDifficulty = newDifficulty;
+
+        Game1.netWorldState.Value.GetChallengerState().ChallengeSelection.Write(ChallengeSelection.Key, new ChallengeSelection(_activeChallenge.Id, _activeDifficulty));
+
+        _activeChallenge.Start(newDifficulty);
+        ChallengerMod.Instance.Monitor.Log($"Challenge \"{_activeChallenge.DisplayName} ({newDifficulty})\" was started.",
+            LogLevel.Debug);
     }
 
     public void Dispose() {
         _activeChallenge.Stop();
     }
-}
-
-internal record ChallengerSaveDto(string ChallengeId) {
-    public const string Key = "ChallengerSaveDto";
 }

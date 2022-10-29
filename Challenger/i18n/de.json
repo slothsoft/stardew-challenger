@@ -4,6 +4,10 @@
   "MagicalObject.Name": "Magischer Gegenstand",
   "MagicalObject.Description": "Ein magischer Gegenstand, der sich mit der gewählten Herausforderung ändert.",
 
+  "Difficulty.Easy": "Einfach",
+  "Difficulty.Medium": "Mittel",
+  "Difficulty.Hard": "Schwierig",
+
   "BaseChallenge.MagicalObject": "Du erhältst den Gegenstand \"{{item}}\"",
   
   "NoChallenge": "(keine Herausforderung)",
