@@ -37,12 +37,15 @@ $html = $html -replace '<h4(.*?)>(.*?)</h4>','[size=4]$2[/size]'
 $html = $html -replace '<h5(.*?)>(.*?)</h5>','[b]$2[/b]'
 
 # Replace all the tags that mark a new paragraph in HTML
-$html = $html -replace '<p>',"`r`n"
+$html = $html -replace '<p>',"`n"
 
 # Remove all the tags that don't exist in BBCode
 $html = $html -replace '(</p>)',''
 $html = $html -replace '<([/])*tbody>(\n)+',''
 $html = $html -replace '<([/])*colgroup>(\n)+',''
 $html = $html -replace '<col(.*?)/>(\n)+',''
+
+# Replace the newlines
+$html = $html -replace "`n","`r`n"
 
 $html| Out-File -encoding utf8 $outputFile
