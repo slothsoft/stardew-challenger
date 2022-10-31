@@ -10,15 +10,16 @@ internal static class HookToInformant {
     
     public static void Apply(ChallengerMod challengerMod) {
         // get Generic Mod Config Menu's API (if it's installed)
-        var configMenu = challengerMod.Helper.ModRegistry.GetApi<IInformant>("Slothsoft.Informant");
-        if (configMenu is null)
+        var helper = challengerMod.Helper;
+        var informant = helper.ModRegistry.GetApi<IInformant>("Slothsoft.Informant");
+        if (informant is null)
             return;
 
-        _bundle ??= challengerMod.Helper.ModContent.Load<Texture2D>("assets/challenge_decorator.png");
-        configMenu.AddItemDecorator(
-            "aslkmklsad",
-            "Trophy",
-            "Bla bla",
+        _bundle ??= helper.ModContent.Load<Texture2D>("assets/challenge_decorator.png");
+        informant.AddItemDecorator(
+            "challenger-decorator",
+            helper.Translation.Get("HookToInformant.DisplayName"),
+            helper.Translation.Get("HookToInformant.Description"),
             FetchDecoratorIfNecessary
         );
     }

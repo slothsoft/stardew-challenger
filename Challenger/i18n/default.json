@@ -59,5 +59,8 @@
   
   "ShopIds.SeedShop": "Pierre",
   "ShopIds.Blacksmith": "Clint",
-  "ShopIds.JojaMart": "Joja Mart"
+  "ShopIds.JojaMart": "Joja Mart",
+
+  "HookToInformant.DisplayName": "Challenger-Dekoration",
+  "HookToInformant.Description": "Markiert Gegenstände, die für das Ziel der Herausforderung gebraucht werden"
 }

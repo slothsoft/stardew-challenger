@@ -59,5 +59,8 @@
   
   "ShopIds.SeedShop": "Pierre",
   "ShopIds.Blacksmith": "Clint",
-  "ShopIds.JojaMart": "Joja Mart"
+  "ShopIds.JojaMart": "Joja Mart",
+
+  "HookToInformant.DisplayName": "Challenger Decorator", 
+  "HookToInformant.Description": "Marks items that are needed for the Challenger's goal"
 }
