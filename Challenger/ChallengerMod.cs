@@ -56,7 +56,9 @@ public class ChallengerMod : Mod {
     public bool IsInitialized() => _api != null;
 
     private void OnGameLaunched(object? sender, GameLaunchedEventArgs e) {
+        // hook other Mods if they exist
         HookToGenericModConfigMenu.Apply(this);
+        HookToInformant.Apply(this);
     }
     
     /// <summary>
