@@ -57,6 +57,8 @@ public class VineyardChallenge : BaseChallenge {
         return new EarnMoneyGoal(ModHelper, EarnMoneyChallenge.CalculateTargetMoney, "Wine", salable => {
             if (salable.ParentSheetIndex == ObjectIds.Wine)
                 return true;
+            if (salable.ParentSheetIndex == ObjectIds.Mead)
+                return true;
             // this is rice "wine"
             if (salable.ParentSheetIndex == ObjectIds.Juice) {
                 var obj = salable as SObject;
