@@ -6,6 +6,7 @@ namespace Slothsoft.Challenger.ThirdParty;
 
 /// <summary>
 /// Base class for the entire API. Can be used to add custom information providers.
+/// See <a href="https://github.com/slothsoft/stardew-informant#use-the-mods-api">IInformant</a>.
 /// </summary>
 public interface IInformant {
 

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Common;
 using Slothsoft.Challenger.Goals;
-using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Restrictions;
 
 namespace Slothsoft.Challenger.Challenges;
@@ -54,7 +54,7 @@ public class VineyardChallenge : BaseChallenge {
     }
     
     protected override IGoal CreateGoal(IModHelper modHelper) {
-        return new EarnMoneyGoal(ModHelper, EarnMoneyChallenge.CalculateTargetMoney, "Wine", salable => {
+        var goal = new EarnMoneyGoal(ModHelper, EarnMoneyChallenge.CalculateTargetMoney, "Wine", salable => {
             if (salable.ParentSheetIndex == ObjectIds.Wine)
                 return true;
             if (salable.ParentSheetIndex == ObjectIds.Mead)
@@ -66,5 +66,7 @@ public class VineyardChallenge : BaseChallenge {
             }
             return false;
         });
+        goal.ProgressChanged += (_, _) => ProgressChangedInvoked();
+        return goal;
     }
 }

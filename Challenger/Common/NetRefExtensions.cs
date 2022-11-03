@@ -2,7 +2,7 @@
 using Netcode;
 using StardewValley.Network;
 
-namespace Slothsoft.Challenger.Models; 
+namespace Slothsoft.Challenger.Common; 
 
 public static class NetRefExtensions {
     

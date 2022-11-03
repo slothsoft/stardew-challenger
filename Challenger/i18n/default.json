@@ -9,6 +9,7 @@
   "Difficulty.Hard": "Hard",
   
   "BaseChallenge.MagicalObject": "You get the object \"{{item}}\"",
+  "BaseChallenge.CompletedOn": "Completed on {{Day}} {{Season}} {{Year}}",
   
   "NoChallenge": "(no challenge)",
   "NoChallenge.DisplayText": "No restrictions of any kind.",

@@ -1,4 +1,4 @@
-﻿using Slothsoft.Challenger.Models;
+﻿using Slothsoft.Challenger.Common;
 using Slothsoft.Challenger.Objects;
 
 namespace Slothsoft.Challenger.Api;

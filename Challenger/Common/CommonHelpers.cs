@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 
-namespace Slothsoft.Challenger.Models;
+namespace Slothsoft.Challenger.Common;
 
 internal static class CommonHelpers {
     /// <summary>

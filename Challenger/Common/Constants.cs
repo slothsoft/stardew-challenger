@@ -1,7 +1,7 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedType.Global
-namespace Slothsoft.Challenger.Models;
+namespace Slothsoft.Challenger.Common;
 
 /// <summary>
 /// These constants can be used to compare to <code>ShopMenu.storeContext</code>.
