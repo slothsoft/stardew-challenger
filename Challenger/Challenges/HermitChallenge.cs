@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Slothsoft.Challenger.Api;
 using Slothsoft.Challenger.Goals;
-using Slothsoft.Challenger.Models;
+using Slothsoft.Challenger.Common;
 using Slothsoft.Challenger.Restrictions;
+using StardewModdingAPI.Events;
 
 namespace Slothsoft.Challenger.Challenges;
 
@@ -31,5 +32,20 @@ public class HermitChallenge : BaseChallenge {
     
     public override MagicalReplacement GetMagicalReplacement(Difficulty difficulty) {
         return difficulty == Difficulty.Easy ? MagicalReplacement.SeedMaker : MagicalReplacement.Default;
+    }
+
+    public override void Start(Difficulty difficulty) {
+        base.Start(difficulty);
+        ModHelper.Events.GameLoop.TimeChanged += OnTimeChanged;
+    }
+
+    private void OnTimeChanged(object? sender, TimeChangedEventArgs e) {
+        // this challenge has no clear events that change for it to be completed, so update periodically
+        ProgressChangedInvoked();
+    }
+
+    public override void Stop() {
+        ModHelper.Events.GameLoop.TimeChanged -= OnTimeChanged;
+        base.Stop();
     }
 }

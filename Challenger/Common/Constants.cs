@@ -1,7 +1,7 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedType.Global
-namespace Slothsoft.Challenger.Models;
+namespace Slothsoft.Challenger.Common;
 
 /// <summary>
 /// These constants can be used to compare to <code>ShopMenu.storeContext</code>.
@@ -27,6 +27,7 @@ public static class ObjectIds {
     public const int PaleAle = 303;
     public const int UnmilledRice = 271;
     public const int Wine = 348;
+    public const int Mead = 459;
     
     public const int Keg = 12;
     public const int SeedMaker = 25;

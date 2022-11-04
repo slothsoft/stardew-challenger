@@ -1,6 +1,6 @@
 ﻿using Slothsoft.Challenger.Api;
+using Slothsoft.Challenger.Common;
 using Slothsoft.Challenger.Events;
-using Slothsoft.Challenger.Models;
 
 // ReSharper disable InconsistentNaming
 

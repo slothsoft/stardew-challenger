@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Slothsoft.Challenger.Challenges;
+using Slothsoft.Challenger.Common;
 using Slothsoft.Challenger.Models;
 using Slothsoft.Challenger.Objects;
 
