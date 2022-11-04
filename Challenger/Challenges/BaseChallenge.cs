@@ -105,14 +105,18 @@ public abstract class BaseChallenge : IChallenge {
     internal void OnProgressChanged(object? sender, EventArgs e) {
         if (_currentDifficulty == null) return; // shouldn't happen
         // check if we have now finished the the challenge
-        var currentDifficulty = _currentDifficulty!.Value;
-        if (GetGoal().IsCompleted(currentDifficulty)) {
-            if (!ChallengeInfo.CompletedOn.ContainsKey((int) currentDifficulty)) {
-                // we have finished the challenge for the first time, so mark the day
-                ChallengeInfo.SetCompletedOnDate(currentDifficulty, new WorldDate(Game1.year, Game1.currentSeason, Game1.dayOfMonth));
-                Game1.netWorldState.Value.GetChallengerState().ChallengeInfos.Write(Id, ChallengeInfo);
+        var currentDifficulty = (int) _currentDifficulty!.Value;
+        for (var difficulty = 0; difficulty <= currentDifficulty; difficulty++) {
+            if (GetGoal().IsCompleted((Difficulty) difficulty)) {
+                if (!ChallengeInfo.CompletedOn.ContainsKey(difficulty)) {
+                    // we have finished the challenge for the first time, so mark the day
+                    ChallengeInfo.SetCompletedOnDate((Difficulty) difficulty, new WorldDate(Game1.year, Game1.currentSeason, Game1.dayOfMonth));
+                    Game1.netWorldState.Value.GetChallengerState().ChallengeInfos.Write(Id, ChallengeInfo);
+                }
+                if (difficulty == currentDifficulty) {
+                    ProgressChanged -= OnProgressChanged;
+                }
             }
-            ProgressChanged -= OnProgressChanged;
         }
     }
     
