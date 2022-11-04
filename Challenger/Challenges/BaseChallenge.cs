@@ -24,9 +24,9 @@ public abstract class BaseChallenge : IChallenge {
     public string Id { get; }
     protected IModHelper ModHelper { get; }
     public string DisplayName => ModHelper.Translation.Get(GetType().Name);
-    internal event EventHandler<EventArgs> ProgressChanged;
+    internal event EventHandler<EventArgs>? ProgressChanged;
     
-    private ChallengeInfo ChallengeInfo {
+    protected virtual ChallengeInfo ChallengeInfo {
         get {
             _info ??= Game1.netWorldState.Value.GetChallengerState().ChallengeInfos.GetOrRead(Id) ?? new ChallengeInfo();
             return _info;
@@ -34,9 +34,7 @@ public abstract class BaseChallenge : IChallenge {
     }
 
     internal void ProgressChangedInvoked() {
-        if (ProgressChanged != null) {
-            ProgressChanged(this, EventArgs.Empty);
-        }
+        ProgressChanged?.Invoke(this, EventArgs.Empty);
     }
     
     public virtual string GetDisplayText(Difficulty difficulty) {
@@ -104,8 +102,8 @@ public abstract class BaseChallenge : IChallenge {
         }
     }
     
-    private void OnProgressChanged(object? sender, EventArgs e) {
-        if (_currentDifficulty == null) return; // shouldn't happen but does?
+    internal void OnProgressChanged(object? sender, EventArgs e) {
+        if (_currentDifficulty == null) return; // shouldn't happen
         // check if we have now finished the the challenge
         var currentDifficulty = _currentDifficulty!.Value;
         if (GetGoal().IsCompleted(currentDifficulty)) {
@@ -158,9 +156,7 @@ public abstract class BaseChallenge : IChallenge {
         var completedOnDate = ChallengeInfo.GetCompletedOnDate(difficulty);
         if (completedOnDate != null) {
             return ModHelper.Translation.Get("BaseChallenge.CompletedOn", new {
-                Day = completedOnDate.DayOfMonth,
-                Season = completedOnDate.Season,
-                Year = completedOnDate.Year,
+                Date = completedOnDate.Localize(),
             }).ToString();
         }
         return GetGoal().GetProgress(difficulty);

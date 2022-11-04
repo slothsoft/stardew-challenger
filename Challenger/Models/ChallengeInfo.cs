@@ -1,4 +1,7 @@
-﻿using Netcode;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Netcode;
 using Newtonsoft.Json;
 using Slothsoft.Challenger.Api;
 using StardewValley.Network;
@@ -23,7 +26,21 @@ public record ChallengeInfo : INetObject<NetFields> {
         set => _startedOn.Value = value ?? -1;
     }
     
+    [JsonIgnore]
     public NetIntDictionary<int, NetInt> CompletedOn { get; } = new();
+
+    public Dictionary<int, int> CompletedOnMap {
+        get => Enum.GetValues(typeof(Difficulty))
+            .OfType<Difficulty>()
+            .Where(d => CompletedOn.ContainsKey((int) d))
+            .ToDictionary(d => (int) d, d => CompletedOn[(int) d]);
+        set {
+            CompletedOn.Clear();
+            foreach (var keyValuePair in value) {
+                CompletedOn[keyValuePair.Key] = keyValuePair.Value;
+            }
+        }
+    }
 
     public WorldDate? GetCompletedOnDate(Difficulty difficulty) {
         if (CompletedOn.ContainsKey((int) difficulty)) {
