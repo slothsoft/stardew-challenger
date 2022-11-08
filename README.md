@@ -7,6 +7,7 @@ _A Mod for [Stardew Valley](https://www.stardewvalley.net/)_
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
 - **Repository:** <https://github.com/slothsoft/stardew-challenger>
 - **Open Issues:** <https://github.com/slothsoft/stardew-challenger/issues>
+- **NexusMods:** <https://www.nexusmods.com/stardewvalley/mods/14196>
 
 A mod that makes playing a challenge again. It allows you to select a challenge from a list, 
 which restricts some parts of the game and lets you focus on another part.
