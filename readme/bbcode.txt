@@ -89,6 +89,25 @@ But if you wish to change the [i]config.json[/i] file manually, you can also do 
 
 
 
+[size=6]Versions[/size]
+[list]
+[*] [B]Future[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/4]Issues[/url]): 
+[*] [B]1.0.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/11?closed=1]Issues[/url]): Makes the mod feature-complete
+[*] [B]0.5.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1]Issues[/url]): Feedback (add difficulty selection, re-balancing of challenges using this difficulty feature, basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it), various bugfixes)
+[*] [B]0.4.3[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1]Issues[/url]): Release blockers II
+[*] [B]0.4.2[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1]Issues[/url]): Release blockers
+[*] [B]0.4.1[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1]Issues[/url]): 2nd alpha test bugfixes
+[*] [B]0.4.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1]Issues[/url]): After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable
+[*] [B]0.3.1[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1]Issues[/url]): Fix of the most glaring bugs
+[*] [B]0.3.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1]Issues[/url]): More challenges
+[*] [B]0.2.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1]Issues[/url]): Alpha test
+[*] [B]0.1.0[/B] ([url=https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1]Issues[/url]): Proof of concept
+[/list]
+
+[i](All issues can be found [url=https://github.com/slothsoft/stardew-challenger/issues]here[/url].)[/i]
+
+
+
 [size=6]Removing the Mod[/size]
 
 [img]https://github.com/slothsoft/stardew-challenger/raw/main/readme/screenshot_revert.png[/img]
@@ -100,8 +119,19 @@ But if you wish to change the [i]config.json[/i] file manually, you can also do 
 [size=6]Translator Guide[/size]
 
 Right now, not all translations are provided. If you want to help, translate either file in the [i][url=https://github.com/slothsoft/stardew-challenger/blob/main/Challenger/i18n/]i18n/[/url][/i] and test it right in your Stardew Valley (the same folder exists in your [i]Mods/[/i] folder). You can than provide it to me via [url=https://github.com/slothsoft/stardew-challenger/fork]pull request[/url] or [url=mailto:s.schulz@slothsoft.de]email[/url].
-
-More information can be found [url=https://github.com/slothsoft/stardew-challenger/blob/main/README.md#translator-guide]here[/url].
+[list]
+[*] English ([font=Courier New][color=#00ffff]default[/color][/font]): &#9989;
+[*] German ([font=Courier New][color=#00ffff]de[/color][/font]): &#9989;
+[*] Spanish ([font=Courier New][color=#00ffff]es[/color][/font]): &#10060;
+[*] French ([font=Courier New][color=#00ffff]fr[/color][/font]): &#10060;
+[*] Hungarian ([font=Courier New][color=#00ffff]hu[/color][/font]): &#10060;
+[*] Italian ([font=Courier New][color=#00ffff]it[/color][/font]): &#10060;
+[*] Korean ([font=Courier New][color=#00ffff]ko[/color][/font]): &#10060;
+[*] Portugese ([font=Courier New][color=#00ffff]pt[/color][/font]): &#10060;
+[*] Russian ([font=Courier New][color=#00ffff]ru[/color][/font]): &#10060;
+[*] Turkish ([font=Courier New][color=#00ffff]tr[/color][/font]): &#10060;
+[*] Chinese ([font=Courier New][color=#00ffff]zh[/color][/font]): &#10060;
+[/list]
 
 
 

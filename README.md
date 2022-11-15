@@ -185,19 +185,19 @@ entries is:
 
 ### Versions
 
-| Version | Issues                                                                          | Changes                                                                                                                                                                                                                                  |
-|---------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)           |                                                                                                                                                                                                                                          |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/11?closed=1) | - makes the mod feature-complete                                                                                                                                                                                                         |
-| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | - add difficulty selection<br>- re-balancing of challenges using this difficulty feature<br>- basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it)<br>- various bugfixes |
-| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release blockers II                                                                                                                                                                                                                      |
-| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release blockers                                                                                                                                                                                                                         |
-| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd alpha test bugfixes                                                                                                                                                                                                                  |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1)  | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable                                                                                                  |
-| 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1)  | Fix of the most glaring bugs                                                                                                                                                                                                             |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1)  | More challenges                                                                                                                                                                                                                          |
-| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1)  | Alpha test                                                                                                                                                                                                                               |
-| 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1)  | Proof of concept                                                                                                                                                                                                                         |
+| Version | Issues                                                                          | Changes                                                                                                                                                                                                                                |
+|---------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/4)           |                                                                                                                                                                                                                                        |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/11?closed=1) | Makes the mod feature-complete                                                                                                                                                                                                         |
+| 0.5.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/10?closed=1) | Feedback (add difficulty selection,  re-balancing of challenges using this difficulty feature, basic multiplayer support (only the host can change the challenge, but all players (with this mod) contribute to it), various bugfixes) |
+| 0.4.3   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/9?closed=1)  | Release blockers II                                                                                                                                                                                                                    |
+| 0.4.2   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/8?closed=1)  | Release blockers                                                                                                                                                                                                                       |
+| 0.4.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/7?closed=1)  | 2nd alpha test bugfixes                                                                                                                                                                                                                |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/6?closed=1)  | After play testing version 0.2.x and 0.3.x it turned out the challenges have some mayor flaws - so mod was revamped to make it playable                                                                                                |
+| 0.3.1   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/3?closed=1)  | Fix of the most glaring bugs                                                                                                                                                                                                           |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/5?closed=1)  | More challenges                                                                                                                                                                                                                        |
+| 0.2.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/2?closed=1)  | Alpha test                                                                                                                                                                                                                             |
+| 0.1.0   | [Issues](https://github.com/slothsoft/stardew-challenger/milestone/1?closed=1)  | Proof of concept                                                                                                                                                                                                                       |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-challenger/issues).)_
 
@@ -211,17 +211,17 @@ to me via [pull request](https://github.com/slothsoft/stardew-challenger/fork) o
 
 | Key       | Language  | Translated? |
 |-----------|-----------|-------------|
-| `default` | English   |  ✅  |
-| `de`      | German    |  ✅  |
-| `es`      | Spanish   |             |
-| `fr`      | French    |             |
-| `hu`      | Hungarian |             |
-| `it`      | Italian   |             |
-| `ko`      | Korean    |             |
-| `pt`      | Portugese |             |
-| `ru`      | Russian   |             |
-| `tr`      | Turkish   |             |
-| `zh`      | Chinese   |             |
+| `default` | English   | ✅           |
+| `de`      | German    | ✅           |
+| `es`      | Spanish   | ❌           |
+| `fr`      | French    | ❌           |
+| `hu`      | Hungarian | ❌           |
+| `it`      | Italian   | ❌           |
+| `ko`      | Korean    | ❌           |
+| `pt`      | Portugese | ❌           |
+| `ru`      | Russian   | ❌           |
+| `tr`      | Turkish   | ❌           |
+| `zh`      | Chinese   | ❌           |
 
 
 
