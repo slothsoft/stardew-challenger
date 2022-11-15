@@ -18,8 +18,8 @@ internal static class HookToInformant {
         _bundle ??= helper.ModContent.Load<Texture2D>("assets/challenge_decorator.png");
         informant.AddItemDecorator(
             "challenger-decorator",
-            helper.Translation.Get("HookToInformant.DisplayName"),
-            helper.Translation.Get("HookToInformant.Description"),
+            () => helper.Translation.Get("HookToInformant.DisplayName"),
+            () => helper.Translation.Get("HookToInformant.Description"),
             FetchDecoratorIfNecessary
         );
     }
