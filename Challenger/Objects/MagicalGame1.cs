@@ -25,6 +25,11 @@ internal static class MagicalGame1 {
         );
     }
 
+    /// <summary>
+    /// This method defines which part of <see cref="Game1.bigCraftableSpriteSheet"/> to
+    /// use for the "debris", i.e. when you hack at the object and it floats on the map until
+    /// you collect it (or it despawns).
+    /// </summary>
     private static bool GetArbitrarySourceRect(GameLocation __instance, ref Rectangle __result,
         Texture2D tileSheet, int tileWidth, int tileHeight, int tilePosition) {
         if (tilePosition == MagicalObject.ObjectId) {
